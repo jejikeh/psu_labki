@@ -1,3 +1,0 @@
-C:/Users/jejik/University/pnyavy/6lab/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/jejik/University/pnyavy/6lab/cmake-build-debug/CMakeFiles/6lab.dir
-C:/Users/jejik/University/pnyavy/6lab/cmake-build-debug/CMakeFiles/rebuild_cache.dir
