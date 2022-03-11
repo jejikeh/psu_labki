@@ -1,0 +1,224 @@
+        -:    0:Source:C:/Users/jejik/University/aisd/main.cpp
+        -:    0:Graph:C:\Users\jejik\University\aisd\cmake-build-debug-coverage\CMakeFiles\aisd.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\jejik\University\aisd\cmake-build-debug-coverage\CMakeFiles\aisd.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <iostream>
+        -:    2:
+        -:    3:struct list{
+        -:    4:    int field; // данные
+        -:    5:    struct list *next; // указатель на следующий элемент
+        -:    6:    struct list *prev;
+        -:    7:};
+        -:    8:
+        -:    9:
+function _Z4initi called 0 returned 0% blocks executed 0%
+    #####:   10:struct list *init(int a){
+        -:   11:    struct list *self; // указатель на новый элемент
+    #####:   12:    self = (struct list*) malloc(sizeof (struct list)); // выделение памяти под новый элемент
+    #####:   13:    self->field = a; // занесение значения в переменную field
+    #####:   14:    self->next = nullptr; // следующий элемент пустой
+    #####:   15:    self->prev = nullptr;
+    #####:   16:    return (self);
+    %%%%%:   16-block  0
+        -:   17:}
+        -:   18:
+function _Z10deleteRootP4list called 0 returned 0% blocks executed 0%
+    #####:   19:struct list *deleteRoot(list *root){
+        -:   20:    struct list *temp;
+    #####:   21:    temp = root->next;
+    #####:   22:    temp->prev = nullptr;
+    #####:   23:    free(root);
+    #####:   24:    return(temp);
+    %%%%%:   24-block  0
+        -:   25:}
+        -:   26:
+function _Z13deleteElementP4list called 0 returned 0% blocks executed 0%
+    #####:   27:struct list *deleteElement(list *self){
+        -:   28:    struct list  *prev, *next;
+    #####:   29:    prev = self->prev;
+    #####:   30:    next = self->next;
+    #####:   31:    if(prev != nullptr) prev->next = self->next;
+    %%%%%:   31-block  0
+branch  0 never executed
+branch  1 never executed
+    %%%%%:   31-block  1
+    #####:   32:    if(next != nullptr) next->prev = self->prev;
+    %%%%%:   32-block  0
+branch  0 never executed
+branch  1 never executed
+    %%%%%:   32-block  1
+    #####:   33:    free(self);
+    #####:   34:    return(prev);
+    %%%%%:   34-block  0
+        -:   35:}
+        -:   36:
+function _Z10addElementP4listi called 0 returned 0% blocks executed 0%
+    #####:   37:struct list *addElement(list *self, int number){
+        -:   38:    struct list *temp, *p;
+    #####:   39:    temp = (struct list*) malloc(sizeof(struct list));
+    #####:   40:    p = self->next; // указатель на последний элемент
+    #####:   41:    self->next = temp; // замена последнего элемента на новый
+    #####:   42:    temp->field = number;
+    #####:   43:    temp->next = p;
+    #####:   44:    temp->prev = self;
+    #####:   45:    if( p != nullptr) p->prev = temp;
+    %%%%%:   45-block  0
+branch  0 never executed
+branch  1 never executed
+    %%%%%:   45-block  1
+    #####:   46:    return(temp);
+    %%%%%:   46-block  0
+        -:   47:}
+        -:   48:
+        -:   49:void menu(list self);
+        -:   50:
+function _Z6filterP4list called 0 returned 0% blocks executed 0%
+    #####:   51:void filter(list *self) {
+    #####:   52:    int min = -50;
+    #####:   53:    int max = 50;
+        -:   54:
+        -:   55:    struct list *temp;
+    #####:   56:    temp = self;
+    %%%%%:   56-block  0
+        -:   57:    do {
+    #####:   58:        if (temp->field > min && temp->field < max) temp=temp->next;
+    %%%%%:   58-block  0
+branch  0 never executed
+branch  1 never executed
+    %%%%%:   58-block  1
+branch  2 never executed
+branch  3 never executed
+    %%%%%:   58-block  2
+        -:   59:        else {
+    #####:   60:            deleteElement(temp);
+    %%%%%:   60-block  0
+call    0 never executed
+    #####:   61:            temp = temp->next;
+        -:   62:        }
+    #####:   63:    } while (temp != nullptr);
+    %%%%%:   63-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   64:}
+        -:   65:
+        -:   66:
+function _Z9printListP4list called 0 returned 0% blocks executed 0%
+    #####:   67:void printList(list *self){
+        -:   68:    struct list *temp;
+    #####:   69:    temp = self;
+    %%%%%:   69-block  0
+        -:   70:    do {
+    #####:   71:        printf("%d\n",temp->field);
+    %%%%%:   71-block  0
+call    0 never executed
+    #####:   72:        temp = temp->next;
+    #####:   73:    } while ( temp != nullptr);
+branch  0 never executed
+branch  1 never executed
+    #####:   74:}
+        -:   75:
+        -:   76:
+function main called 1 returned 0% blocks executed 36%
+        1:   77:int main() {
+        1:   78:    list numbers{};
+        -:   79:
+        1:   80:    if(numbers.prev == nullptr){
+        1:   80-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        -:   81:        int x;
+        1:   82:        std::cout << "Input a root field: \n";
+        1:   82-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   83:        std::cin >> x;
+        1:   83-block  0
+call    0 returned 0
+branch  1 taken 0 (fallthrough)
+branch  2 taken 0 (throw)
+    #####:   84:        numbers = *init(x);
+    %%%%%:   84-block  0
+call    0 never executed
+    #####:   85:        menu(numbers);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   86:    } else {
+    #####:   87:        std::cout << "FUCK \n";
+    %%%%%:   87-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   88:    }
+        -:   89:
+    #####:   90:}
+    %%%%%:   90-block  0
+    %%%%%:   90-block  1
+        -:   91:
+        -:   92:
+function _Z4menu4list called 0 returned 0% blocks executed 0%
+    #####:   93:void menu(list self){
+    #####:   94:    std::cout << "1 - add new element \n2 - remove and print \n0 - exit";
+    %%%%%:   94-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   95:    int task;
+    #####:   96:    std::cin >> task;
+    %%%%%:   96-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   97:
+    #####:   98:    if(task == 1){
+    %%%%%:   98-block  0
+branch  0 never executed
+branch  1 never executed
+        -:   99:        int x;
+    #####:  100:        std::cout << "Input a number: \n";
+    %%%%%:  100-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  101:        std::cin >> x;
+    %%%%%:  101-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  102:        addElement(&self,x);
+    %%%%%:  102-block  0
+call    0 never executed
+    #####:  103:    }else if (task == 2){
+    %%%%%:  103-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  104:        std::cout << "Filter list : \n";
+    %%%%%:  104-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  105:        filter(&self);
+    %%%%%:  105-block  0
+call    0 never executed
+    #####:  106:    }else if (task == 0){
+    %%%%%:  106-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  107:        printList(&self);
+    %%%%%:  107-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  108:        std::exit(0);
+    %%%%%:  108-block  0
+call    0 never executed
+        -:  109:    }
+    #####:  110:    menu(self);
+    %%%%%:  110-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  111:}
+    %%%%%:  111-block  0
+        -:  112:

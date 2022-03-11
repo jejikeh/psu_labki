@@ -1,0 +1,3 @@
+C:/Users/jejik/University/aisd/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/jejik/University/aisd/cmake-build-debug/CMakeFiles/aisd.dir
+C:/Users/jejik/University/aisd/cmake-build-debug/CMakeFiles/rebuild_cache.dir

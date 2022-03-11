@@ -1,0 +1,3 @@
+﻿  1lab.cpp
+C:\Users\jejik\University\aisd\1lab\1lab\1lab.cpp(131): warning C4717: 'menu': recursive on all control paths, function will cause runtime stack overflow
+  1lab.vcxproj -> C:\Users\jejik\University\aisd\1lab\x64\Debug\1lab.exe
