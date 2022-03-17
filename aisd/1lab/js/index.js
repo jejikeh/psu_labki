@@ -57,7 +57,7 @@ class LinkedList {
     }
   }
 
-  rS(){
+  removeSame(){
     let currentNode = this.header;
     let nextNode = this.header;
     let x = 0;
@@ -72,39 +72,7 @@ class LinkedList {
       currentNode = currentNode.next;
     }
   }
-
-  removeSame(){
-    let currentNode = this.header;
-    let nextNode = currentNode.next;
-    while(currentNode != null){
-      while(nextNode != null){
-        while(currentNode.data == nextNode.data){
-          console.log(currentNode.data + " compared to " + nextNode.data);
-          if(nextNode == this.getLast()){
-            let x = this.find(nextNode.data);
-            this.remove(nextNode.data);
-            break;
-          }else {
-            this.remove(nextNode.data);
-            nextNode = nextNode.next;
-            break;
-          }
-        }
-        nextNode = nextNode.next;
-      }
-      currentNode = currentNode.next;
-      if (currentNode == this.getLast()){
-        break;
-      }else {
-        //console.log(this.getLast().data);
-        //nextNode = currentNode.next;
-        if(nextNode == null) {
-          nextNode = currentNode.next;
-        }
-      }
-    }
-  }
-
+  
   display(){
     let currentNode = this.header;
     while(currentNode != null){
@@ -146,7 +114,7 @@ function tasks(){
       })
     }else if (task == 4){
       console.log("\nREMOVAL.....");
-      numbers.rS();
+      numbers.removeSame();
       tasks();
     }
     else {
