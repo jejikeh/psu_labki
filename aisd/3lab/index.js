@@ -15,22 +15,12 @@ function tasks(){
         if(task == 1){
             rl.question("\nADD ELEMENT : ", dataElement => {
                 rl.question("\nELEMENT PRIORITET: ", index => {
-                        if(stack[index] == null){
-                            stack[index] = dataElement;
-                        }else {
-                            while(stack[index] != null){
-                                index += 1;
-                            }
-                            stack[index] = dataElement;
-                        }
+                        stack[index] = dataElement;
                         tasks();
                 })
         })
         }else if (task == 2){
         console.log("\nDISPLAY : \n");
-        stack = stack.filter(el => {
-            return el != null && el != '';
-        });
         console.log(stack);
         tasks(); 
         }else if (task == 3){
@@ -39,6 +29,10 @@ function tasks(){
             tasks();
         }
         else {
+            let stackwitho = stack.filter(el => {
+                return el != null && el != '';
+            });
+            console.log(stackwitho);
             tasks();
         }
   }) 
