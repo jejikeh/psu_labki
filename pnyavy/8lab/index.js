@@ -52,7 +52,7 @@ function akkerman(x, y) {
 function tasks() {
   task = 0;
   rl.question(
-    "\n1-ФИБОНАЧИ\n2-ФАКТОРИАЛ\n3-ПОСЛЕДОВАТЕЛЬНОСТЬ\n4-НАИБОЛЬШИЙ ОБЩИЙ ДЕЛИТЕЛЬ\n5-ПОЛИНОМ ЛЕЖАНДРА\n6-РАЗНОСТНЫЕ УРАВНЕНИЯ\n7-АККРЕМАНА\nCHOOSE TASK : ",
+    "\n1-ФИБОНАЧИ ( Оптимальные значения до 30 )\n2-ФАКТОРИАЛ ( Оптимальные значения до 128 )\n3-ПОСЛЕДОВАТЕЛЬНОСТЬ ( Оптимальные значения до 500 )\n4-НАИБОЛЬШИЙ ОБЩИЙ ДЕЛИТЕЛЬ\n5-ПОЛИНОМ ЛЕЖАНДРА ( до 30 - 40 )\n6-РАЗНОСТНЫЕ УРАВНЕНИЯ\n7-АККРЕМАНА ( X до 3, N до 10 )\nCHOOSE TASK : ",
     (task) => {
       if (task == 1) {
         rl.question("\nELEMENT : ", (dataElement) => {
@@ -90,7 +90,7 @@ function tasks() {
         });
       } else if (task == 7) {
         rl.question("\nELEMENT X : ", (x) => {
-          rl.question("\nELEMENT X : ", (y) => {
+          rl.question("\nELEMENT N : ", (y) => {
             console.log(akkerman(x, y));
             tasks();
           });
