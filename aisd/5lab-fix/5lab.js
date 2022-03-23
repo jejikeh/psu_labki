@@ -5,7 +5,6 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-let x = 0;
 function tasks() {}
 
 class Node {
@@ -23,10 +22,12 @@ class Tree {
   add(data, currentNode) {
     // произвольное заполнение
     if (currentNode.children.length == 0) {
+      // если нет детей, то добавить слева или справа
       console.log(`Добавление узла ${data} к узлу ${currentNode.data}`);
       currentNode.children.push(new Node(data, currentNode));
       tasks();
     } else if (currentNode.children.length == 1) {
+      // если ребенок один, то выбор между добавлением узла к ребенку или к корню
       rl.question(
         `Выберете к какому элементу добавить узел, к ${currentNode.children[0].data} ( 0 - ребенок ) или ${currentNode.data} ( 1 - к самому себе) : `,
         (index) => {
@@ -41,6 +42,7 @@ class Tree {
         }
       );
     } else if (currentNode.children.length == 2) {
+      // если два, то вызов этой же функции для элемента
       rl.question(
         `Выберете к какому элементу добавить узел, к ${currentNode.children[0].data} ( 0 - левый ) или ${currentNode.children[1].data} ( 1 - правый) : `,
         (index) => {
@@ -67,6 +69,7 @@ class Tree {
   find(data, currentNode) {
     if (currentNode.data != data) {
       for (let i = 0; i < currentNode.children.length; i++) {
+        // проверка по всем детям пока не найду элемент равный data
         this.find(data, currentNode.children[i]);
       }
     } else {
@@ -78,7 +81,35 @@ class Tree {
     //console.log(currentNode.data);
   }
   delete(data, currentNode) {
-    if (currentNode != null) {
+    /* 
+    
+    i = эта переменая показывает слева или справа находится удаляемый элемент,
+    это нужно что-бы потом, при удалении его из дерева, его родитель на его место получал либо двух его детей, либо одного. В зависимости от 
+    количества детей у корня и у удаляемого элемента
+    
+    */
+    for (let i = 0; i < currentNode.children.length; i++) {
+      // поиск по всем детям
+      if (currentNode.children[i].data != data) {
+        this.delete(data, currentNode.children[i]);
+      } else {
+        if (currentNode.children[i].children.length != 0) {
+          // если элемента есть дети, то
+          if (currentNode.children.length == 1) {
+            // если у корня только удаляемый элемент в детях, то меняем его на всех детей удаляемого элемента
+            for (let k = 0; k < currentNode.children[i].children.length; k++) {
+              if (currentNode.children[k] == null) {
+                currentNode.children.push(new Node("d", null));
+              }
+              currentNode.children[k] = currentNode.children[i].children[k];
+            }
+          } else {
+            currentNode.children[i] = currentNode.children[i].children[0];
+          }
+        } else {
+          currentNode.children.splice(i, 1);
+        }
+      }
     }
   }
 }
@@ -117,7 +148,6 @@ function tasks() {
         // Инициализировать массив который будет добовлять уже проверенные элементы, и если они там есть то просто их не проверять
         rl.question("\nВведите элемент который нужно найти : ", (data) => {
           trees.find(data, trees.root);
-          x = 0;
           tasks();
         });
       } else if (task == 4) {
@@ -141,7 +171,6 @@ function tasks() {
         // Инициализировать массив который будет добовлять уже проверенные элементы, и если они там есть то просто их не проверять
         rl.question("\nВведите элемент который нужно удалить : ", (data) => {
           trees.delete(data, trees.root);
-          x = 0;
           tasks();
         });
       } else {

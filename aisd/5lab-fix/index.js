@@ -141,7 +141,6 @@ class Tree {
       console.log(currentNode.parent.data);
       currentNode.parent.left = null;
       currentNode = null;
-
       tasks();
     } else {
       console.log("\nНе найдено");
