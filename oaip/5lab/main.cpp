@@ -59,7 +59,7 @@ int func1(struct COURSE_WORK *course_work ){ // вывод так же как и
 // работа с файлами
 
 void save_file(std::string name,COURSE_WORK *cw){
-    std::ofstream fout("data", std::ios_base::app); // поток файла с конца
+    std::ofstream fout(name, std::ios_base::app); // поток файла с конца
     //std::ofstream fout("data_types.txt", std::ios_base::out|std::ios_base::trunc); // поток файла с начала
 
     fout << cw->name << " " << cw->topic << " " << cw->author << " " << cw->pages <<  "\n"; // в открытый файл записываем значения полей структуры

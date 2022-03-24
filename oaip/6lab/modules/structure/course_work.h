@@ -4,10 +4,10 @@
 
 // заголовк для структуры
 struct COURSE_WORK { // описание структуры
-    char name[20];
-    char topic[20];
-    char author[20];
-    char pages[20];
+    std::string name;
+    std::string topic;
+    std::string author;
+    std::string pages;
 };
 
 #endif
