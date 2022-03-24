@@ -17,7 +17,7 @@ void menu(void){
                 break;
             case 2 :
                 for(int i = 0;i <= length;i++){
-                    std::cout << "\nDisplay " << length << " element....\n";
+                    std::cout << "\n\nDisplay " << length << " element....\n";
                     display(&course_work[length]);
                 }
                 break;
