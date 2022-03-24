@@ -1,6 +1,7 @@
 #include <iostream>
 #include "structure.cpp"
 
+int length = -1;
 
 void menu(void){
     int _task = 0;
@@ -9,15 +10,19 @@ void menu(void){
         std::cout << "1 - Add element\n2 - Display element\n CHOOSE TASK : ";
         std::cin >> _task;
         switch(_task){
-            case 1 : {
+            case 1 : 
                 length++;
                 course_work[length] = *create(&course_work[length]);
+                std::cout << course_work[length].author;
                 break;
-            case : 2 {
-
+            case 2 :
+                for(int i = 0;i <= length;i++){
+                    std::cout << "\nDisplay " << length << " element....\n";
+                    display(&course_work[length]);
                 }
-            }default : {
-                std::cout << "D";
+                break;
+            default : {
+                std::cout << "\nWrong task.";
             }
         }
     }

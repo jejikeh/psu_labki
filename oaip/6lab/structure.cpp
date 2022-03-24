@@ -6,7 +6,6 @@ struct COURSE_WORK { // описание структуры
     char author[20];
     char pages[20];
 };
-int length = -1;
 
 COURSE_WORK *create(COURSE_WORK *course_work){ // функция создания
     std::cout << "Input name: ";
@@ -21,6 +20,7 @@ COURSE_WORK *create(COURSE_WORK *course_work){ // функция создани�
     return course_work; // возвращение элемента
 }
 
-void *display(COURSE_WORK *course_work){
-    std::cout >> "Name : " << course_work->name << "\n" << "Topic : " << course_work->topic << "\n" << "Author" : << course_work->author << "\n" << "Pages" << course_work->pages << "\n";
+void display(COURSE_WORK *course_work){
+    std::cout << "Name : " << course_work->name << "\n" << "Topic : " << course_work->topic << "\n" << "Author : " << course_work->author << "\n" << "Pages : " << course_work->pages << "\n";
+
 }
