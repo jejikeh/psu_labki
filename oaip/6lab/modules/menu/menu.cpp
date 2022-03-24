@@ -1,5 +1,6 @@
 #include <iostream>
-#include "structure.cpp"
+#include "../structure/structure.h"
+#include "../structure/course_work.h"
 
 int length = -1;
 
@@ -17,8 +18,8 @@ void menu(void){
                 break;
             case 2 :
                 for(int i = 0;i <= length;i++){
-                    std::cout << "\n\nDisplay " << length << " element....\n";
-                    display(&course_work[length]);
+                    std::cout << "\n\nDisplay " << i << " element....\n";
+                    display(&course_work[i]);
                 }
                 break;
             default : {

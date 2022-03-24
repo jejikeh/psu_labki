@@ -1,11 +1,5 @@
 #include <iostream>
-
-struct COURSE_WORK { // описание структуры
-    char name[20];
-    char topic[20];
-    char author[20];
-    char pages[20];
-};
+#include "course_work.h" // структура
 
 COURSE_WORK *create(COURSE_WORK *course_work){ // функция создания
     std::cout << "Input name: ";
