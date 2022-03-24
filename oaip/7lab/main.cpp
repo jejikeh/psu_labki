@@ -46,9 +46,24 @@ void insertPostNode(double_linked_list *DLL, float data){
     DLL->pointer->forward = newNode;
 }
 
+void printList(double_linked_list *DLL){
+    node *temp;
+    temp = DLL->start->forward;
+    while(temp != DLL->end){
+        std::cout << temp->data << " ";
+        temp = temp->forward;
+    }
+}
+
 int main(){
     double_linked_list *DDL = (double_linked_list*)malloc(0);
     initList(DDL);
     insertPostNode(DDL,1);
+    insertPostNode(DDL,1);
+    insertPostNode(DDL,1);
+
+    printList(DDL);
 }
+
+
 
