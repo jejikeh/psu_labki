@@ -58,11 +58,9 @@ void printList(double_linked_list *DLL){
 int main(){
     double_linked_list *DDL = (double_linked_list*)malloc(0);
     initList(DDL);
-    insertPostNode(DDL,1);
-    insertPostNode(DDL,1);
-    insertPostNode(DDL,1);
-
-    printList(DDL);
+    float x = 2;
+    insertPostNode(DDL,x);
+    std::cout << "d";
 }
 
 
