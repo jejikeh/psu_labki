@@ -99,7 +99,7 @@ class Tree {
             // если у корня только удаляемый элемент в детях, то меняем его на всех детей удаляемого элемента
             for (let k = 0; k < currentNode.children[i].children.length; k++) {
               if (currentNode.children[k] == null) {
-                currentNode.children.push(new Node("d", null));
+                currentNode.children.push(new Node(null));
               }
               currentNode.children[k] = currentNode.children[i].children[k];
             }

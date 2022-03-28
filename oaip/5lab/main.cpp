@@ -10,10 +10,10 @@ int main();
 
 
 struct COURSE_WORK { // описание структуры
-    char name[20];
-    char topic[20];
-    char author[20];
-    char pages[20];
+    std::string name;
+    std::string topic;
+    std::string author;
+    std::string pages;
 };
 int length = -1;
 
@@ -62,7 +62,7 @@ void save_file(std::string name,COURSE_WORK *cw){
     std::ofstream fout(name, std::ios_base::app); // поток файла с конца
     //std::ofstream fout("data_types.txt", std::ios_base::out|std::ios_base::trunc); // поток файла с начала
 
-    fout << cw->name << " " << cw->topic << " " << cw->author << " " << cw->pages <<  "\n"; // в открытый файл записываем значения полей структуры
+    fout << cw->name << " " << cw->topic << " " << cw->author << " " << cw->pages << "\n"; // в открытый файл записываем значения полей структуры
     fout.close(); // закрываем поток
 }
 
@@ -125,7 +125,7 @@ int main() {
     int i = 0;
 
     while( i != -1 ){ // выбор задания
-        std::cout << " 1 - Create new object \n 2 - Table output \n 3 - String output \n 4 - Save file ( 1, 3, 4)\n 5 - Delete file ( 2 )\n ( -1 ) - Exit \n";
+        std::cout << "1 - Create new object \n2 - Table output \n3 - String output \n4 - Save file ( 1, 3, 4)\n5 - Delete file ( 2 )\n( -1 ) - Exit \n";
         std::cin >> i;
         if( i == 1){
             length++; // увелечение элемента на один
@@ -188,11 +188,17 @@ int main() {
                 if (!fout1.is_open()) {
                     std::cout << "error";
                 }
-                std::string s;
-                // замена всех символов на пробелы. Работает если только вводить по одному символу
-                for(int y = 0; y <= i;y++){
-                    fout1 << "        ";
+                // переменная хранящая в себе длинну строки, которую только что считали. Это нужно для того что-бы ее удалить
+                for(int k = 0; k <= i; k++){
+                    int _length = course_work[k].author.size() + course_work[k].name.size() + course_work[k].pages.size() + course_work[k].topic.size() + 4;
+                    for(int y = 0; y < _length; y++){
+                            fout1 << " ";
+                    }
+                    _length = 0;
                 }
+                //замена всех символов на пробелы. Работает если только вводить по одному символу
+                
+                //_length = 0;
                 fout1.close();
             }
             

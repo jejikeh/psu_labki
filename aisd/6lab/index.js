@@ -9,199 +9,104 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-function tasks() {}
-
 class Node {
-    constructor(data, left, right, parent) {
-        this.data = data;
-        this.left = left;
-        this.right = right;
-        this.parent = parent;
-        this.checked = false;
-    }
-}
-
-let trees = null;
-class Tree {
     constructor(data) {
-        this.root = new Node(data, null, null, null);
-    }
-
-    add(data, currentNode) {
-        rl.question('\nLEFT OR RIGHT : ', (next) => {
-            if (next == 'right') {
-                if (currentNode.right != null) {
-                    // если справа есть то идем дальше
-                    console.log(`\n CURRENT NODE : ${currentNode.right.data}`);
-                    this.add(data, currentNode.right);
-                } else {
-                    // если нет справа то создаем
-                    const newNode = new Node(data, null, null, currentNode);
-                    currentNode.right = newNode;
-                    tasks();
-                }
-            } else if (next == 'left') {
-                if (currentNode.left != null) {
-                    console.log(`\n CURRENT NODE : + ${currentNode.left.data}`);
-                    this.add(data, currentNode.left);
-                } else {
-                    const newNode = new Node(data, null, null, currentNode);
-                    currentNode.left = newNode;
-                    tasks();
-                }
-            } else {
-                console.log('\nleft or right');
-                this.add(data, currentNode);
-            }
-            return 0;
-        });
-    }
-
-    display(currentNode) {
-        if (currentNode.right != null && currentNode.left != null) {
-            console.log(
-                `\n${currentNode.left.data} <- ${currentNode.data} -> ${currentNode.right.data}`
-            );
-            rl.question('\nCHOOSE WAY : ', (way) => {
-                if (way == 'right' || way == currentNode.right.data) {
-                    this.display(currentNode.right);
-                } else if (way == 'left' || way == currentNode.left.data) {
-                    this.display(currentNode.left);
-                } else if (
-                    way == currentNode.data &&
-                    currentNode.parent != null
-                ) {
-                    console.log(`\nBACK TO NODE : ${currentNode.parent.data}`);
-                    this.display(currentNode.parent);
-                } else if (way == -1) {
-                    tasks();
-                } else {
-                    this.display(currentNode);
-                }
-                return 0;
-            });
-        } else if (currentNode.right == null && currentNode.left != null) {
-            console.log(
-                `\n${currentNode.left.data} <- ${currentNode.data} -> NULL`
-            );
-            rl.question('\nCHOOSE WAY : ', (way) => {
-                if (way == 'right') {
-                    console.log('\nright is empty');
-                    this.display(currentNode);
-                } else if (way == 'left' || way == currentNode.left.data) {
-                    this.display(currentNode.left);
-                } else if (
-                    way == currentNode.data &&
-                    currentNode.parent != null
-                ) {
-                    console.log(`\nBACK TO NODE : ${currentNode.parent.data}`);
-                    this.display(currentNode.parent);
-                } else if (way == -1) {
-                    tasks();
-                } else {
-                    this.display(currentNode);
-                }
-                return 0;
-            });
-        } else if (currentNode.right != null && currentNode.left == null) {
-            console.log(
-                `\nNULL <- ${currentNode.data} -> ${currentNode.right.data}`
-            );
-            rl.question('\nCHOOSE WAY : ', (way) => {
-                if (way == 'right' || way == currentNode.right.data) {
-                    this.display(currentNode.right);
-                } else if (way == 'left') {
-                    console.log('\nleft is empty');
-                    this.display(currentNode);
-                } else if (
-                    way == currentNode.data &&
-                    currentNode.parent != null
-                ) {
-                    console.log(`\nBACK TO NODE : ${currentNode.parent.data}`);
-                    this.display(currentNode.parent);
-                } else if (way == -1) {
-                    tasks();
-                } else {
-                    this.display(currentNode);
-                }
-                return 0;
-            });
-        } else if (currentNode.right == null && currentNode.left == null) {
-            console.log('\nTHIS IS THE END OF TREE....');
-            if (currentNode.parent == null) {
-                console.log(`NULL <- ${currentNode.data} -> NULL`);
-            } else {
-                this.display(currentNode.parent);
-            }
-        }
-        return 0;
-    }
-
-    min(node) {
-        if (node.left == null) return node;
-        return this.findMin(node.left);
-    }
-
-    deleteRES(currentNode, index) {
-        if (currentNode != null && currentNode.left != null) {
-            this.deleteRES(currentNode.left, index);
-        } else if (currentNode != null && currentNode.data == index) {
-            console.log('FIND!!');
-            console.log(currentNode.parent.data);
-            currentNode.parent.right = null;
-            currentNode = null;
-
-            tasks();
-        } else {
-            console.log('\nNOT FIND');
-        }
-        if (currentNode != null && currentNode.right != null) {
-            this.deleteRES(currentNode.right, index);
-        } else if (currentNode != null && currentNode.data == index) {
-            console.log('FIND!!');
-            console.log(currentNode.parent.data);
-            currentNode.parent.left = null;
-            tasks();
-        } else {
-            console.log('\nNOT FIND');
-        }
-        if (currentNode != null) {
-            if (currentNode.left == null && currentNode.right) {
-                console.log('\nITEM DOES NOT EXIST');
-            }
-        }
+        this.data = data;
+        this.height = 1;
+        this.left = 0;
+        this.right = 0;
     }
 }
 
-/* eslint-disable-next-line */
-function tasks() {
-    if (trees == null) {
-        rl.question('\nADD ROOT : ', (data) => {
-            trees = new Tree(data);
-            tasks();
-        });
-    }
-    rl.question(
-        '\n1-ADD NODE\n2-LIST TREE\n3-REMOVE ELEMENT\nCHOOSE TASK : ',
-        (task) => {
-            if (task == 1) {
-                rl.question('\nADD NODE : ', (data) => {
-                    trees.add(data, trees.root);
-                    tasks();
-                });
-            } else if (task == 2) {
-                trees.display(trees.root);
-                tasks();
-            } else if (task == 3) {
-                rl.question('\nREMOVE : ', (x) => {
-                    trees.deleteRES(trees.root, x);
-                    tasks();
-                });
-            } else {
-                tasks();
-            }
-        }
-    );
+function Height(node) {
+    if (node) return node.height;
+    else return 0;
 }
 
-tasks();
+function BF(node) {
+    return Height(node.right) - Height(node.left);
+}
+
+function OverHeight(node) {
+    height_left = Height(node.left);
+    height_right = Height(node.right);
+    node.height = hleft > height_right ? hleft : height_right;
+}
+
+function RightRotation(node) {
+    y = node.left;
+    y.left = x.right;
+    y.right = node;
+    OverHeight(node);
+    OverHeight(y);
+    return y;
+}
+
+function LeftRotation(node) {
+    y = node.right;
+    y.right = x.left;
+    y.left = node;
+    OverHeight(node);
+    OverHeight(y);
+    return y;
+}
+
+function Balance(node) {
+    OverHeight(node);
+    if (BF(node) == 2) {
+        if (BF(node.right) < 0) {
+            node.right = RightRotation(node.right);
+        }
+        return LeftRotation(node);
+    }
+    if (BF(node) == -2) {
+        if (BF(node.left) > 0) {
+            node.left = LeftRotation(node.left);
+        }
+        return RightRotation(node);
+    }
+    return node;
+}
+
+function Insert(node, data) {
+    if (!node) return Node(data);
+    if (data < node.data) {
+        node.left = Insert(node.left, data);
+    } else {
+        node.right = Insert(node.right, data);
+    }
+    return Balance(node);
+}
+
+function SearchMin(node) {
+    return node.left ? SearchMin(node.left) : node;
+}
+
+function DeleteMin(node) {
+    if (node.left == 0) return node.right;
+    node.left = DeleteMin(node.left);
+    return Balance(node);
+}
+
+function Delete(node, data) {
+    if (!node) return 0;
+    if (data < node.data) {
+        data.left = Delete(data.left, data);
+    } else if (data > node.data) {
+        data.right = Delete(x.right, data);
+    } else {
+        y = node.left;
+        z = node.right;
+        delete node;
+        if (!z) return y;
+        min = SearchMin(z);
+        min.right = DeleteMin(z);
+        min.left = y;
+        return Balance(min);
+    }
+    return Balance(data);
+}
+
+root = new Node(2);
+console.log(Height(root));
+console.log(BF(root));
