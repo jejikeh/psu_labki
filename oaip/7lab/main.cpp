@@ -22,12 +22,39 @@ class linked_list {
         node* temp = root;
         do { std::cout << temp->data << " "; temp = temp->next; } while (temp  != root); // До тех пор пока следуюший элемент снова не будет корнем
     }
+    void remove_node(float data){
+        if(root->data == data){ // Если удаляемый элемент корневой
+            node *p_l = get_last(root); // Последний
+            node *t = root->next;
+            delete root;
+            root = t; // теперь корневой это тот, который шел после корневого
+            p_l->next = t;
+            return;
+        }
+        
+        node* temp = root;
+        while(temp->next != root){
+            if(temp->next->data == data){ // Если следующий элемент равен искомому
+                node *ptr = temp->next->next;
+                delete temp->next;
+                temp->next = ptr;
+                return;
+            }
+            temp = temp->next;
+        }
+        std::cout << "Value not foun" << std::endl;
+    }
 };
 
 int main(){
     linked_list* list = new linked_list();
-    list->insert_root_node(1);
-    list->insert_last_node(3);
     list->insert_root_node(2);
+    list->insert_last_node(3);
+    list->insert_last_node(8);
+    list->insert_last_node(6);
+    list->insert_root_node(12);
+    list->insert_root_node(123);
+    list->remove_node(6);
     list->print_list();
+    delete list;
 }
