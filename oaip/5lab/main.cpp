@@ -15,6 +15,8 @@ struct COURSE_WORK { // описание структуры
     std::string author;
     std::string pages;
 };
+
+
 int length = -1;
 
 COURSE_WORK *create(COURSE_WORK *course_work){ // функция создания
@@ -72,7 +74,7 @@ void clear(std::string name){
     if(!fout){
         std::cout << "Error";   
     }; // удаляем весь файл перед открытием
-    fout << "";
+    //fout << "";
     fout.close();
 }
 
