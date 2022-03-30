@@ -22,8 +22,8 @@ struct l{
             return temp;
         }
     }
-    void insert_node(int data){
-        if(!root){
+    void insert_node(int data){ // вставка элемента с конца
+        if(!root){ // !! Если очередь пустая, то новый элемент становиться корневым
             root = new node(data,nullptr);
         }else {
             node* last = get_last(root);
@@ -31,7 +31,7 @@ struct l{
             last->next = new_node;
         }
     }
-    void print_l(){
+    void print_l(){ // Вывод всех элементов
         node * temp = root;
         while(temp){
             std::cout << temp->data << " "; temp = temp->next;
