@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\jejik\Projects\University\oaip\9lab\vs\9lab\9lab\main.cpp(25): warning C4715: 'l::get_last': not all control paths return a value
+  9lab.vcxproj -> C:\Users\jejik\Projects\University\oaip\9lab\vs\9lab\x64\Debug\9lab.exe
