@@ -53,18 +53,22 @@ struct l{
 };
 
 int load_to_array(node *n[],l *quene,int length_nodes){
+    std::cout << "Loading to a dynamic array...\n";
     for(node *i = quene->root;i != nullptr;i = i->next){
         n[length_nodes] = new node(i->data,i->next);
         length_nodes++;
     }
+    std::cout << "Done!\n";
     return length_nodes;
 }
 
 void load_to_struct(node *n[],l *quene,int length_nodes){
+    std::cout << "Loading to a struct...\n";
     for(int i = 0; i < length_nodes;i++){
         //std::cout << nodes[i]->data << " ";
         quene->insert_node(n[i]->data);
     }
+    std::cout << "Done!\n";
 }
 
 //pnyavy 9 lab
@@ -75,6 +79,7 @@ void swap(node *n[],int x,int y){
 }
 
 void sort_array_bublle(node *n[], int length_array){ // сортировка масиива 
+    std::cout << "Sorting array...\n";
     for(int i = 0;i < length_array; i++){ // каждый узел сравниваем с каждым узлом
         for(int k = 0; k < length_array - i - 1;k++){
             if(n[k]->data > n[k+1]->data){ // если узел который меньше другога узла стоит позже большего, то меняем их местами 
@@ -105,18 +110,29 @@ int linear_double_search(node *n[],int value,int length_array){ // провер�
 int main(){
 
     int length_nodes = 0;
-    node *nodes[1000]; // динамический массив узлов
+    int le;
+    std::cout << "Input a length of array -> ";
+    std::cin >> le;
+    const int y = le;
+    node *nodes[y]; // динамический массив узлов
 
-    l *quene = new l(0); // структура данных
-    quene->insert_node(2);
-    quene->insert_node(3);
-    quene->insert_node(2);
-    quene->insert_node(2);
+    
+    int add = 0;
+    std::cout << "Add root node -> ";
+    std::cin >> add;
+    l *quene = new l(add); // структура данных
 
-    quene->insert_node(100);
-    quene->insert_node(100);
-    //quene->insert_node(5);
-    //quene->print_l();
+    int temp_length = 0; // переменая что-бы пользователь не добавил элементов больше, чем динамический массив
+    while(temp_length <= y){
+        std::cout << "Add node ->";
+        std::cin >> add;
+        quene->insert_node(add);
+        temp_length++;
+    }
+
+    std::cout << "Unsorted array -> \n";
+    quene->print_l();
+    std::cout << "\n";
     //quene->print_l();
 
 
@@ -130,6 +146,7 @@ int main(){
     quene->print_l();  
 
     int x;
+    std::cout << "\nFind -> ";
     std::cin >> x;
     std::cout << "\n" << x <<" repeated ";
     std::cout << linear_double_search(nodes,x,length_nodes);  
