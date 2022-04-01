@@ -1,0 +1,15 @@
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\bin\Debug\net6.0\10lab.exe
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\bin\Debug\net6.0\10lab.deps.json
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\bin\Debug\net6.0\10lab.runtimeconfig.json
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\bin\Debug\net6.0\10lab.dll
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\bin\Debug\net6.0\10lab.pdb
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\obj\Debug\net6.0\10lab.csproj.AssemblyReference.cache
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\obj\Debug\net6.0\10lab.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\obj\Debug\net6.0\10lab.AssemblyInfoInputs.cache
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\obj\Debug\net6.0\10lab.AssemblyInfo.cs
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\obj\Debug\net6.0\10lab.csproj.CoreCompileInputs.cache
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\obj\Debug\net6.0\10lab.dll
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\obj\Debug\net6.0\refint\10lab.dll
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\obj\Debug\net6.0\10lab.pdb
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\obj\Debug\net6.0\10lab.genruntimeconfig.cache
+C:\Users\jejik\Projects\University\pnyavy\10lab\10lab\10lab\obj\Debug\net6.0\ref\10lab.dll
