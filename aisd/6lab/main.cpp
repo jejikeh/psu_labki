@@ -15,7 +15,7 @@ struct node {
 };
 
 // Возвращает height узла если он существует
-unsigned char height(node *p_node){
+char height(node *p_node){
     return p_node ? p_node->height : 0;
 }
 

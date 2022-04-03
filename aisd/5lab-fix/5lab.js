@@ -1,3 +1,4 @@
+const { Console } = require("console");
 const readline = require("readline");
 //
 const rl = readline.createInterface({
@@ -66,6 +67,31 @@ class Tree {
     }
   }
 
+  preorderTraversal(currentNode) {
+    if (currentNode == null) {
+      return;
+    }
+    console.log(currentNode.data);
+    this.preorderTraversal(currentNode.children[0]);
+    this.preorderTraversal(currentNode.children[1]);
+  }
+  postorderTraversal(currentNode) {
+    if (currentNode == null) {
+      return;
+    }
+    this.preorderTraversal(currentNode.children[0]);
+    this.preorderTraversal(currentNode.children[1]);
+    console.log(currentNode.data);
+  }
+  orderTraversal(currentNode) {
+    if (currentNode == null) {
+      return;
+    }
+    this.preorderTraversal(currentNode.children[0]);
+    console.log(currentNode.data);
+    this.preorderTraversal(currentNode.children[1]);
+  }
+
   find(data, currentNode) {
     if (currentNode.data != data) {
       for (let i = 0; i < currentNode.children.length; i++) {
@@ -129,7 +155,7 @@ function tasks() {
     });
   }
   rl.question(
-    "\n1-Добавить узел\n2-Вывести дерево\n3-Найти узел\n4-Найти повторяющиеся элементы\n5-Удалить элемент\nВыберите задание : ",
+    "\n1-Добавить узел\n2-Вывести дерево\n3-Найти узел\n4-Найти повторяющиеся элементы\n5-Удалить элемент\n6-Обход дерева\nВыберите задание : ",
     (task) => {
       if (task == 1) {
         rl.question("\nДобавить узел : ", (data) => {
@@ -173,6 +199,14 @@ function tasks() {
           trees.delete(data, trees.root);
           tasks();
         });
+      } else if (task == 6) {
+        console.log("preorder : ");
+        trees.preorderTraversal(trees.root);
+        console.log("order : ");
+        trees.orderTraversal(trees.root);
+        console.log("postorder : ");
+        trees.postorderTraversal(trees.root);
+        tasks();
       } else {
         tasks();
       }

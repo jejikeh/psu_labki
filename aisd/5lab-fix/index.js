@@ -162,6 +162,15 @@ class Tree {
       }
     }
   }
+
+  preorderTraversal(currentNode) {
+    if (currentNode == null) {
+      return;
+    }
+    console.log(currentNode.data);
+    this.preorderTraversal(currentNode.left);
+    this.preorderTraversal(currentNode.right);
+  }
 }
 
 let allTreeElements = []; // Все элементы массива
@@ -178,7 +187,7 @@ function tasks() {
     });
   }
   rl.question(
-    "\n1-Добавить узел\n2-Вывод дерева\n3-Удалить элемент\n4-Найти повторяющиеся элементы\nВыберите задание : ",
+    "\n1-Добавить узел\n2-Вывод дерева\n3-Удалить элемент\n4-Найти повторяющиеся элементы\n5-Обход дерева\nВыберите задание : ",
     (task) => {
       if (task == 1) {
         rl.question("Добавить узел : ", (data) => {
@@ -219,6 +228,9 @@ function tasks() {
             );
           }
         }
+        tasks();
+      } else if (task == 5) {
+        trees.preorderTraversal(trees.root);
         tasks();
       } else {
         tasks();

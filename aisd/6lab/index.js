@@ -30,7 +30,7 @@ function BF(node) {
 function OverHeight(node) {
     height_left = Height(node.left);
     height_right = Height(node.right);
-    node.height = hleft > height_right ? hleft : height_right;
+    node.height = height_left > height_right ? height_left : height_right;
 }
 
 function RightRotation(node) {
@@ -69,7 +69,7 @@ function Balance(node) {
 }
 
 function Insert(node, data) {
-    if (!node) return Node(data);
+    if (!node) return new Node(data);
     if (data < node.data) {
         node.left = Insert(node.left, data);
     } else {
@@ -82,6 +82,30 @@ function SearchMin(node) {
     return node.left ? SearchMin(node.left) : node;
 }
 
+function InOrder(node) {
+    if (node) {
+        InOrder(node.left);
+        console.log(node.data);
+        InOrder(node.right);
+    }
+}
+
+function InPreOrder(node) {
+    if (node) {
+        console.log(node.data);
+        InPreOrder(node.right);
+        InPreOrder(node.left);
+    }
+}
+
+function InPostOrder(node) {
+    if (node.data) {
+        InPostOrder(node.left);
+        InPostOrder(node.right);
+        console.log(node.data);
+    }
+}
+
 function DeleteMin(node) {
     if (node.left == 0) return node.right;
     node.left = DeleteMin(node.left);
@@ -91,9 +115,9 @@ function DeleteMin(node) {
 function Delete(node, data) {
     if (!node) return 0;
     if (data < node.data) {
-        data.left = Delete(data.left, data);
+        node.left = Delete(node.left, data);
     } else if (data > node.data) {
-        data.right = Delete(x.right, data);
+        node.right = Delete(node.right, data);
     } else {
         y = node.left;
         z = node.right;
@@ -108,5 +132,14 @@ function Delete(node, data) {
 }
 
 root = new Node(2);
+Insert(root, 3);
 console.log(Height(root));
 console.log(BF(root));
+Delete(root, 3);
+
+Insert(root, 10);
+Insert(root, 5);
+Insert(root, 6);
+console.log(BF(root));
+console.log(Height(root));
+console.log(InPostOrder(root));
