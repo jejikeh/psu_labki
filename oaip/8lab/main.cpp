@@ -32,20 +32,20 @@ class deque {
     }
     
     void insert_root_node(std::string data){ // Вставка после корня
-        node *new_node = new node(data,root->next,root); // Новый узел вставляется после root
-        root->next->prev = new_node; root->next = new_node; // Обновление указателей соседей
+        node *new_node = new node(data,root,nullptr); // Новый узел вставляется после root
+        root->prev = new_node; root = new_node; // Обновление указателей соседей
     }
 
     void insert_end_node(std::string data){ // Вставка до последнего корня
-        node *new_node = new node(data,end,end->prev); // Новый узел, т.к он последний после него идет nullptr
-        end->prev->next = new_node; end->prev = new_node; // перестановка new_node на end
+        node *new_node = new node(data,nullptr,end); // Новый узел, т.к он последний после него идет nullptr
+        end->next = new_node; end = new_node; // перестановка new_node на end
     }
 
     void remove_root_node(deque *d){ 
         if(is_deque_empty(d)){
             return;
         }
-        node* pntr = d->root->next;
+        node* pntr = d->root->next; // Переписать что-бы удалялся не второй элемент а первый.
         d->root->next = pntr->next;
         pntr->next->prev = d->root;
         delete pntr;
@@ -55,8 +55,8 @@ class deque {
         if(is_deque_empty(d)){
             return;
         }
-        node* pntr = d->end->prev;
-        d->end->prev = pntr->prev;
+        node* pntr = d->end;
+        d->end->prev = pntr->prev; // Переписать что-бы удалялся последний элемент а не предпоследний
         pntr->prev->next = d->end;
         delete pntr;
     }

@@ -32,7 +32,7 @@ class quene {
     void insert_node(float data){ // Вставка до последнего корня
         node* last = get_last(root);
         node* new_node = new node(data,nullptr);
-        last->next = new_node; // Перестановка new_node на end.
+        last->next = new_node; // Перестановка new_node на end. 
     }
 
     void remove_node(quene *d){
