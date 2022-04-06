@@ -31,7 +31,7 @@ namespace _11lab
         public Staff()
         {
             Console.WriteLine("Input name ->");
-            string? name = Console.ReadLine();
+            string? name = Convert.ToString(Console.ReadLine());
             Console.WriteLine("Input number ->");
             int number = Convert.ToInt16(Console.ReadLine());
             Console.WriteLine("Input rank ->");
@@ -46,7 +46,7 @@ namespace _11lab
         }
         public void SetName()
         {
-           string? name = Console.ReadLine();
+           string? name = Convert.ToString(Console.ReadLine());
             if (name != null)
             {
                 _name = name;

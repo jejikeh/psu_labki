@@ -1,6 +1,6 @@
 ﻿namespace _12lab
 {
-    internal class SienceApp : Application
+    class SienceApp : Application
     {
         private string _field_of;
         private int    _cost;

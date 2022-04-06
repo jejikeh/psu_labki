@@ -5,12 +5,15 @@
         for(int i = 0; i < 4;i++)
         {
             Console.WriteLine("Name -> ");
-            string name = Console.ReadLine();
-            Console.WriteLine("Numver -> ");
+            string? name = Convert.ToString(Console.ReadLine());
+            Console.WriteLine("Number -> ");
             int number = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Rank -> ");
             int rank = Convert.ToInt32(Console.ReadLine());
-            staffArray[i] = new Staff(name,number,rank);
+            if(name != null)
+            {
+                staffArray[i] = new Staff(name,number,rank);
+            }
 
         }
 
