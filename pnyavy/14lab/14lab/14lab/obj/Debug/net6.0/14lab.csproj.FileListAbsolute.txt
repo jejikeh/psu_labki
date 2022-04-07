@@ -1,0 +1,15 @@
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\obj\Debug\net6.0\14lab.csproj.AssemblyReference.cache
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\obj\Debug\net6.0\14lab.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\obj\Debug\net6.0\14lab.AssemblyInfoInputs.cache
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\obj\Debug\net6.0\14lab.AssemblyInfo.cs
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\obj\Debug\net6.0\14lab.csproj.CoreCompileInputs.cache
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\bin\Debug\net6.0\14lab.exe
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\bin\Debug\net6.0\14lab.deps.json
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\bin\Debug\net6.0\14lab.runtimeconfig.json
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\bin\Debug\net6.0\14lab.dll
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\bin\Debug\net6.0\14lab.pdb
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\obj\Debug\net6.0\14lab.dll
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\obj\Debug\net6.0\refint\14lab.dll
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\obj\Debug\net6.0\14lab.pdb
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\obj\Debug\net6.0\14lab.genruntimeconfig.cache
+C:\Users\jejik\Projects\University\pnyavy\14lab\14lab\14lab\obj\Debug\net6.0\ref\14lab.dll
