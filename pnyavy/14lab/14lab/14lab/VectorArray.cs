@@ -54,5 +54,7 @@ namespace _14lab
                 Array[i].Add(value);
             }
         }
+
+        
     }
 }
