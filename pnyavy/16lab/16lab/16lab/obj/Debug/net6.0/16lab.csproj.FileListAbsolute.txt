@@ -1,0 +1,15 @@
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\bin\Debug\net6.0\16lab.exe
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\bin\Debug\net6.0\16lab.deps.json
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\bin\Debug\net6.0\16lab.runtimeconfig.json
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\bin\Debug\net6.0\16lab.dll
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\bin\Debug\net6.0\16lab.pdb
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\obj\Debug\net6.0\16lab.csproj.AssemblyReference.cache
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\obj\Debug\net6.0\16lab.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\obj\Debug\net6.0\16lab.AssemblyInfoInputs.cache
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\obj\Debug\net6.0\16lab.AssemblyInfo.cs
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\obj\Debug\net6.0\16lab.csproj.CoreCompileInputs.cache
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\obj\Debug\net6.0\16lab.dll
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\obj\Debug\net6.0\refint\16lab.dll
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\obj\Debug\net6.0\16lab.pdb
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\obj\Debug\net6.0\16lab.genruntimeconfig.cache
+C:\Users\jejik\Projects\University\pnyavy\16lab\16lab\16lab\obj\Debug\net6.0\ref\16lab.dll

@@ -62,11 +62,22 @@ namespace _14lab
             }
         }
 
-        public void Print() 
+        public void PrintAll() 
         {
             for(int i = 0; i <= CurrentSize; i++)
             {
                 Array[i].Print();
+            }
+        }
+
+        public void Print(int index) // Вывод определенного элемента
+        {
+            if(index <= CurrentSize)
+            {
+                Array[index].Print();
+            }else
+            {
+                Console.WriteLine("Big number");
             }
         }
 
