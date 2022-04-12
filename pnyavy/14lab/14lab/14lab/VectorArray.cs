@@ -20,7 +20,7 @@ namespace _14lab
 
         internal void Add(int value) // Добавление значения к узлу
         {
-            _value = _value + value;
+            _value += value;
         }
     }
 
@@ -31,7 +31,7 @@ namespace _14lab
         private int _maxSize;
         public Node[] Array;
 
-        public int GetMaxValue { get { return _maxSize; } }
+        public int GetMaxSize{ get { return _maxSize; } }
 
         public VectorArray(int maxSizeArray) // конструктор
         {
@@ -62,13 +62,7 @@ namespace _14lab
             }
         }
 
-        public void PrintAll() 
-        {
-            for(int i = 0; i <= CurrentSize; i++)
-            {
-                Array[i].Print();
-            }
-        }
+        // Методы вывода элементов
 
         public void Print(int index) // Вывод определенного элемента
         {
@@ -81,6 +75,16 @@ namespace _14lab
             }
         }
 
+        public void PrintAll()
+        {
+            for (int i = 0; i <= CurrentSize; i++)
+            {
+                Array[i].Print();
+            }
+        }
+
+        // Метод добавление значения к каждому элементу
+
         public void AddValueToAll(int value)
         {
             for (int i = 0; i <= CurrentSize; i++) // прибавление значение к каждому элементу
@@ -89,6 +93,8 @@ namespace _14lab
             }
         }
 
+
+        // Метод проверки на  неравенство
         internal void CheckEqual()
         {
             int repeatedTimes = 0;
