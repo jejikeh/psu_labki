@@ -36,7 +36,7 @@
 
             // Sience application
 
-            SienceApp sienceApp = new SienceApp("Math", 23, false, "Ashan", 23, 2014);
+            SienceApp sienceApp = new SienceApp("some Math", 23, false, "Skolkovo", 23, 2014);
             sienceApp.PrintAll();
         }
     }

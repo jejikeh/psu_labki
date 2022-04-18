@@ -18,7 +18,7 @@
             Console.WriteLine(_developer);
         }
 
-        protected void PrintBase()
+        virtual internal protected void PrintAll()
         {
             Console.WriteLine($"Developer {_developer}");
             Console.WriteLine($"Version {_version}");

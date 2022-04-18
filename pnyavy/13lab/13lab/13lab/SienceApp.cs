@@ -19,12 +19,11 @@ namespace _13lab
             _paralel_calculations = paralel_calculations;
         }
 
-        public void PrintAll()
+        override internal protected void PrintAll()
         {
             Console.WriteLine($"Cost {_cost}");
             Console.WriteLine($"Field {_field_of}");
             Console.WriteLine($"Paralel calculations of {_paralel_calculations}");
-            PrintBase();
         }
     }
 }

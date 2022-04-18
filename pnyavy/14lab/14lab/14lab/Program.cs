@@ -13,7 +13,6 @@
                 Console.WriteLine("Input value of " + i + " element : ");
                 vectorArray.Add(Convert.ToInt16(Console.ReadLine()));
             }
-
             Console.WriteLine("Root : ");
             Console.WriteLine(vectorArray.Root()?.GetValue); // Вывод корневого
 

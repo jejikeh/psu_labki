@@ -28,6 +28,12 @@ namespace _11lab
             _number = number;
             _rank = rank;
         }
+        public Staff( int number, string name, int rank)
+        {
+            _name = name;
+            _number = number;
+            _rank = rank;
+        }
         public Staff()
         {
             Console.WriteLine("Input name ->");

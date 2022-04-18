@@ -22,6 +22,8 @@ namespace _14lab
         {
             _value += value;
         }
+
+        public static Node operator +(Node a, int value) =>  new Node(a._value + value, a._index);
     }
 
 
@@ -62,6 +64,7 @@ namespace _14lab
             }
         }
 
+
         // Методы вывода элементов
 
         public void Print(int index) // Вывод определенного элемента
@@ -89,7 +92,8 @@ namespace _14lab
         {
             for (int i = 0; i <= CurrentSize; i++) // прибавление значение к каждому элементу
             {
-                Array[i].Add(value);
+                Console.WriteLine((Array[i] + value).GetValue);
+
             }
         }
 
