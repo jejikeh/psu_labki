@@ -64,7 +64,7 @@ void save_file(std::string name,COURSE_WORK *cw){
     std::ofstream fout(name, std::ios_base::app); // поток файла с конца
     //std::ofstream fout("data_types.txt", std::ios_base::out|std::ios_base::trunc); // поток файла с начала
 
-    fout << cw->name << " " << cw->topic << " " << cw->author << " " << cw->pages << "\n"; // в открытый файл записываем значения полей структуры
+    fout << cw->name << " " << cw->topic << " " << cw->author << " " << cw->pages << " "; // в открытый файл записываем значения полей структуры
     fout.close(); // закрываем поток
 }
 
@@ -79,8 +79,8 @@ void clear(std::string name){
 }
 
 
-void load(COURSE_WORK *course_work,std::string name){
-    std::fstream fout(name, std::ios::in|std::ios_base::out); // поток файла с конца
+void load(COURSE_WORK *course_work,std::string name,int number){
+    std::fstream fout(name, std::ios::in); // поток файла с конца
     //std::ofstream fout("data_types.txt", std::ios_base::out|std::ios_base::trunc); // поток файла с начала
     if (!fout.is_open()) {
         std::cout << "error";
@@ -88,7 +88,10 @@ void load(COURSE_WORK *course_work,std::string name){
 
     //d(fout,course_work);
     //fout.replace(fout.find(ch)),ch.length(),""); // так как fout >> работает только по одной строке, строку которую уже занесли удаляем
-    fout >> course_work->name >> course_work->topic >> course_work->author >> course_work->pages;
+    for(int k = 0; k < number;k++){
+        fout >> course_work[k].name >> course_work[k].topic >> course_work[k].author >> course_work[k].pages;
+    }
+    
     fout.close();
 }
 
@@ -179,30 +182,11 @@ int main() {
                 std::cout << "error";
             }
             
-            length = std::count(std::istream_iterator<char>(fout >> std::noskipws), {}, '\n');
+            length = std::count(std::istream_iterator<char>(fout >> std::noskipws), {}, ' ');
             fout.close();
-            std::cout << length;
+            std::cout << length/5;
             
-            for(int i = 0; i < length; i++){
-                load(&course_work[i],name); // загрузка из определенного файла. Отрибут Line для последующего удаления строчки после занесения в структуру
-                std::fstream fout1(name, std::ios::in|std::ios_base::out); // поток файла с конца
-                //std::ofstream fout("data_types.txt", std::ios_base::out|std::ios_base::trunc); // поток файла с начала
-                if (!fout1.is_open()) {
-                    std::cout << "error";
-                }
-                // переменная хранящая в себе длинну строки, которую только что считали. Это нужно для того что-бы ее удалить
-                for(int k = 0; k <= i; k++){
-                    int _length = course_work[k].author.size() + course_work[k].name.size() + course_work[k].pages.size() + course_work[k].topic.size() + 4;
-                    for(int y = 0; y < _length; y++){
-                            fout1 << " ";
-                    }
-                    _length = 0;
-                }
-                //замена всех символов на пробелы. Работает если только вводить по одному символу
-                
-                //_length = 0;
-                fout1.close();
-            }
+            load(course_work,name,length/4);
             
         }else if (i == -1){
             break;

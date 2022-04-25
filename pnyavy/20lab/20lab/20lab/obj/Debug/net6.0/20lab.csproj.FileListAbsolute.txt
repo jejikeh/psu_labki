@@ -1,0 +1,15 @@
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\bin\Debug\net6.0\20lab.exe
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\bin\Debug\net6.0\20lab.deps.json
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\bin\Debug\net6.0\20lab.runtimeconfig.json
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\bin\Debug\net6.0\20lab.dll
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\bin\Debug\net6.0\20lab.pdb
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\obj\Debug\net6.0\20lab.csproj.AssemblyReference.cache
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\obj\Debug\net6.0\20lab.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\obj\Debug\net6.0\20lab.AssemblyInfoInputs.cache
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\obj\Debug\net6.0\20lab.AssemblyInfo.cs
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\obj\Debug\net6.0\20lab.csproj.CoreCompileInputs.cache
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\obj\Debug\net6.0\20lab.dll
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\obj\Debug\net6.0\refint\20lab.dll
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\obj\Debug\net6.0\20lab.pdb
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\obj\Debug\net6.0\20lab.genruntimeconfig.cache
+C:\Users\jejik\Projects\University\pnyavy\20lab\20lab\20lab\obj\Debug\net6.0\ref\20lab.dll
