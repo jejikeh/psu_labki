@@ -132,14 +132,14 @@ function Delete(node, data) {
 }
 
 root = new Node(2);
-Insert(root, 3);
-console.log(Height(root));
-console.log(BF(root));
-Delete(root, 3);
+Insert(root, 'Я ЕБУЛ');
+//console.log(Height(root));
+//console.log(BF(root));
 
 Insert(root, 10);
+Delete(root, 10);
 Insert(root, 5);
 Insert(root, 6);
-console.log(BF(root));
-console.log(Height(root));
+//console.log(BF(root));
+//console.log(Height(root));
 console.log(InPostOrder(root));

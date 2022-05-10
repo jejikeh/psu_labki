@@ -1,0 +1,15 @@
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\bin\Debug\net6.0\21lab.exe
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\bin\Debug\net6.0\21lab.deps.json
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\bin\Debug\net6.0\21lab.runtimeconfig.json
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\bin\Debug\net6.0\21lab.dll
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\bin\Debug\net6.0\21lab.pdb
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\obj\Debug\net6.0\21lab.csproj.AssemblyReference.cache
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\obj\Debug\net6.0\21lab.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\obj\Debug\net6.0\21lab.AssemblyInfoInputs.cache
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\obj\Debug\net6.0\21lab.AssemblyInfo.cs
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\obj\Debug\net6.0\21lab.csproj.CoreCompileInputs.cache
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\obj\Debug\net6.0\21lab.dll
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\obj\Debug\net6.0\refint\21lab.dll
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\obj\Debug\net6.0\21lab.pdb
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\obj\Debug\net6.0\21lab.genruntimeconfig.cache
+C:\Users\jejik\Projects\University\pnyavy\21lab\21lab\21lab\obj\Debug\net6.0\ref\21lab.dll

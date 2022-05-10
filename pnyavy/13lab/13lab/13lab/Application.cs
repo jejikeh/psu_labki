@@ -25,11 +25,11 @@
             Console.WriteLine($"Year {_year}");
         }
     }
-
     static class Program
     {
         static void Main()
         {
+
             GameApp gameApp = new GameApp("Horror", 21, true, "1C", 23, 2004);
             gameApp.PrintDeveloper();
             gameApp.PrintGenre();
@@ -38,6 +38,7 @@
 
             SienceApp sienceApp = new SienceApp("Math", 23, false, "Ashan", 23, 2014);
             sienceApp.PrintAll();
+     
         }
     }
 }

@@ -31,7 +31,7 @@ namespace _14lab
     {
         public int CurrentSize = -1;
         private int _maxSize;
-        public Node[] Array;
+        public List<Node> Array = new List<Node>();
 
         public int GetMaxSize{ get { return _maxSize; } }
 
