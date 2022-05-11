@@ -22,7 +22,7 @@
 
         public KeyValuePair<double, double> CalculateExpressions(double x)
         {
-            if (x == 0 || x < 0)
+            if (x <= 0)
             {
                 throw new Exception("Wrong input number");
             }
