@@ -1,0 +1,15 @@
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\bin\Debug\net6.0\22lab.exe
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\bin\Debug\net6.0\22lab.deps.json
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\bin\Debug\net6.0\22lab.runtimeconfig.json
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\bin\Debug\net6.0\22lab.dll
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\bin\Debug\net6.0\22lab.pdb
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\obj\Debug\net6.0\22lab.csproj.AssemblyReference.cache
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\obj\Debug\net6.0\22lab.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\obj\Debug\net6.0\22lab.AssemblyInfoInputs.cache
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\obj\Debug\net6.0\22lab.AssemblyInfo.cs
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\obj\Debug\net6.0\22lab.csproj.CoreCompileInputs.cache
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\obj\Debug\net6.0\22lab.dll
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\obj\Debug\net6.0\refint\22lab.dll
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\obj\Debug\net6.0\22lab.pdb
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\obj\Debug\net6.0\22lab.genruntimeconfig.cache
+C:\Users\jejik\Projects\University\pnyavy\22lab\22lab\obj\Debug\net6.0\ref\22lab.dll
