@@ -9,7 +9,6 @@ namespace _19lab
     class IntClass
     {
         private int _value;
-        private int? userInput;
 
         public int Value { get { return _value; } }
 
@@ -20,14 +19,7 @@ namespace _19lab
     }
     class Task2
     {
-        private float ReturnMin(float x, float y)
-        {
-            return x <= y ? x : y;
-        }
-        private int ReturnMin(int x, int y)
-        {
-            return x <= y ? x : y;
-        }
+
         private IntClass ReturnMin(IntClass x, IntClass y)
         {
             return x.Value <= y.Value ? x : y;

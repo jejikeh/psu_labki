@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jejik\\Projects\\University\\pnyavy\\22lab\\22lab\\22lab.csproj",
+      "projectUniqueName": "C:\\Users\\jejik\\Projects\\University\\1Year2Semester\\variant_11\\pnyavy\\22lab\\22lab\\22lab.csproj",
       "projectName": "22lab",
-      "projectPath": "C:\\Users\\jejik\\Projects\\University\\pnyavy\\22lab\\22lab\\22lab.csproj",
+      "projectPath": "C:\\Users\\jejik\\Projects\\University\\1Year2Semester\\variant_11\\pnyavy\\22lab\\22lab\\22lab.csproj",
       "packagesPath": "C:\\Users\\jejik\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jejik\\Projects\\University\\pnyavy\\22lab\\22lab\\obj\\",
+      "outputPath": "C:\\Users\\jejik\\Projects\\University\\1Year2Semester\\variant_11\\pnyavy\\22lab\\22lab\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

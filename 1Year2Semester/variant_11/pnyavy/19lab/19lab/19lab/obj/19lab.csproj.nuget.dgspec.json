@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jejik\\Projects\\University\\pnyavy\\19lab\\19lab\\19lab\\19lab.csproj": {}
+    "C:\\Users\\jejik\\Projects\\University\\1Year2Semester\\variant_11\\pnyavy\\19lab\\19lab\\19lab\\19lab.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jejik\\Projects\\University\\pnyavy\\19lab\\19lab\\19lab\\19lab.csproj": {
+    "C:\\Users\\jejik\\Projects\\University\\1Year2Semester\\variant_11\\pnyavy\\19lab\\19lab\\19lab\\19lab.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jejik\\Projects\\University\\pnyavy\\19lab\\19lab\\19lab\\19lab.csproj",
+        "projectUniqueName": "C:\\Users\\jejik\\Projects\\University\\1Year2Semester\\variant_11\\pnyavy\\19lab\\19lab\\19lab\\19lab.csproj",
         "projectName": "19lab",
-        "projectPath": "C:\\Users\\jejik\\Projects\\University\\pnyavy\\19lab\\19lab\\19lab\\19lab.csproj",
+        "projectPath": "C:\\Users\\jejik\\Projects\\University\\1Year2Semester\\variant_11\\pnyavy\\19lab\\19lab\\19lab\\19lab.csproj",
         "packagesPath": "C:\\Users\\jejik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jejik\\Projects\\University\\pnyavy\\19lab\\19lab\\19lab\\obj\\",
+        "outputPath": "C:\\Users\\jejik\\Projects\\University\\1Year2Semester\\variant_11\\pnyavy\\19lab\\19lab\\19lab\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

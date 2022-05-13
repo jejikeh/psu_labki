@@ -29,7 +29,6 @@ namespace _19lab
     class Matrix
     {
         public List<List<int>> Nodes = new List<List<int>>();
-
         public Matrix(List<List<int>> matrix)
         {
             new Menu().DrawOutput("Matrix created!");

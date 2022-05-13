@@ -41,6 +41,11 @@
             a.Nodes = new List<Node>(nodes.Nodes);
             return true;
         }
+
+        public Node Pop()
+        {
+            return Nodes[Nodes.Count-1];
+        }
     }
 
     class Stack : StackTemplate
@@ -54,11 +59,9 @@
             stack.Nodes.Add(new Node(value));
             return stack;
         }
-        public static int operator -(Stack stack, int index)
+        public static int operator -(Stack stack)
         {
-            Node f = stack.Nodes[index];
-            stack.Nodes.RemoveAt(index);
-            return f.value;
+            return stack.Pop().value;
         }
 
         public static implicit operator bool(Stack stack)
@@ -78,7 +81,7 @@
             _ = (stack + 3);
 
             stack.Print();
-            Console.WriteLine($"First element - { stack - 0}");
+            Console.WriteLine($"Pop element - { -stack}");
 
             if (stack)
             {
