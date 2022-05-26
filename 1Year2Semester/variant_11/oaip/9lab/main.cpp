@@ -114,7 +114,7 @@ int main(){
     std::cout << "Input a length of array -> ";
     std::cin >> le;
     const int y = le;
-    node *nodes[y]; // динамический массив узлов
+    node *nodes = new node(y); // динамический массив узлов
 
     
     int add = 0;
