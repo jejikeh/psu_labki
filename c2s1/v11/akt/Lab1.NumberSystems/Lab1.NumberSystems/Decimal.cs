@@ -25,7 +25,7 @@ namespace NumberSystems
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
-        internal static double ToBinary(float number)
+        internal static double ToBinary(double number)
         {
             return double.Parse(ConvertFloat(number, 2));
         }
@@ -45,9 +45,9 @@ namespace NumberSystems
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
-        internal static float ToOctal(float number)
+        internal static double ToOctal(double number)
         {
-            return float.Parse(ConvertFloat(number, 8));
+            return double.Parse(ConvertFloat(number, 8));
         }
 
 
@@ -118,7 +118,7 @@ namespace NumberSystems
         }
 
 
-        private static string ConvertFloat(float number, int foot)
+        private static string ConvertFloat(double number, int foot)
         {
             bool isNegative = number < 0;
             if (isNegative)
@@ -158,7 +158,7 @@ namespace NumberSystems
         /// <param name="number"></param>
         /// <param name="foot"></param>
         /// <returns></returns>
-        private static string ConvertSmallFloat(float number, int foot)
+        private static string ConvertSmallFloat(double number, int foot)
         {
             string res = string.Empty;
             for (int i = 0; i < 4; i++)

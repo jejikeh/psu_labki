@@ -31,7 +31,7 @@ namespace NumberSystems
         /// <param name="number"></param>
         /// <param name="foot"></param>
         /// <returns></returns>
-        internal static float ToDecimal(float number)
+        internal static double ToDecimal(double number)
         {
             if (number < 1)
             {
@@ -40,19 +40,19 @@ namespace NumberSystems
             else
             {
                 int intPartResult = ToDecimal((int)number);
-                float floatPartResult = ConvertSmallFloatToDecimal(number - (int)number);
+                double floatPartResult = ConvertSmallFloatToDecimal(number - (int)number);
                 return intPartResult + floatPartResult;
             }
         }
 
-        private static float ConvertSmallFloatToDecimal(float number)
+        private static double ConvertSmallFloatToDecimal(double number)
         {
             if (number == 0) return 0f;
-            float res = 0;
+            double res = 0;
             string numberString = number.ToString().Replace("0.", "");
             for (int i = -1; i > -3; i--)
             {
-                res += float.Parse(numberString[-i - 1].ToString()) * MathF.Pow(8, i);
+                res += double.Parse(numberString[-i - 1].ToString()) * Math.Pow(8, i);
             }
 
             return res;
@@ -97,40 +97,7 @@ namespace NumberSystems
             long smallA = 0, smallB = 0;
 
 
-            // only float part
-            if (a.ToString().Contains("."))
-            {
-                smallA = long.Parse(a.ToString().Split(".").Last());
-            }
-            if (b.ToString().Contains("."))
-            {
-                smallB = long.Parse(b.ToString().Split(".").Last());
-            }
-
-            int longestNumber;
-            if (smallA.ToString().Length > smallB.ToString().Length)
-            {
-                longestNumber = smallA.ToString().Length;
-            }
-            else
-            {
-                longestNumber = smallB.ToString().Length;
-            }
-            // make same length
-
-            int aLength = smallA.ToString().Length;
-            while (smallA.ToString().Length < longestNumber - aLength)
-            {
-                if (smallA.ToString().First() == '0') break;
-                smallA = long.Parse(smallA.ToString() + "0");
-            }
-
-            int bLength = smallB.ToString().Length;
-            while (smallB.ToString().Length < longestNumber - bLength)
-            {
-                if (smallB.ToString().First() == '0') break;
-                smallB = long.Parse(smallB.ToString() + "0");
-            }
+            StringHelper.FloatPart(a,b,ref smallA, ref smallB);
 
 
             while (smallA != 0 || smallB != 0)
@@ -155,6 +122,34 @@ namespace NumberSystems
             }
 
             return res + "." + smallRes;
+        }
+
+        internal static long Substract(long a, long b)
+        {
+            long res = 0;
+            
+            while(Sum(b, res) != a)
+            {
+                res = Sum(res, 1);
+            }
+
+            return res;
+        }
+
+        internal static double Substract(double a, double b)
+        {
+            var ad = Octal.ToDecimal(a);
+            var ab = Octal.ToDecimal(b);
+
+            return Decimal.ToOctal(ad - ab);
+        }
+
+        internal static double Multiply(double a, double b)
+        {
+            var ad = Octal.ToDecimal(a);
+            var ab = Octal.ToDecimal(b);
+
+            return Decimal.ToOctal(ad * ab);
         }
     }
 }

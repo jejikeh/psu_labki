@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -122,42 +123,7 @@ namespace NumberSystems
             string smallRes = string.Empty;
             string smallA = string.Empty, smallB = string.Empty;
 
-
-            // only float part
-            if (a.ToString().Contains("."))
-            {
-                smallA = a.ToString().Split(".").Last();
-            }
-            if (b.ToString().Contains("."))
-            {
-                smallB = b.ToString().Split(".").Last();
-            }
-
-            int longestNumber;
-            if (smallA.ToString().Length > smallB.ToString().Length)
-            {
-                longestNumber = smallA.ToString().Length;
-            }
-            else
-            {
-                longestNumber = smallB.ToString().Length;
-            }
-            // make same length
-
-            int aLength = smallA.ToString().Length;
-            while (smallA.ToString().Length < longestNumber - aLength)
-            {
-                if (smallA.ToString().First() == '0') break;
-                smallA = smallA.ToString() + "0";
-            }
-
-            int bLength = smallB.ToString().Length;
-            while (smallB.ToString().Length < longestNumber - bLength)
-            {
-                if (smallB.ToString().First() == '0') break;
-                smallB = smallB.ToString() + "0";
-            }
-
+            StringHelper.FloatPart(a,b,ref smallA, ref smallB);
 
             while (smallA.Length != 0 || smallB.Length != 0)
             {
@@ -196,6 +162,22 @@ namespace NumberSystems
             }
 
             return res + "." + smallRes;
+        }
+
+        internal static string Substract(string a, string b)
+        {
+            var ad = Hex.ToDecimalFloat(a);
+            var ab = Hex.ToDecimalFloat(b);
+
+            return Decimal.ToHex(ad - ab);
+        }
+
+        internal static string Multiply(string a, string b)
+        {
+            var ad = Hex.ToDecimalFloat(a);
+            var ab = Hex.ToDecimalFloat(b);
+
+            return Decimal.ToHex(ad * ab);
         }
     }
 }

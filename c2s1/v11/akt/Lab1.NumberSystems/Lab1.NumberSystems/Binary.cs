@@ -135,6 +135,38 @@ namespace NumberSystems
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
+        internal static long SubstractL(long a, long b, int rem = 0)
+        {
+            string res = string.Empty;
+            long ra = a;
+            long rb = b;
+
+
+            while (a != 0 || b != 0)
+            {
+                if ((a % 10 - b % 10 - rem) % 2 < 0)
+                {
+                    res = Math.Abs(((a % 10 - b % 10 - rem) % 2)) + res;
+                    //rem = -1;
+                }
+                else
+                {
+                    res = ((a % 10 - b % 10 - rem) % 2) + res;
+                    //rem = 0;
+                }
+                rem = (int)((a % 10 - b % 10 - rem)) > 0 ? 0 : (int)((a % 10 - b % 10 - rem));
+                a /= 10; b /= 10;
+            }
+
+            return long.Parse(res);
+        }
+
+        /// <summary>
+        /// Sum of binary int
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         internal static string Sum(double a, double b)
         {
             int rem = 0;
@@ -143,41 +175,7 @@ namespace NumberSystems
             long smallA = 0, smallB = 0; 
 
 
-            // only float part
-            if (a.ToString().Contains("."))
-            {
-                smallA = long.Parse(a.ToString().Split(".").Last());
-            }
-            if (b.ToString().Contains("."))
-            {
-                smallB = long.Parse(b.ToString().Split(".").Last());
-            }
-
-            int longestNumber;
-            if (smallA.ToString().Length > smallB.ToString().Length)
-            {
-                longestNumber = smallA.ToString().Length;
-            }
-            else
-            {
-                longestNumber = smallB.ToString().Length;
-            }
-            // make same length
-
-            int aLength = smallA.ToString().Length;
-            while (smallA.ToString().Length < longestNumber - aLength)
-            {
-                if (smallA.ToString().First() == '0') break;
-                smallA = long.Parse(smallA.ToString() + "0");
-            }
-
-            int bLength = smallB.ToString().Length;
-            while (smallB.ToString().Length < longestNumber - bLength)
-            {
-                if (smallB.ToString().First() == '0') break;
-                smallB = long.Parse(smallB.ToString() + "0");
-            }
-
+            StringHelper.FloatPart(a,b,ref smallA, ref smallB);
 
             while (smallA != 0 || smallB != 0)
             {
@@ -203,5 +201,34 @@ namespace NumberSystems
             return res + "." + smallRes;
         }
 
+        
+
+        /// <summary>
+        /// Substract of binary double
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        internal static double Substract(double a, double b)
+        {
+            double ad = Binary.ToDecimal(a);
+            double bd = Binary.ToDecimal(b);
+
+            return Decimal.ToBinary(ad - bd);
+        }
+
+        /// <summary>
+        /// Multiply of binary double
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        internal static double Multiply(double a, double b)
+        {
+            double ad = Binary.ToDecimal(a);
+            double bd = Binary.ToDecimal(b);
+
+            return Decimal.ToBinary(ad * bd);
+        }
     }
 }
