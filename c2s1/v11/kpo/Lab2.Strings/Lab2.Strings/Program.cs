@@ -4,7 +4,50 @@ using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 
-Console.WriteLine("Task1\n\n");
+Console.WriteLine("Task1!!!\n\n");
+
+{
+    string input = "qwertyuiop";
+    for(int i = 0; i < input.Length; i += 3)
+    {
+        if (i > input.Length) break;
+        Console.Write(input[i]);
+    }
+}
+
+Console.WriteLine("Task2!!!\n\n");
+
+{
+    string input = "ff33g2";
+    int num = 0;
+    for (int i = 0; i < input.Length; i++)
+    {
+        int t = 0;
+        if (int.TryParse(input[i].ToString(), out t))
+        {
+            num++;
+        }
+    }
+
+    Console.WriteLine(num);
+}
+
+
+Console.WriteLine("Task3!!!\n\n");
+
+{
+    string input = "ff33g2 ddd es ef deaf";
+    var worlds = input.Split(" ");
+    int numLength = int.MinValue;
+
+    foreach (var w in worlds)
+    {
+        if (w.Length > numLength) numLength = w.Length;
+    }
+    Console.WriteLine(numLength);
+}
+
+Console.WriteLine("\n\nTask1\n\n");
 
 {
     string input = "babajiy hello world afganistan";

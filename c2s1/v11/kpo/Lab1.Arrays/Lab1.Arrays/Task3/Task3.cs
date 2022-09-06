@@ -63,5 +63,22 @@ namespace TaskL
 
             return index;
         }
+
+        internal static int MaxEvenElement(int[,] a)
+        {
+            int max = int.MinValue;
+            for (int i = 0; i < a.GetLength(0); i += 2)
+            {
+                for (int k = 0; k < a.GetLength(1); k += 2)
+                {
+                    if (a[i, k] > max)
+                    {
+                        max = a[i, k];
+                    }
+                }
+            }
+
+            return max;
+        }
     }
 }

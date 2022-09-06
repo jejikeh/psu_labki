@@ -1,4 +1,50 @@
-﻿using TaskL;
+﻿using System.Runtime.ExceptionServices;
+using TaskL;
+
+Console.WriteLine("\n\n\nTask 1! : 31");
+{
+    int[,] a = new int[10, 50];
+    Task1.InitArray(ref a);
+    Console.WriteLine(Task3.MaxEvenElement(a));
+
+}
+
+Console.WriteLine("\n\n\nTask 2! : 31");
+{
+    int[,] a = new int[1,5];
+    Task1.InitArray(ref a);
+    for(int i = 0; i < a.GetLength(1) - 1; i++)
+    {
+        if (a[0,i] % 2 == 0)
+        {
+            Console.WriteLine("EVEN : " + a[0,i]);
+            break;
+        }
+    }
+
+}
+
+Console.WriteLine("\n\n\nTask 3! : 31");
+{
+    int[,] a = new int[5, 5];
+    int n = 3;
+    Task1.InitArray(ref a);
+    Task1.PrintArray(a);
+
+    for (int i = 0; i < a.GetLength(0) - 1; i++)
+    {
+        for (int k = 0; k < a.GetLength(1) - 1; k++)
+        {
+            if (a[i, k] % n == 0)
+            {
+                a[i,k] = a[i,k] / n;
+            }
+        }
+    }
+
+    Task1.PrintArray(a);
+
+}
 
 Console.WriteLine("\n\n\nTask 1 : 31");
 {
