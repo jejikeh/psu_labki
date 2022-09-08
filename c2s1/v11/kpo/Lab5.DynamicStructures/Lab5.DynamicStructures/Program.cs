@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Program
 {
-    internal static int Prioritet(string ch)
+    internal static int Prec(string ch)
     {
         switch (ch)
         {
@@ -18,34 +18,68 @@ public class Program
 
             case "^":
                 return 3;
-            default:
-                return -1;
         }
+        return -1;
     }
 
-
-    public static Stack<string> Convert(string exp)
+    // The main method that converts given infix expression
+    // to postfix expression.
+    public static Stack<string> infixToPostfix(string exp)
     {
+        // initializing empty String for result
         Stack<string> result = new Stack<string>();
 
+        // initializing empty stack
         Stack<string> stack = new Stack<string>();
 
- 
-        foreach(var c in exp.Split(" ")) 
-        {
+        var worlds = exp.Split(" ");
+        foreach (var c in worlds) {
+
+            // If the scanned character is an
+            // operand, add it to output.
             int n;
             if (int.TryParse(c, out n))
             {
-                result.Push(c.ToString());
+                result.Push(c);
+            }
+
+            // If the scanned character is an '(',
+            // push it to the stack.
+            else if (c == "(")
+            {
+                stack.Push(c);
+            }
+
+            //  If the scanned character is an ')',
+            // pop and output from the stack
+            // until an '(' is encountered.
+            else if (c == ")")
+            {
+                while (stack.Count > 0
+                       && stack.Peek() != "(")
+                {
+                    result.Push(stack.Pop());
+                }
+
+                if (stack.Count > 0
+                    && stack.Peek() != "(")
+                {
+                    return new Stack<string>(); // invalid
+                                                 // expression
+                }
+                else
+                {
+                    stack.Pop();
+                }
             }
             else // an operator is encountered
             {
                 while (stack.Count > 0
-                    && Prioritet(c.ToString()) <= Prioritet(stack.Peek()))
+                       && Prec(c) <= Prec(stack.Peek()))
                 {
                     result.Push(stack.Pop());
                 }
-                stack.Push(c.ToString());
+                stack.Push(c);
             }
         }
 
@@ -60,47 +94,11 @@ public class Program
 
     public static void Main(string[] args)
     {
-        string exp = "52 + 3 * 2 / 10";
+        string exp = "A+B*C+D";
 
-        Stack<string> s = Convert(exp);
-        Console.WriteLine(Calculate(s));
+        Stack<string> res = infixToPostfix(exp);
+        Console.WriteLine(res);
     }
 
-    private static int Calculate(Stack<string> chars)
-    {
-        Stack<string> operations = new();
-        while(chars.Count - 1 != 0)
-        {
-            while (chars.Peek() == "+" ||
-                   chars.Peek() == "-" ||
-                   chars.Peek() == "+" ||
-                   chars.Peek() == "/")
-            {
-                operations.Push(chars.Pop());
-            }
 
-            int res = 0;
-            while(chars.Count != 0)
-            {
-                switch (operations.Pop())
-                {
-                    case "+":
-                        res = int.Parse(chars.Pop()) + int.Parse(chars.Pop());
-                        break;
-                    case "-":
-                        res = int.Parse(chars.Pop()) - int.Parse(chars.Pop());
-                        break;
-                    case "*":
-                        res = int.Parse(chars.Pop()) * int.Parse(chars.Pop());
-                        break;
-                    case "/":
-                        res = int.Parse(chars.Pop()) / int.Parse(chars.Pop());
-                        break;
-                }
-            }
-
-            chars.Push(res.ToString());
-        }
-        return int.Parse(chars.Pop());
-    }
 }
