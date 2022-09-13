@@ -9,41 +9,27 @@ namespace NumberSystems
         {
             Console.WriteLine("1 TASK\n");
 
-            ToAll(287);
-            ToAll(220);
-            ToAll(332.1875f);
-            ToAll(625.625f);
-            ToAll(315.21f);
+            ToAll(945);
+            ToAll(444.125f);
 
             Console.WriteLine("2 TASK\n");
 
-            Console.WriteLine("a) 10101000 -> "+ Binary.ToDecimal(10101000));
-            Console.WriteLine("b) 1101100 -> " + Binary.ToDecimal(1101100));
-            Console.WriteLine("v) 10000010000.01001 -> " + Binary.ToDecimal(10000010000.01001));
-            Console.WriteLine("g) 1110010100.001 -> " + Binary.ToDecimal(1110010100.001));
-            Console.WriteLine("d) 1714.2 -> " + Octal.ToDecimal(1714.2f));
-            Console.WriteLine("e) DD.3 -> " + Hex.ToDecimalFloat("DD.3"));
+            Console.WriteLine("a) 110001111 -> "+ Binary.ToDecimal(110001111));
+            Console.WriteLine("v) 100110101.1001 -> " + Binary.ToDecimal(100110101.1001));
 
 
             Console.WriteLine("\n3 TASK\n");
-            Console.WriteLine("a) 1100110 + 1011000110 -> " + Binary.Sum(1100110, 1011000110));
-            Console.WriteLine("b) 100110 + 1001101111 -> " + Binary.Sum(100110, 1001101111));
-            Console.WriteLine("v) 101001100.101 + 1001001100.01 -> " + Binary.Sum(101001100.101, 1001001100.01));
-            Console.WriteLine("g) 275.2 + 724.2 -> " + Octal.Sum(275.2,724.2));
-            Console.WriteLine("d) 165.6 + 3E.B -> " + Hex.SumFloat("165.6","3E.B"));
+            Console.WriteLine("a) 1000011101 + 101000010 -> " + Binary.Sum(1000011101, 101000010));
+            Console.WriteLine("v) 101111011.01 + 1000100.101 -> " + Binary.Sum(101001100.101, 10001001100.01));
 
 
             Console.WriteLine("\n4 TASK\n");
-            Console.WriteLine("a) 11011 - 1101 -> " + Binary.SubstractL(11011, 1101));
-            Console.WriteLine("b) 1110001110 -100001011 -> " + Binary.SubstractL(1110001110, 100001011));
-            Console.WriteLine("v) 110010100.01 - 1001110.1011 -> " + Binary.Substract(110010100.01, 1001110.1011));
-            Console.WriteLine("g) 1330.2 - 1112.2 -> " + Octal.Substract(1330.2, 1112.2));
-            Console.WriteLine("g) 3E.2 - AB.2 -> " + Hex.Substract("3E.2","AB.2"));
+            Console.WriteLine("a) 1000101110 - 1111111 -> " + Binary.SubstractL(1000101110, 1111111));
+            Console.WriteLine("v) 1000101001.1 - 1111101.1 -> " + Binary.Substract(1000101001.1, 1111101.1));
 
             Console.WriteLine("\n5 TASK\n");
-            Console.WriteLine("a) 110000 * 1101100 -> " + Binary.Multiply(110000, 1101100));
-            Console.WriteLine("b) 1560.2 * 101.2 -> " + Octal.Multiply(1560.2, 101.2));
-            Console.WriteLine("b) 6.3 * 53.A -> " + Hex.Multiply("6.3", "53.A"));
+            Console.WriteLine("a) 111010 * 1100000 -> " + Binary.Multiply(111010, 1100000));
+            Console.WriteLine("v) 4A.3 * F.5 -> " + Hex.Multiply("4A.3", "F.5"));
 
         }
 

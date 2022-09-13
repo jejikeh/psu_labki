@@ -37,7 +37,7 @@ namespace NumberSystems
         /// <returns></returns>
         internal static int ToOctal(int number)
         {
-            return int.Parse(ConvertInt(number, 9));
+            return int.Parse(ConvertInt(number, 8));
         }
 
         /// <summary>

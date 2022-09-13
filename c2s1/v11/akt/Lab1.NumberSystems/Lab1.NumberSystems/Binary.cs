@@ -130,7 +130,7 @@ namespace NumberSystems
         }
 
         /// <summary>
-        /// Sum of binary int
+        /// Substract of binary int
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
