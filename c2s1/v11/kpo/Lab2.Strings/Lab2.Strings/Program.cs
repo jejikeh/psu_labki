@@ -15,7 +15,7 @@ Console.WriteLine("Task1!!!\n\n");
     }
 }
 
-Console.WriteLine("Task2!!!\n\n");
+Console.WriteLine("\nTask2!!!\n\n");
 
 {
     string input = "ff33g2";
@@ -253,6 +253,8 @@ Console.WriteLine("\n\nTask8\n\n");
     Console.WriteLine(input1);
 }
 
+
+// task 39
 {
     string input = "##ddd## ##ddd## ### deduh# fjrifsfsghs";
     var worlds = input.Split(" ");

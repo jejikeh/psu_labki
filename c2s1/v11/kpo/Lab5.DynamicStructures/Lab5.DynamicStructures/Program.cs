@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 
 
-public class Program
+namespace Lab5;
+
+public class STACK
 {
     internal static int Prec(string ch)
     {
@@ -22,71 +24,45 @@ public class Program
         return -1;
     }
 
+    private static Dictionary<char, int> Operators = new Dictionary<char, int>()
+    {
+        { '+', 1 },
+        { '-', 1 },
+        { '*', 2 },
+        { '/', 2 },
+        { '^', 3 }
+    };
+
     // The main method that converts given infix expression
     // to postfix expression.
-    public static Stack<string> infixToPostfix(string exp)
+    public static string InfixToPostfix(string exp)
     {
-        // initializing empty String for result
-        Stack<string> result = new Stack<string>();
+        Stack<char> ops = new();
 
-        // initializing empty stack
-        Stack<string> stack = new Stack<string>();
-
-        var worlds = exp.Split(" ");
-        foreach (var c in worlds) {
-
-            // If the scanned character is an
-            // operand, add it to output.
-            int n;
-            if (int.TryParse(c, out n))
+        string result = string.Empty;
+        
+        for (int i = 0; i < exp.Length; i++)
+        {
+            // If char is letter or digit then add to result string
+            if (char.IsLetterOrDigit(exp[i]))
+                result += exp[i];
+            
+            // if char is operator
+            if (Operators.ContainsKey(exp[i]))
             {
-                result.Push(c);
-            }
-
-            // If the scanned character is an '(',
-            // push it to the stack.
-            else if (c == "(")
-            {
-                stack.Push(c);
-            }
-
-            //  If the scanned character is an ')',
-            // pop and output from the stack
-            // until an '(' is encountered.
-            else if (c == ")")
-            {
-                while (stack.Count > 0
-                       && stack.Peek() != "(")
+                // if in stack are ops with higher prior 
+                while (ops.Count > 0 && Operators[exp[i]] <= Operators[ops.Peek()])
                 {
-                    result.Push(stack.Pop());
+                    result += ops.Pop();
                 }
-
-                if (stack.Count > 0
-                    && stack.Peek() != "(")
-                {
-                    return new Stack<string>(); // invalid
-                                                 // expression
-                }
-                else
-                {
-                    stack.Pop();
-                }
-            }
-            else // an operator is encountered
-            {
-                while (stack.Count > 0
-                       && Prec(c) <= Prec(stack.Peek()))
-                {
-                    result.Push(stack.Pop());
-                }
-                stack.Push(c);
+                // push operator to stack
+                ops.Push(exp[i]);
             }
         }
-
-        // pop all the operators from the stack
-        while (stack.Count > 0)
+        
+        while (ops.Count != 0)
         {
-            result.Push(stack.Pop());
+            result += ops.Pop();
         }
 
         return result;
@@ -94,11 +70,38 @@ public class Program
 
     public static void Main(string[] args)
     {
-        string exp = "A+B*C+D";
+        var exp = "A+B*C+D";
 
-        Stack<string> res = infixToPostfix(exp);
+        string res = InfixToPostfix(exp);
         Console.WriteLine(res);
+        
+        // 2 task
+
+        List<HospitalTask.Hospital> hospitals = new List<HospitalTask.Hospital>();
+        hospitals.Add(new HospitalTask.Hospital(10,42));
+        hospitals.Add(new HospitalTask.Hospital(1,4));
+        hospitals.Add(new HospitalTask.Hospital(245,152));
+
+        var patient1 = new HospitalTask.Patient("Putin",23,hospitals);
+        var patient2 = new HospitalTask.Patient("Alex",2,hospitals);
+        var patient3 = new HospitalTask.Patient("Sasha",356,hospitals);
+        var patient4 = new HospitalTask.Patient("Oleg",2,hospitals);
+        
+        
+        Console.WriteLine("\n\tHospital 1");
+        hospitals[0].PrintInfo();
+        
+        Console.WriteLine("\n\tHospital 2");
+        hospitals[1].PrintInfo();
+        
+        Console.WriteLine("\n\tHospital 3");
+        hospitals[2].PrintInfo();
+
+        
+        hospitals[0].DischargePatient();
+        
+        Console.WriteLine("\n\tHospital 1 edited");
+        hospitals[0].PrintInfo();
     }
-
-
 }
+

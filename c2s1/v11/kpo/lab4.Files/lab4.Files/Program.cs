@@ -1,4 +1,4 @@
-﻿string text = File.ReadAllText(@"C:\Users\jejik\Projects\university\labki\c2s1\v11\kpo\lab4.Files\lab4.Files\Template.txt");
+﻿string text = File.ReadAllText(@"../../../Template.txt");
 
 var words = text.Split(" ");
 
@@ -11,10 +11,9 @@ foreach(var word in words)
 
         Console.WriteLine($"{ch} repeated " + text.Count(x => x == ch) + " times");
 
-        int n = 0;
-        if (int.TryParse(ch.ToString(),out n))
+        int _ = 0;
+        if (int.TryParse(ch.ToString(),out _))
         {
-            n++;
             num = true;
         }
 
@@ -25,6 +24,6 @@ foreach(var word in words)
     }
 }
 
-await File.WriteAllTextAsync(@"C:\Users\jejik\Projects\university\labki\c2s1\v11\kpo\lab4.Files\lab4.Files\Template.txt", newText);
+await File.WriteAllTextAsync(@"../../../Template.txt", newText);
 
 

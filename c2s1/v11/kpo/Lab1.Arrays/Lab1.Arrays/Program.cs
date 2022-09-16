@@ -1,7 +1,7 @@
 ﻿using System.Runtime.ExceptionServices;
 using TaskL;
 
-Console.WriteLine("\n\n\nTask 1! : 31");
+Console.WriteLine("\n\n\nTask 1! : 2");
 {
     int[,] a = new int[10, 50];
     Task1.InitArray(ref a);
@@ -9,7 +9,7 @@ Console.WriteLine("\n\n\nTask 1! : 31");
 
 }
 
-Console.WriteLine("\n\n\nTask 2! : 31");
+Console.WriteLine("\n\n\nTask 2! : 12");
 {
     int[,] a = new int[1,5];
     Task1.InitArray(ref a);
@@ -24,13 +24,13 @@ Console.WriteLine("\n\n\nTask 2! : 31");
 
 }
 
-Console.WriteLine("\n\n\nTask 3! : 31");
+Console.WriteLine("\n\n\nTask 3! : 22");
 {
     int[,] a = new int[5, 5];
-    int n = 3;
     Task1.InitArray(ref a);
     Task1.PrintArray(a);
-
+    
+    int n = 3;
     for (int i = 0; i < a.GetLength(0) - 1; i++)
     {
         for (int k = 0; k < a.GetLength(1) - 1; k++)
