@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4db460c2-30d4-4d83-afde-058cee5b311e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Lab12.Graphics/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lab12.Graphics/Form1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab12.Graphics/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Lab12.Graphics/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab3.Structs/Lab3.Structs/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab3.Structs/Lab3.Structs/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lab12.Graphics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lab12.Graphics/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab5.DynamicStructures/Lab5.DynamicStructures/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab5.DynamicStructures/Lab5.DynamicStructures/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,15 +22,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Lab12.Graphics" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -61,6 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1663320097547</updated>
       <workItem from="1663320110495" duration="954000" />
+      <workItem from="1663370492354" duration="149000" />
     </task>
     <servers />
   </component>

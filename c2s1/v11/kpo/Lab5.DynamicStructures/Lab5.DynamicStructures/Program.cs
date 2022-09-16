@@ -34,8 +34,8 @@ public class STACK
     };
 
     // The main method that converts given infix expression
-    // to postfix expression.
-    public static string InfixToPostfix(string exp)
+    // to prefix expression.
+    public static string InfixToPrefix(string exp)
     {
         Stack<char> ops = new();
 
@@ -45,7 +45,7 @@ public class STACK
         {
             // If char is letter or digit then add to result string
             if (char.IsLetterOrDigit(exp[i]))
-                result += exp[i];
+                result = exp[i] + result;
             
             // if char is operator
             if (Operators.ContainsKey(exp[i]))
@@ -53,7 +53,7 @@ public class STACK
                 // if in stack are ops with higher prior 
                 while (ops.Count > 0 && Operators[exp[i]] <= Operators[ops.Peek()])
                 {
-                    result += ops.Pop();
+                    result = ops.Pop() + result;
                 }
                 // push operator to stack
                 ops.Push(exp[i]);
@@ -62,7 +62,7 @@ public class STACK
         
         while (ops.Count != 0)
         {
-            result += ops.Pop();
+            result = ops.Pop() + result;
         }
 
         return result;
@@ -72,7 +72,7 @@ public class STACK
     {
         var exp = "A+B*C+D";
 
-        string res = InfixToPostfix(exp);
+        string res = InfixToPrefix(exp);
         Console.WriteLine(res);
         
         // 2 task
@@ -82,7 +82,7 @@ public class STACK
         hospitals.Add(new HospitalTask.Hospital(1,4));
         hospitals.Add(new HospitalTask.Hospital(245,152));
 
-        var patient1 = new HospitalTask.Patient("Putin",23,hospitals);
+        var patient1 = new HospitalTask.Patient("Vanya",23,hospitals);
         var patient2 = new HospitalTask.Patient("Alex",2,hospitals);
         var patient3 = new HospitalTask.Patient("Sasha",356,hospitals);
         var patient4 = new HospitalTask.Patient("Oleg",2,hospitals);
