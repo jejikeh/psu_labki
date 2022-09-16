@@ -58,4 +58,3 @@ static class Program
         }
     }
 }
-

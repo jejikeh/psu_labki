@@ -1,3 +1,6 @@
+using System.Drawing;
+using System.Windows.Forms;
+
 namespace Lab12.Graphics
 {
     public partial class Form1 : Form
