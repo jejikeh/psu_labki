@@ -87,7 +87,7 @@ Console.WriteLine("\n\nTask1\n\n");
 Console.WriteLine("\n\nTask2\n\n");
 
 {
-    string input = "3 / (2 + 1)";
+    string input = "2512 *3/(35+1)";
 
     Expression expression = new Expression(input);
     var result = expression.Parse();
@@ -96,7 +96,7 @@ Console.WriteLine("\n\nTask2\n\n");
 
 Console.WriteLine("\n\nTask3\n\n");
 {
-    string input = "2 + 2";
+    string input = "(3*2)";
     //string input = "(";
     Expression expression = new Expression(input);
     var tokens = expression.Parse();

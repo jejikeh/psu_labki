@@ -45,7 +45,7 @@ namespace TaskL
                 {
                     average += a[r, c];
                 }
-                averages.Push(average / 4);
+                averages.Push(average / a.GetLength(0));
             }
 
             foreach (float av in averages.Reverse())
