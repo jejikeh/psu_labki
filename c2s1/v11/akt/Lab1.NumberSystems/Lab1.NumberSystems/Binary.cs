@@ -135,31 +135,21 @@ namespace NumberSystems
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        internal static long SubstractL(long a, long b, int rem = 0)
+        internal static long SubstractL(long a, long b)
         {
-            string res = string.Empty;
-            long ra = a;
-            long rb = b;
+            string bStr = b.ToString();
+            while (a.ToString().Length != bStr.Length)
+                bStr = "0" + bStr;
+            // reverse b
+            bStr = bStr.Replace('0', '2')
+                        .Replace('1', '0')
+                        .Replace('2', '1');
 
-
-            while (a != 0 || b != 0)
-            {
-                if ((a % 10 - b % 10 - rem) % 2 < 0)
-                {
-                    res = Math.Abs(((a % 10 - b % 10 - rem) % 2)) + res;
-                    //rem = -1;
-                }
-                else
-                {
-                    res = ((a % 10 - b % 10 - rem) % 2) + res;
-                    //rem = 0;
-                }
-                rem = (int)((a % 10 - b % 10 - rem)) > 0 ? 0 : (int)((a % 10 - b % 10 - rem));
-                a /= 10; b /= 10;
-            }
-
-            return long.Parse(res);
+            // add 1
+            b = Binary.Sum(long.Parse(bStr), 1);
+            return long.Parse(Binary.Sum(a, b).ToString()[1..]);
         }
+        
 
         /// <summary>
         /// Sum of binary int
