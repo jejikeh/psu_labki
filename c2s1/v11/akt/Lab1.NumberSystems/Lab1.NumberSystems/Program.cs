@@ -24,9 +24,8 @@ namespace NumberSystems
 
 
             Console.WriteLine("\n4 TASK\n");
-            Console.WriteLine("a) 1000101110 - 1111111 -> " + Binary.SubstractL(1000101110, 1111111));
+            Console.WriteLine("a) 1000101110 - 1111111 -> " + Binary.SubstractL(1011111111, 100000011));
             Console.WriteLine("v) 1000101001.1 - 1111101.1 -> " + Binary.Substract(1000101001.1, 1111101.1));
-            Console.WriteLine("a) 1000101110 - 1111111 -> " + Binary.SubstractL(101, 11));
 
             Console.WriteLine("\n5 TASK\n");
             Console.WriteLine("a) 111010 * 1100000 -> " + Binary.Multiply(111010, 1100000));
