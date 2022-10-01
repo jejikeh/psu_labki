@@ -20,7 +20,7 @@ namespace NumberSystems
 
             Console.WriteLine("\n3 TASK\n");
             Console.WriteLine("a) 1000011101 + 101000010 -> " + Binary.Sum(1000011101, 101000010));
-            Console.WriteLine("v) 101111011.01 + 1000100.101 -> " + Binary.Sum(101001100.101, 10001001100.01));
+            Console.WriteLine("v) 101111011.01 + 1000100.101 -> " + Binary.Sum(11.1, 11.1));
 
 
             Console.WriteLine("\n4 TASK\n");
