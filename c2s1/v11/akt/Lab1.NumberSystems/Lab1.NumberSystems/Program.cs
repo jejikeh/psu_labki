@@ -7,6 +7,7 @@ namespace NumberSystems
     {
         private static void Main()
         {
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             Console.WriteLine("1 TASK\n");
 
             ToAll(945);

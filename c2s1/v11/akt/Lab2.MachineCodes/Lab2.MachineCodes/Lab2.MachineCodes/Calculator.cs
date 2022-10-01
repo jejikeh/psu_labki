@@ -76,8 +76,23 @@ public class Calculator
         return res.ToString();
     }
 
-    internal static string NormalizeSum(string a, string b)
+    internal static string NormilizeSum(string a, string b)
     {
-        var aS = a.Split(" ");
+        return Converter.Normalize((decimal)(Converter.DeNormalize(a)) + (decimal)Converter.DeNormalize(b));
+    }
+    
+    internal static string NormilizeSubstract(string a, string b)
+    {
+        return Converter.Normalize((decimal)(Converter.DeNormalize(a)) - (decimal)Converter.DeNormalize(b));
+    }
+    
+    internal static string NormilizeMutliply(string a, string b)
+    {
+        return Converter.Normalize((decimal)(Converter.DeNormalize(a)) * (decimal)Converter.DeNormalize(b));
+    }
+    
+    internal static string NormilizeDevide(string a, string b)
+    {
+        return Converter.Normalize((decimal)(Converter.DeNormalize(a)) / (decimal)Converter.DeNormalize(b));
     }
 }

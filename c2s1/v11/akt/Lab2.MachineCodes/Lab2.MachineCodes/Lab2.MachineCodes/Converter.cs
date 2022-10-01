@@ -155,4 +155,28 @@ public static class Converter
             return number.ToString() + $" * 10^({exp})";
         }
     }
+
+    internal static double DeNormalize(string normalizedNumber)
+    {
+        normalizedNumber = normalizedNumber.Replace(" ", "");
+        
+        var powString = string.Empty;
+        while (normalizedNumber.Last() != '(')
+        {
+            if (normalizedNumber.Last() != ')')
+            {
+                powString = normalizedNumber.Last() + powString;
+            }
+            normalizedNumber = normalizedNumber[..^1];
+        }
+
+        var numberString = string.Empty;
+        while (normalizedNumber.First() != '*')
+        {
+            numberString += normalizedNumber.First();
+            normalizedNumber = normalizedNumber[1..];
+        }
+
+        return double.Parse(numberString) * Math.Pow(10, int.Parse(powString));
+    }
 }
