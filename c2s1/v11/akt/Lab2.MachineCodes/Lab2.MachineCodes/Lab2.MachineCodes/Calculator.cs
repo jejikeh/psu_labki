@@ -46,16 +46,18 @@ public class Calculator
     
     internal static string ReverseSum(long a, long b)
     {
+        
         // check minus
-        var aStr = a > 0 ? Converter.StraightCode(a) : Converter.ReversedCode(a);
-        var bStr = b > 0 ? Converter.StraightCode(b) : Converter.ReversedCode(b);
+        var aStr = a > 0 ? Converter.StraightCode(a) : Converter.ReversedCode(a, 8);
+        var bStr = b > 0 ? Converter.StraightCode(b) : Converter.ReversedCode(b, 8);
 
         long res = Sum(int.Parse(aStr), int.Parse(bStr));
         
+        // если появилась единица знакового переноса
         if (res.ToString().Length > 7)
         {
             res = long.Parse(res.ToString()[1..]);
-            res = SubstractL(res, 1);
+            res = Sum(res, 1);
         }
         return res.ToString();
     }
@@ -78,21 +80,25 @@ public class Calculator
 
     internal static string NormilizeSum(string a, string b)
     {
-        return Converter.Normalize((decimal)(Converter.DeNormalize(a)) + (decimal)Converter.DeNormalize(b));
+        return Converter.Normalize(
+            (decimal)(Converter.DeNormalize(a)) + (decimal)Converter.DeNormalize(b));
     }
     
     internal static string NormilizeSubstract(string a, string b)
     {
-        return Converter.Normalize((decimal)(Converter.DeNormalize(a)) - (decimal)Converter.DeNormalize(b));
+        return Converter.Normalize(
+            (decimal)(Converter.DeNormalize(a)) - (decimal)Converter.DeNormalize(b));
     }
     
     internal static string NormilizeMutliply(string a, string b)
     {
-        return Converter.Normalize((decimal)(Converter.DeNormalize(a)) * (decimal)Converter.DeNormalize(b));
+        return Converter.Normalize(
+            (decimal)(Converter.DeNormalize(a)) * (decimal)Converter.DeNormalize(b));
     }
     
     internal static string NormilizeDevide(string a, string b)
     {
-        return Converter.Normalize((decimal)(Converter.DeNormalize(a)) / (decimal)Converter.DeNormalize(b));
+        return Converter.Normalize(
+            (decimal)(Converter.DeNormalize(a)) / (decimal)Converter.DeNormalize(b));
     }
 }

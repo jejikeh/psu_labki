@@ -100,12 +100,20 @@ public static class Converter
         return  "0" + DecimalToBinary(number).ToString();
     }
 
-    internal static string ReversedCode(long number)
+    internal static string ReversedCode(long number, int a = 0)
     {
+        
         if (number > 0)
             return StraightCode(number);
         
         var res = StraightCode(number);
+        if (a == 8)
+        {
+            while (res[1..].Length - 1 < 8)
+            {
+                res = "1" + ""
+            }
+        }
         res = res[1..].Replace('0', '2')
             .Replace('1', '0')
             .Replace('2', '1');
