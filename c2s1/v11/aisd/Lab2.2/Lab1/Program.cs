@@ -21,5 +21,4 @@ static class Program
 
         Console.WriteLine(r % m);
     }
-
 }
