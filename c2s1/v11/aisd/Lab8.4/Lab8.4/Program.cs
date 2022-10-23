@@ -1,26 +1,14 @@
-﻿var count = int.Parse(Console.ReadLine().Split(' ')[0]);
-var items = new List<int>();
+﻿Console.ReadLine();
 
-var elements = Console.ReadLine();
+var input = Console.ReadLine()!.Split(' ').Select(int.Parse).ToList();
+Console.WriteLine(CountDepth(input));
 
-foreach (var item in elements.Split(' '))
-    items.Add(int.Parse(item));
-
-var result = int.MinValue;
-for (var i = 0; i < items.Count; i++)
+int CountDepth(List<int> depths)
 {
-    var resOfNumber = items[i];
-    for (var k = 0; k < items.Count; k++)
-    {
-        if( i == k)
-            continue;
-
-        if (resOfNumber + items[k] <= count)
-            resOfNumber += items[k];
-    }
-
-    if (resOfNumber > result && resOfNumber <= count)
-        result = resOfNumber;
+    return depths.Select(index => GetHeight(depths, index)).Max();
 }
 
-Console.WriteLine(result);
+int GetHeight(List<int> depths,int index)
+{
+    return depths[index] != -1 ? GetHeight(depths, depths[index]) : 1;
+}

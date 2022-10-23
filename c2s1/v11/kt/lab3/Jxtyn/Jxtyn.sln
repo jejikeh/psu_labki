@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{61C2614D-152A-447F-98E2-290F72E14396}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jxtym.Parser", "src\Jxtym.Parser\Jxtym.Parser.csproj", "{0034E281-2106-4470-918B-67FF6CE743D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jxtym.Cli", "src\Jxtym.Cli\Jxtym.Cli.csproj", "{BA3966F0-D6AB-4748-940F-6407375D9B72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0034E281-2106-4470-918B-67FF6CE743D2} = {61C2614D-152A-447F-98E2-290F72E14396}
+		{BA3966F0-D6AB-4748-940F-6407375D9B72} = {61C2614D-152A-447F-98E2-290F72E14396}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0034E281-2106-4470-918B-67FF6CE743D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0034E281-2106-4470-918B-67FF6CE743D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0034E281-2106-4470-918B-67FF6CE743D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0034E281-2106-4470-918B-67FF6CE743D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA3966F0-D6AB-4748-940F-6407375D9B72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA3966F0-D6AB-4748-940F-6407375D9B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA3966F0-D6AB-4748-940F-6407375D9B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA3966F0-D6AB-4748-940F-6407375D9B72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
