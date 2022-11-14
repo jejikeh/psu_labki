@@ -1,0 +1,10 @@
+
+ Start  Stop   Length Name               Class
+
+ 00000H 000FAH 000FBH LAB7_TEXT          CODE
+ 000FCH 0014CH 00051H _DATA              DATA
+ 00150H 0034FH 00200H STACK              STACK
+ 00350H 0041BH 000CCH _BSS               BSS
+
+Program entry point at 0000:005A
+
