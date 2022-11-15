@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcTwo", "CalcTwo\CalcTwo.csproj", "{EC33D4C1-85C0-425C-B1C5-855CA91D3012}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC33D4C1-85C0-425C-B1C5-855CA91D3012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC33D4C1-85C0-425C-B1C5-855CA91D3012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC33D4C1-85C0-425C-B1C5-855CA91D3012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC33D4C1-85C0-425C-B1C5-855CA91D3012}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
