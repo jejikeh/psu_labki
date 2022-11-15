@@ -7,5 +7,3 @@ var sourceText = File.ReadAllText("source.txt").Split(' ').Select(x => Convert.T
 
 
 Process.Start("../../../../../CalcTwo/CalcTwo/bin/Debug/net6.0/CalcTwo.exe" ,$"{CalculateFormula(sourceText[0],sourceText[1], sourceText[2]).ToString(CultureInfo.InvariantCulture)}");
-
-
