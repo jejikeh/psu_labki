@@ -1,0 +1,1 @@
+Get-Service | where CanStop -eq "True" | Format-List -Property Name, Description, ServiceType, CanStop |  Out-File -FilePath .\output.txt

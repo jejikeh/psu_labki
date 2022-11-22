@@ -1,0 +1,1 @@
+Get-Process | sort-object -property TotalProcessorTime -descending| select-object -first 5 | Format-List -Property Id,ProcessName, TotalProcessorTime
