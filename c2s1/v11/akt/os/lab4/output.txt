@@ -9,6 +9,11 @@ Description : Facilitates the running of interactive applications with additiona
 ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
+Name        : AppXSvc
+Description : Provides infrastructure support for deploying Store applications. This service is started on demand and if disabled Store applications will not be deployed to the system, and may not function properly.
+ServiceType : Win32OwnProcess, Win32ShareProcess
+CanStop     : True
+
 Name        : AudioEndpointBuilder
 Description : Manages audio devices for the Windows Audio service.  If this service is stopped, audio devices and effects will not function properly.  If this service is disabled, any services that explicitly depend on it will fail to start
 ServiceType : Win32OwnProcess, Win32ShareProcess
@@ -34,12 +39,7 @@ Description : Provides facilities for managing UWP apps access to app capabiliti
 ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
-Name        : CaptureService_d9637d7
-Description : Enables optional screen capture functionality for applications that call the Windows.Graphics.Capture API.
-ServiceType : 240
-CanStop     : True
-
-Name        : cbdhsvc_d9637d7
+Name        : cbdhsvc_2676dc23
 Description : This user service is used for Clipboard scenarios
 ServiceType : 240
 CanStop     : True
@@ -49,7 +49,7 @@ Description : This service is used for Connected Devices Platform scenarios
 ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
-Name        : CDPUserSvc_d9637d7
+Name        : CDPUserSvc_2676dc23
 Description : This user service is used for Connected Devices Platform scenarios
 ServiceType : 240
 CanStop     : True
@@ -57,11 +57,6 @@ CanStop     : True
 Name        : chromoting
 Description : This service enables incoming connections from Chrome Remote Desktop clients.
 ServiceType : Win32OwnProcess
-CanStop     : True
-
-Name        : ClipSVC
-Description : Provides infrastructure support for the Microsoft Store. This service is started on demand and if disabled applications bought using Windows Store will not behave correctly.
-ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
 Name        : cplspcon
@@ -126,11 +121,6 @@ CanStop     : True
 
 Name        : EventSystem
 Description : Supports System Event Notification Service (SENS), which provides automatic distribution of events to subscribing Component Object Model (COM) components. If the service is stopped, SENS will close and will not be able to provide logon and logoff notifications. If this service is disabled, any services that explicitly depend on it will fail to start.
-ServiceType : Win32OwnProcess, Win32ShareProcess
-CanStop     : True
-
-Name        : fdPHost
-Description : The FDPHOST service hosts the Function Discovery (FD) network discovery providers. These FD providers supply network discovery services for the Simple Services Discovery Protocol (SSDP) and Web Services – Discovery (WS-D) protocol. Stopping or disabling the FDPHOST service will disable network discovery for these protocols when using FD. When this service is unavailable, network services using FD and relying on these discovery protocols will be unable to find network devices or resources.
 ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
@@ -224,6 +214,11 @@ Description : Provides support for the NetBIOS over TCP/IP (NetBT) service and N
 ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
+Name        : LxssManager
+Description : The LXSS Manager service supports running native ELF binaries. The service provides the infrastructure necessary for ELF binaries to run on Windows. If the service is stopped or disabled, those binaries will no longer run.
+ServiceType : Win32OwnProcess, Win32ShareProcess
+CanStop     : True
+
 Name        : NcbService
 Description : Brokers connections that allow Windows Store Apps to receive notifications from the internet.
 ServiceType : Win32OwnProcess, Win32ShareProcess
@@ -244,7 +239,7 @@ Description : Provides process isolation for cryptographic keys used to authenti
 ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
-Name        : NPSMSvc_d9637d7
+Name        : NPSMSvc_2676dc23
 Description : 
 ServiceType : 240
 CanStop     : True
@@ -264,7 +259,7 @@ Description : Container service for NVIDIA root features
 ServiceType : Win32OwnProcess
 CanStop     : True
 
-Name        : OneSyncSvc_d9637d7
+Name        : OneSyncSvc_2676dc23
 Description : This service synchronizes mail, contacts, calendar and various other user data. Mail and other applications dependent on this functionality will not work properly when this service is not running.
 ServiceType : 224
 CanStop     : True
@@ -274,7 +269,7 @@ Description : This service provides support for the Program Compatibility Assist
 ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
-Name        : PenService_d9637d7
+Name        : PenService_2676dc23
 Description : Pen Service
 ServiceType : 240
 CanStop     : True
@@ -286,6 +281,11 @@ CanStop     : True
 
 Name        : ProfSvc
 Description : This service is responsible for loading and unloading user profiles. If this service is stopped or disabled, users will no longer be able to successfully sign in or sign out, apps might have problems getting to users' data, and components registered to receive profile event notifications won't receive them.
+ServiceType : Win32OwnProcess, Win32ShareProcess
+CanStop     : True
+
+Name        : QWAVE
+Description : Quality Windows Audio Video Experience (qWave) is a networking platform for Audio Video (AV) streaming applications on IP home networks. qWave enhances AV streaming performance and reliability by ensuring network quality-of-service (QoS) for AV applications. It provides mechanisms for admission control, run time monitoring and enforcement, application feedback, and traffic prioritization.
 ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
@@ -394,9 +394,14 @@ Description : Maintains links between NTFS files within a computer or across com
 ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
-Name        : UdkUserSvc_d9637d7
+Name        : UdkUserSvc_2676dc23
 Description : Shell components service
 ServiceType : 240
+CanStop     : True
+
+Name        : upnphost
+Description : Allows UPnP devices to be hosted on this computer. If this service is stopped, any hosted UPnP devices will stop functioning and no additional hosted devices can be added. If this service is disabled, any services that explicitly depend on it will fail to start.
+ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
 Name        : UserManager
@@ -429,6 +434,16 @@ Description : WCNCSVC hosts the Windows Connect Now Configuration which is Micro
 ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
+Name        : WdiServiceHost
+Description : The Diagnostic Service Host is used by the Diagnostic Policy Service to host diagnostics that need to run in a Local Service context.  If this service is stopped, any diagnostics that depend on it will no longer function.
+ServiceType : Win32OwnProcess, Win32ShareProcess
+CanStop     : True
+
+Name        : WdiSystemHost
+Description : The Diagnostic System Host is used by the Diagnostic Policy Service to host diagnostics that need to run in a Local System context.  If this service is stopped, any diagnostics that depend on it will no longer function.
+ServiceType : Win32OwnProcess, Win32ShareProcess
+CanStop     : True
+
 Name        : WdNisSvc
 Description : Helps guard against intrusion attempts targeting known and newly discovered vulnerabilities in network protocols
 ServiceType : Win32OwnProcess
@@ -444,12 +459,17 @@ Description : The WLANSVC service provides the logic required to configure, disc
 ServiceType : Win32OwnProcess
 CanStop     : True
 
+Name        : wlidsvc
+Description : Enables user sign-in through Microsoft account identity services. If this service is stopped, users will not be able to logon to the computer with their Microsoft account.
+ServiceType : Win32OwnProcess, Win32ShareProcess
+CanStop     : True
+
 Name        : WpnService
 Description : This service runs in session 0 and hosts the notification platform and connection provider which handles the connection between the device and WNS server.
 ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
-Name        : WpnUserService_d9637d7
+Name        : WpnUserService_2676dc23
 Description : This service hosts Windows notification platform which provides support for local and push notifications. Supported notifications are tile, toast and raw.
 ServiceType : 240
 CanStop     : True
@@ -462,6 +482,11 @@ CanStop     : True
 Name        : WSearch
 Description : Provides content indexing, property caching, and search results for files, e-mail, and other content.
 ServiceType : Win32OwnProcess
+CanStop     : True
+
+Name        : wuauserv
+Description : Enables the detection, download, and installation of updates for Windows and other programs. If this service is disabled, users of this computer will not be able to use Windows Update or its automatic updating feature, and programs will not be able to use the Windows Update Agent (WUA) API.
+ServiceType : Win32OwnProcess, Win32ShareProcess
 CanStop     : True
 
 

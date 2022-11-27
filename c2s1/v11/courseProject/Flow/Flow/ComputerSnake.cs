@@ -17,6 +17,10 @@ namespace Flow
 
             GameObjectColor = RandomColor.Next();
             GameObjectSolidBrush = new SolidBrush(GameObjectColor);
+
+            var randomTailLength = BelongForm.FlowRandom.Next(0, 10);
+            for (var i = 0; i < randomTailLength; i++)
+                AddToTail();
         }
 
         public ComputerSnake(int x, int y, int width, int height, Flow form, Snake parentSnake, List<Tail>? tail) : base(x, y, width, height, form, parentSnake, tail)
@@ -24,6 +28,9 @@ namespace Flow
             Target = BelongForm.GetRandomTarget<GameObject>();
             GameObjectColor = RandomColor.Next();
             GameObjectSolidBrush = new SolidBrush(GameObjectColor);
+            var randomTailLength = BelongForm.FlowRandom.Next(0, 10);
+            for (var i = 0; i < randomTailLength; i++)
+                AddToTail();
         }
 
         public override void Update()

@@ -11,6 +11,12 @@ namespace Flow
         private List<Tail> _snake = new List<Tail>();
         private Color _tailColor;
 
+        protected void AddToTail()
+        {
+            var tail = new Tail(X, Y, Width, Height, BelongForm, _tailColor, this);
+            _snake.Add((Tail)BelongForm.CreateGameObject(tail));
+        }
+
         public Snake(int x, int y, int width, int height, Flow form) : base(x, y, width, height, form)
         {
             _tailColor = RandomColor.Next();
