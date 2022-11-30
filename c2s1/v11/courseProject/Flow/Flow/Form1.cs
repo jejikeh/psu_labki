@@ -17,14 +17,12 @@ namespace Flow
         private void Flow_Load(object sender, EventArgs e)
         {
             spawnBios.Interval = FlowRandom.Next(1000, 10000);
-
             AddNewBios();
 
             CreateGameObject(new PlayerSnake(3, 3, 16, 16, this));
             CreateGameObject(new ComputerSnake(4, 40, 16, 16, this));
             CreateGameObject(new ComputerSnake(32, 40, 16, 16, this));
             CreateGameObject(new ComputerSnake(24, 40, 16, 16, this));
-
 
             gameTimer.Start();
         }
@@ -49,25 +47,16 @@ namespace Flow
 
         public bool goLeft, goRight, goDown, goUp, goCreate;
         public string directions;
-
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left && directions != "right")
-            {
                 goLeft = true;
-            }
             if (e.KeyCode == Keys.Right && directions != "left")
-            {
                 goRight = true;
-            }
             if (e.KeyCode == Keys.Up && directions != "down")
-            {
                 goUp = true;
-            }
             if (e.KeyCode == Keys.Down && directions != "up")
-            {
                 goDown = true;
-            }
             if (e.KeyCode == Keys.K)
                 goCreate = true;
         }
@@ -75,21 +64,14 @@ namespace Flow
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
-            {
                 goLeft = false;
-            }
             if (e.KeyCode == Keys.Right)
-            {
                 goRight = false;
-            }
             if (e.KeyCode == Keys.Up)
-            {
                 goUp = false;
-            }
             if (e.KeyCode == Keys.Down)
-            {
                 goDown = false;
-            }
+            
             if (e.KeyCode == Keys.K)
                 goCreate = false;
         }
@@ -97,30 +79,20 @@ namespace Flow
         private void UpdateCanvas(object sender, PaintEventArgs e)
         {
             var graphics = e.Graphics;
-
             foreach(var obj in gameObjects)
                 obj.Draw(graphics);
-
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             if (goLeft)
-            {
                 directions = "left";
-            }
             if (goRight)
-            {
                 directions = "right";
-            }
             if (goDown)
-            {
                 directions = "down";
-            }
             if (goUp)
-            {
                 directions = "up";
-            }
             if (goCreate)
                 directions = "create";
 
@@ -130,7 +102,6 @@ namespace Flow
 
             CheckForCollisions();
             DeleteDiedObjects();
-
             gameCanvas.Invalidate(); 
         }
 
@@ -189,15 +160,13 @@ namespace Flow
         {
 
             var filter = gameObjects.Select(x => { return new { succses = x is T, val = x }; }).Where(a => a.succses).Select(v => (T)v.val).ToList();
-
             if (filter.Count == 0)
             {
                 AddNewBios();
-                filter = gameObjects.Select(x => { return new { succses = x is T, val = x }; }).Where(a => a.succses).Select(v => (T)v.val).ToList();
+                return GetRandomTarget<T>();
             }
 
             var randomIndex = FlowRandom.Next(0, filter.Count - 1);
-
             var randomGameObject = filter[randomIndex];
             if (randomGameObject is Snake)
             {
@@ -205,17 +174,14 @@ namespace Flow
                 randomGameObject = snake.GetRandomTailTile() as T;
             }
 
-
             return randomGameObject;
         }
 
         public List<T> GetGameObjects<T>() where T : GameObject
         {
-
             var filter = gameObjects.Select(x => { return new { succses = x is T, val = x }; }).Where(a => a.succses).Select(v => (T)v.val).ToList();
 
             return filter;
         }
-
     }
 }

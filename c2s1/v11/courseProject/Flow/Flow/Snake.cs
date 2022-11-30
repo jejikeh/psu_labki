@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Flow
+﻿namespace Flow
 {
     internal class Snake : Square
     {
@@ -29,11 +23,6 @@ namespace Flow
                 _snake = tail;
         }
 
-        public override void Draw(Graphics graphics)
-        {
-            base.Draw(graphics);
-        }
-
         private void MoveAllTails()
         {
             if(_snake.Count > 0)
@@ -41,7 +30,6 @@ namespace Flow
                 _snake[0].X = X;
                 _snake[0].Y = Y;
             }
-
 
             for(var i = _snake.Count - 1; i >= 1; i--)
             {
@@ -54,8 +42,6 @@ namespace Flow
         {
             base.Update();
             MoveAllTails();
-
-
         }
 
         public override void OnHit(GameObject gameObject)
@@ -76,12 +62,8 @@ namespace Flow
                 if(tail.ParentSnake != this)
                 {
                     var hittedSnake = tail.ParentSnake;
-
                     if(hittedSnake._snake.Count > 4)
                     {
-                        var middleTail = hittedSnake._snake[hittedSnake._snake.Count / 2];
-                        var newCompSnake = (ComputerSnake)BelongForm.CreateGameObject(new ComputerSnake(tail.X + BelongForm.FlowRandom.Next(-3, 3), tail.Y + BelongForm.FlowRandom.Next(-3, 3), Width, Height, BelongForm));
-
                         var tempLength = hittedSnake._snake.Count / 2;
                         for (var i = hittedSnake._snake.Count - 1; i > tempLength; i--)
                         {
@@ -92,7 +74,6 @@ namespace Flow
                     }else
                     {
                         var snake = tail.ParentSnake;
-
                         if (snake._snake.Count > _snake.Count)
                         {
                             foreach (var tailr in _snake)
@@ -110,19 +91,11 @@ namespace Flow
                         }
                     }
                 }
-
-                /*
-
-
-        if(tail.ParentSnake._snake.Count > 1)
-            tail.ParentSnake._snake.RemoveRange(tail.ParentSnake._snake.IndexOf(tail), tail.ParentSnake._snake.Count - 1);
-        */
             }
 
             if(gameObject is Snake)
             {
                 var snake = gameObject as Snake;
-
                 if(snake._snake.Count > _snake.Count)
                 {
                     foreach(var tail in _snake)
@@ -141,9 +114,7 @@ namespace Flow
             }
         }
 
-        public virtual void ToDoOnEatBio()
-        {
-        }
+        public virtual void ToDoOnEatBio() { }
 
         public GameObject GetRandomTailTile()
         {
@@ -159,7 +130,6 @@ namespace Flow
         public int DeleteTails(Tail tail)
         {
             var index = _snake.IndexOf(tail);
-
             if(index > -1)
                 _snake = _snake.GetRange(0, index);
 

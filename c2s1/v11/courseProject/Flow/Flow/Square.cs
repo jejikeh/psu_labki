@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Flow
+﻿namespace Flow
 {
     internal class Square : GameObject
     {
@@ -27,24 +20,13 @@ namespace Flow
             base.Draw(graphics);
 
             if (X < 0)
-            {
                 X = 60;
-            }
             if (X > 60)
-            {
                 X = 0;
-
-            }
-            if (Y < 1)
-            {
-                Y = 36;
-
-            }
-            if (Y > 36)
-            {
-                Y = 1;
-
-            }
+            if (Y < 3)
+                Y = 34;
+            if (Y > 34)
+                Y = 3;
 
             graphics.FillRectangle(GameObjectSolidBrush, new Rectangle(X * Width, Y * Height, Width, Height));
         }

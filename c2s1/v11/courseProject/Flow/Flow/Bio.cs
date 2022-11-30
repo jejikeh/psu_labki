@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Flow
+﻿namespace Flow
 {
     internal class Bio : Square
     {
@@ -39,9 +33,7 @@ namespace Flow
         public override void OnHit(GameObject gameObject)
         {
             if (gameObject is Snake)
-            {
                 GoingToDie = true;
-            }
         }
     }
 }

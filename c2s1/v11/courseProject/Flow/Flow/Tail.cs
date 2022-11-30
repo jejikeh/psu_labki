@@ -24,18 +24,5 @@ namespace Flow
 
             _parentSnake = parentSnake;
         }
-
-        public override void OnHit(GameObject gameObject)
-        {
-            if (gameObject is Snake)
-            {
-                /*
-                if((Snake)gameObject != _parentSnake)
-                {
-                    GoingToDie = true;
-                }
-                */
-            }
-        }
     }
 }
