@@ -4,13 +4,15 @@ namespace Flow
     {
         private List<GameObject> gameObjects = new List<GameObject>();
         private int _score = 0;
-
+        private Form _parentWindow;
         private List<GameObject> _collidedDetectedQuene = new List<GameObject>();
 
 
-        public Flow()
+        public Flow(Form form)
         {
             InitializeComponent();
+            Show();
+            _parentWindow= form;
         }
 
         public Random FlowRandom = new Random();
@@ -20,9 +22,9 @@ namespace Flow
             AddNewBios();
 
             CreateGameObject(new PlayerSnake(3, 3, 16, 16, this));
-            CreateGameObject(new ComputerSnake(4, 40, 16, 16, this));
-            CreateGameObject(new ComputerSnake(32, 40, 16, 16, this));
-            CreateGameObject(new ComputerSnake(24, 40, 16, 16, this));
+            // CreateGameObject(new ComputerSnake(4, 40, 16, 16, this));
+            // CreateGameObject(new ComputerSnake(32, 40, 16, 16, this));
+            // CreateGameObject(new ComputerSnake(24, 40, 16, 16, this));
 
             gameTimer.Start();
         }
@@ -142,6 +144,14 @@ namespace Flow
         {
             foreach(var obj in gameObjects)
             {
+                if (obj is PlayerSnake && obj.GoingToDie)
+                {
+                    new GameOver(_parentWindow);
+                    Close();
+                    gameObjects.Remove(obj);
+                    return;
+                }
+
                 if (obj.GoingToDie)
                 {
                     gameObjects.Remove(obj);

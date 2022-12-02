@@ -33,12 +33,17 @@
                     Y++;
                     break;
             }
+
         }
 
         public override void ToDoOnEatBio()
         {
             base.ToDoOnEatBio();
             BelongForm.AddScore();
+        }
+
+        protected override void OnDie()
+        {
         }
     }
 }

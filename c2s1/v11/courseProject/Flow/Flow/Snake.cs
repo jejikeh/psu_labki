@@ -135,5 +135,10 @@
 
             return index;
         }
+
+        protected virtual void OnDie()
+        {
+
+        }
     }
 }
