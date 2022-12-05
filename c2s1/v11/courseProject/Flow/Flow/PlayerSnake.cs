@@ -2,6 +2,7 @@
 {
     internal class PlayerSnake : Snake
     {
+
         public PlayerSnake(int x, int y, int width, int height, Flow form) : base(x, y, width, height, form)
         {
             GameObjectColor = RandomColor.Next();
@@ -39,11 +40,14 @@
         public override void ToDoOnEatBio()
         {
             base.ToDoOnEatBio();
+            BelongForm.Menu.WinSound.Play();
             BelongForm.AddScore();
         }
 
         protected override void OnDie()
         {
+            new GameOver(BelongForm);
+            BelongForm.Close();
         }
     }
 }

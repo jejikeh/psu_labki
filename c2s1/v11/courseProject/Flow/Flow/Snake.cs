@@ -98,6 +98,7 @@
                 var snake = gameObject as Snake;
                 if(snake._snake.Count > _snake.Count)
                 {
+                    BelongForm.Menu.WinSound.Play();
                     foreach(var tail in _snake)
                         tail.GoingToDie = true;
 
