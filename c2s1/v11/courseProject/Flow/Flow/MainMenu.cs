@@ -31,7 +31,7 @@ namespace Flow
         {
             listView1.Items.Clear();
             if(_scores.ContainsKey(textBox1.Text == string.Empty ? "Unknow" : textBox1.Text))
-                _scores[textBox1.Text == string.Empty ? "Unknow" : textBox1.Text] =  score;
+                _scores[textBox1.Text == string.Empty ? "Unknow" : textBox1.Text] = _scores[textBox1.Text == string.Empty ? "Unknow" : textBox1.Text] < score ? score : _scores[textBox1.Text == string.Empty ? "Unknow" : textBox1.Text];
             else
                 _scores.Add(textBox1.Text == string.Empty ? "Unknow": textBox1.Text, score);
 
