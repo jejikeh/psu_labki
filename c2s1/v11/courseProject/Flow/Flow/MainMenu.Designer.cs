@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listView1 = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -82,15 +82,11 @@
             // 
             // listView1
             // 
-            this.listView1.Alignment = System.Windows.Forms.ListViewAlignment.Left;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.listView1.GridLines = true;
-            this.listView1.LabelWrap = false;
             this.listView1.Location = new System.Drawing.Point(520, 0);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(91, 332);
             this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // textBox1
             // 
@@ -139,7 +135,7 @@
         private Label label1;
         private Button button1;
         private Button button2;
-        private ListView listView1;
+        private ListBox listView1;
         private TextBox textBox1;
         private Label label2;
     }
