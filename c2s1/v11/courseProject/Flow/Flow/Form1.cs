@@ -25,9 +25,9 @@ namespace Flow
 
             label1.Enabled= false;
             label1.Visible = false;
-            button1.Enabled=false;
+            button1.Enabled= false;
             button1.Visible = false;
-            button2.Enabled=false;
+            button2.Enabled= false;
             button2.Visible = false;
             gameCanvas.BackColor = RandomColor.NextAlpha(20);
         }
