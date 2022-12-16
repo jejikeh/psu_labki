@@ -1,0 +1,1 @@
+Get-service | sort-object -property status -Descending

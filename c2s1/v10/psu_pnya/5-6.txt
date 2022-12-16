@@ -1,0 +1,117 @@
+  static string StrC(string number)
+     {
+         long num = Int64.Parse(number);
+         if (num < 0)
+         {
+             return  "1" + DecToBin(num * -1).ToString();
+         }
+        
+         return  "0" + DecToBin(num).ToString();
+     }
+    static string RevC(string number)
+     {long num = Int64.Parse(number);
+         if (num > 0)
+             return StrC(number);
+        
+         var res = StrC(number);
+         res = res[1..].Replace('0', '2')
+             .Replace('1', '0')
+             .Replace('2', '1');
+
+         return "1" + res;
+     }
+     static string AddC(string number)
+    {  long num = Int64.Parse(number);
+        if (num > 0)
+        {
+            
+            return StrC(number);
+        }
+        else
+        {
+            string res = Sum(long.Parse(RevC(number)), 1 ).ToString();
+            return res;
+        }
+        
+    }
+      static long Sum(long a, long b)
+     {
+         int mem = 0;
+         string res = string.Empty;
+         while (a != 0 || b != 0)
+         {
+             res = (a % 10 + b % 10 + mem) % 2 + res;
+             mem = (int)((a % 10 + b % 10 + mem) / 2);
+             a /= 10; b /= 10;
+         }
+
+         if (mem != 0)
+         {
+             res = mem + res;
+         }
+
+         return long.Parse(res);
+     }
+     static long SubL(long a, long b)
+     {
+         string bS = b.ToString();
+         while (a.ToString().Length != bS.Length)
+             bS= "0" + bS;
+         // reverse b
+         bS = bS.Replace('0', 'a')
+             .Replace('1', '0')
+             .Replace('a', '1');
+
+         // add 1
+         b = Sum(long.Parse(bS), 1);
+         return long.Parse(Sum(a, b).ToString()[1..]);
+     }
+    
+      static string ReverseSum(long a, long b)
+     {
+         string al =a.ToString();
+         string bl = b.ToString();
+        
+         var aS = a > 0 ? StrC(al) : RevC(al);
+         var bS = b > 0 ? StrC(bl) : RevC(bl);
+         while (aS.Length < 7)
+         {
+             aS = aS[0] + '0' + aS[1..];
+         }
+         while (bS.Length < 7)
+         {
+             bS = bS[0] + '0' + bS[1..];
+         }
+         long res = Sum(int.Parse(aS), int.Parse(bS));
+        
+         if (res.ToString().Length > 7)
+         {
+             res = long.Parse(res.ToString()[1..]);
+             res = SubL(res, 1);
+         }
+         return res.ToString();
+     }
+    
+      static string AdditionalSum(long a, long b)
+     {
+         string al =a.ToString();
+         string bl = b.ToString();
+         var aS = a > 0 ? RevC(al) : AddC(al);
+         var bS = b > 0 ? RevC(bl) : AddC(bl);
+         while (aS.Length < 7)
+         {
+             aS = aS[0] + '0' + aS[1..];
+         }
+         while (bS.Length < 7)
+         {
+             bS = bS[0] + '0' + bS[1..];
+         }
+         long res = Sum(int.Parse(aS), int.Parse(bS));
+
+         if (res.ToString().Length > 7)
+         {
+             res = long.Parse(res.ToString()[1..]);
+             res = SubL(res, 1);
+         }
+         return res.ToString();
+     }
