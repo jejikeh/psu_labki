@@ -1,0 +1,2 @@
+﻿ Get-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\*\* |Select-object FriendlyName, Capabilities , Address ,ContainerID, HardwareID| Out-File -FilePath .\output.txt
+Get-WmiObject -List *CDROMDrive* | Select-Object -Property DeviceID, Caption |  Out-File -FilePath .\outputd.txt

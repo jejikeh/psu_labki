@@ -1,0 +1,1 @@
+﻿Get-CimInstance -ClassName Win32_SystemDriver | Select-Object -Property Name, TagId, StartMode|  Out-File -FilePath .\output.txt
