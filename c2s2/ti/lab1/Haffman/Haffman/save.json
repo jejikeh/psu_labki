@@ -1,0 +1,815 @@
+{
+  "EntityContext": {
+    "$type": "Wooff.Presentation.MonoEntityContext, Assembly-CSharp",
+    "$values": [
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      },
+      {
+        "$type": "Core.Presentation.BobPresentation, Assembly-CSharp",
+        "$values": [
+          {
+            "$type": "Core.Components.HelloWorldComponent.HelloWorld, Assembly-CSharp"
+          }
+        ]
+      }
+    ]
+  },
+  "SystemContext": {
+    "$type": "Wooff.ECS.System.SystemContext`1[[Wooff.Presentation.IMonoEntity, Assembly-CSharp]], Assembly-CSharp",
+    "$values": [
+      {
+        "$type": "Core.Systems.HelloWorldUpdatePrint, Assembly-CSharp"
+      }
+    ]
+  }
+}

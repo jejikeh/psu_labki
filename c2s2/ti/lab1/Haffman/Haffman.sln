@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haffman", "Haffman\Haffman.csproj", "{08287BB8-F5D4-4298-9AA8-FBB40798A785}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08287BB8-F5D4-4298-9AA8-FBB40798A785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08287BB8-F5D4-4298-9AA8-FBB40798A785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08287BB8-F5D4-4298-9AA8-FBB40798A785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08287BB8-F5D4-4298-9AA8-FBB40798A785}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
