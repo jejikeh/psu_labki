@@ -1,11 +1,16 @@
 ﻿static class Program
 {
     static string Result = string.Empty;
+    
+    public static int Entropy(this string s)
+    {
+        HashSet<char> chars = new HashSet<char>(s);
+        return chars.Count;
+    }
+    
     private class Node
     {
-
         public char? Value;
-
 
         public Node? Left, Right;
 
@@ -38,6 +43,7 @@
     private static void Main()
     {
         string n = File.ReadAllText("../../../save.json");
+        Console.WriteLine($"Entropy: {Entropy(n)}");
 
         Dictionary<char, int> letters = new();
 
@@ -121,6 +127,23 @@
             Console.WriteLine($"{sn.Key.Value}\t{sn.Key.Code}\t{sn.Key.Code.Length}");
         
         Console.WriteLine(res);
+        
+    
+        string decoded = String.Empty;
+        
+        string token = string.Empty;
+        foreach (var ch in res)
+        {
+            token += ch;
+            if (map.ContainsValue(token))
+            {
+                decoded += map.FirstOrDefault(x => x.Value == token).Key;
+                token = String.Empty;
+            }
+        }
+        
+        Console.WriteLine(decoded);
+        
     }
 
     private static Dictionary<Node, int> SortByValue(Dictionary<Node, int> letters)
