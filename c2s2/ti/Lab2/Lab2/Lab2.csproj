@@ -7,4 +7,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="chilkat-x64" Version="9.5.0.93" />
+      <PackageReference Include="System.Security.Cryptography.Xml" Version="8.0.0-preview.1.23110.8" />
+    </ItemGroup>
+
 </Project>
