@@ -1,14 +1,48 @@
-﻿namespace Lab3;
+﻿using System.Globalization;
 
-public class SingleEvent : SomeEvent
+namespace Lab3;
+
+public class RepeatedEvent : SomeEvent<List<DateTime>>
 {
-    public decimal Budget;
-
-    protected override void EditUniqueFields()
+    private int _countEvents;
+    
+    public RepeatedEvent()
     {
-        Console.WriteLine("Input budget: ");
-        var inputString = string.Empty;
-        while (decimal.TryParse(inputString, out Budget))
+        Date = new List<DateTime>();
+    }
+    
+    ~RepeatedEvent()
+    {
+        Console.WriteLine($"{Title} destructor was called of {GetType().Name}");
+    }
+    
+    public override string ToString()
+    {
+        var table = Date.Aggregate(string.Empty, (current, dateTime) => current + ("\t* " + dateTime + "\n"));
+        return $"\nTitle:\n  \t{Title}\n Date:\n \t{Date}\n Table:\n {table}\n";
+    }
+
+    public override IEvent Copy(IEvent source)
+    {
+        if (source is RepeatedEvent repeatedEvent)
+        {
+            Title = repeatedEvent.Title;
+            Date = repeatedEvent.Date;
+            _countEvents = repeatedEvent._countEvents;
+            Date = repeatedEvent.Date;
+        }
+
+        return this;
+    }
+
+    protected sealed override void EditUniqueFields()
+    {
+        Console.WriteLine("Input repeated times: ");
+        var inputString = Console.ReadLine();
+        while (!int.TryParse(inputString, out _countEvents))
             inputString = Console.ReadLine();
+
+        for(var i = 0; i < _countEvents; i++)
+            Date.Add(ParseData());
     }
 }
