@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <style>
+        .visible {
+    color: black;
+  } 
+  
+  .invisible {
+    color: transparent;
+  }
+    </style>
+</head>
+<body>
+    <div class='wrapper'>
+        <span class='visible'></span><span class='invisible'></span>
+      </div>
+
+      <body>
+        <button onclick="setTimeout(() => { alert('deded') }, '3000')">Click Here</button>
+      </body>
+<script>
+
+    var text = "ВЕБ ВЕБ ВЕБ ВЕБ ВЕБ ВЕБ ВЕБ",
+    soFar = "";
+
+var visible = document.querySelector(".visible"),
+    invisible = document.querySelector(".invisible");
+
+invisible.innerHTML = text;
+var t = setInterval(function(){
+  soFar += text.substr(0, 1),
+  text = text.substr(1);
+
+  visible.innerHTML = soFar;
+  invisible.innerHTML = text;
+
+  if (text.length === 0) clearInterval(t);
+}, 100)
+</script>
+</body>
+</html>
