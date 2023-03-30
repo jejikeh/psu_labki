@@ -30,9 +30,9 @@ public class SingleEvent : SomeEvent<DateTime>
     {
     }
 
-    public override string ToString()
+    public override string Print()
     {
-        return $"\nTitle:\n  \t{Title}\n Date:\n \t{Date}\n Budget:\n \t{Budget}\n Organisator: {Organisation} MaxTicket {MaxTickets}";
+        return $"\nTitle:\n  \t{Title}\n Date:\n \t{Date}\n Budget:\n \t{Budget}\n Organisator: {Organisation}\n MaxTicket {MaxTickets}";
     }
 
     protected sealed override void EditUniqueFields()

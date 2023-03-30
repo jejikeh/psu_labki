@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace Lab3;
+﻿namespace Lab3;
 
 public class RepeatedEvent : SomeEvent<List<DateTime>>
 {
@@ -16,10 +14,10 @@ public class RepeatedEvent : SomeEvent<List<DateTime>>
         Console.WriteLine($"{Title} destructor was called of {GetType().Name}");
     }
     
-    public override string ToString()
+    public override string Print()
     {
         var table = Date.Aggregate(string.Empty, (current, dateTime) => current + ("\t* " + dateTime + "\n"));
-        return $"\nTitle:\n  \t{Title}\n Date:\n \t{Date}\n Table:\n {table}\n";
+        return $"\nTitle:\n  \t{Title}\n Date:\n DateTable:\n {table}\n";
     }
 
     public override IEvent Copy(IEvent source)

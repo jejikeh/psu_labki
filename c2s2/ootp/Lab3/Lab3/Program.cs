@@ -54,22 +54,19 @@ public static class Program
                 break;
             case 4:
                 for (var i = 0; i < _eventManager.Count; i++)
-                    Console.WriteLine($"{i}: {_eventManager[i]}");
+                    Console.WriteLine($"{i}: {_eventManager[i].Print()}");
                 break;
             case 5:
                 Console.Write("Input Date: ");
-                DateTime date;
-                var inputDate = Console.ReadLine();
-                while (!DateTime.TryParse(inputDate, out date))
-                    inputDate = Console.ReadLine();
+                var date = SomeEvent<object>.ParseData();
 
                 Console.WriteLine("Event at this day:\n");
                 foreach (var someEvent in _eventManager.Find(date))
                 {
                     if(someEvent is SingleEvent tempSingleEvent)
-                        Console.WriteLine(tempSingleEvent + "\n------");
+                        Console.WriteLine(tempSingleEvent.Print() + "\n------");
                     else
-                        Console.WriteLine(someEvent as RepeatedEvent + "\n------");
+                        Console.WriteLine((someEvent as RepeatedEvent).Print() + "\n------");
                 }
 
                 break;
@@ -108,8 +105,9 @@ public static class Program
         Main();
     }
     
-    public static int ParseNumber()
+    public static int ParseNumber(string i = "")
     {
+        Console.WriteLine(i);
         var input = Console.ReadLine();
         var task = 0;
         while(!int.TryParse(input, out task) && (task is > 0 and < 5))

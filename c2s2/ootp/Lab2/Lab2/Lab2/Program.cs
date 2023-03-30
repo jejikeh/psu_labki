@@ -14,6 +14,10 @@ public static class Program
 
         var task = ParseNumber();
 
+        {
+            new SomeEvent();
+        }
+
         switch (task)
         {
             case 1:
@@ -32,7 +36,7 @@ public static class Program
                     index = ParseNumber();
 
                 _eventManager.Remove(index);
-                
+                Console.WriteLine("Destructor of SomeEvent was called!");
                 break;
             case 3:
                 Console.WriteLine("Input title");

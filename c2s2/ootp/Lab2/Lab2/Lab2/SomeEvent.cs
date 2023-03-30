@@ -54,11 +54,7 @@ public class SomeEvent
             input = Console.ReadLine();
 
 
-        return new SomeEvent()
-        {
-            Title = title,
-            Date = date
-        };
+        return new SomeEvent(title, date);
     }
     
     public SomeEvent EditFromKeyboard()

@@ -37,7 +37,7 @@ public abstract class SomeEvent<T> : IEvent
         Title = "";
     }
 
-    public override string ToString()
+    public virtual string Print()
     {
         return $"Title: {Title} Date: {Date} Organosator: {Organisation}, MaxTicket: {MaxTickets}";
     }
@@ -62,7 +62,7 @@ public abstract class SomeEvent<T> : IEvent
         {
             Title = title!,
             Organisation = org,
-            MaxTickets = Program.ParseNumber()
+            MaxTickets = Program.ParseNumber("Input max tickets")
         };
         
         item.EditUniqueFields();
@@ -85,7 +85,7 @@ public abstract class SomeEvent<T> : IEvent
         Title = title;
         Organisation = org;
         Console.Write("Input Event max tickets: ");
-        MaxTickets = Program.ParseNumber();
+        MaxTickets = Program.ParseNumber("Input max tickets");
         EditUniqueFields();
         return this;
     }
