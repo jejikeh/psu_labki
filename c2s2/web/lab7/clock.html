@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <title>Document</title>
+</head>
+<body onLoad="clock()">
+        <form name="clock">
+        <p>Время:</p>
+        
+        <input type="text" name="time" size="8" value=""><br> 
+        <p>Дата:</p>
+        
+        <input type="text" name="date" size="8" value=""> 
+        </form>
+    <script>
+        var timeStr, dateStr;
+    function clock() {
+        var now= new Date();
+        var hours= now.getHours();
+        minutes= now.getMinutes();
+        seconds= now.getSeconds();
+        timeStr= "" + hours;
+
+        timeStr+= ((minutes < 10) ? ":0" : ":") + minutes; 
+        timeStr+= ((seconds < 10) ? ":0" : ":") + seconds; 
+        document.clock.time.value = timeStr;
+
+        date= now.getDate();
+
+        month= now.getMonth()+1;
+        year= now.getYear() - 100;
+        dateStr= "" + month;
+        dateStr+= ((date < 10) ? "/0" : "/") + date;
+        dateStr+= "/" + year;
+        document.clock.date.value = dateStr;
+
+        Timer= setTimeout("clock()",1000);
+    }
+    </script>
+</body>
+</html>
