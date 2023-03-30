@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js" integrity="sha512-3RlxD1bW34eFKPwj9gUXEWtdSMC59QqIqHnD8O/NoTwSJhgxRizdcFVQhUMFyTp5RwLTDL0Lbcqtl8b7bFAzog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+</head>
+<style>
+  #mydiv {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+}
+
+#mydivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}
+</style>
+  <body onload="setInterval('move()', 20)">
+      <input type="button" value="Show/Hide layer" onClick="toggle()"> 
+    <script>
+      var t = 0
+      function move(){
+      // document.getElementById("mydiv").style.transform = "rotate(" + t +"deg)";
+      t++;
+      }
+      var i = 0;
+      function toggle(){
+        
+        if(i == 0){
+          document.body.innerHTML = '';
+          document.write("<div id='mydiv'><div id ='3' style='position:relative; font-size:50px; z-index:2;'>LAYER 1</div>" + 
+                  "<div style='position:relative; top:-50; left:5; color:red; font-size:80px; z-index:1'>LAYER 2</div>" +
+                  "<input type='button' value='Show/Hide layer' onClick='toggle()'></div>");
+              i = 1;
+        } else {
+          document.body.innerHTML = '';
+          document.write("<div id='mydiv'><div id ='3' style='position:relative; font-size:50px; z-index:1;'>LAYER 1</div>" + 
+                  "<div style='position:relative; top:-50; left:5; color:red; font-size:80px; z-index:2'>LAYER 2</div>" +
+                  "<input type='button' value='Show/Hide layer' onClick='toggle()'></div>");
+              i = 0;
+        }
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js" integrity="sha512-3RlxD1bW34eFKPwj9gUXEWtdSMC59QqIqHnD8O/NoTwSJhgxRizdcFVQhUMFyTp5RwLTDL0Lbcqtl8b7bFAzog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+let font,
+  fontsize = 40;
+
+function preload() {
+  // Ensure the .ttf or .otf font stored in the assets directory
+  // is loaded before setup() and draw() are called
+  font = loadFont('/font/NotoSansZanabazarSquare-Regular.ttf');
+}
+
+        function setup() {
+  createCanvas(1080, 620, WEBGL);
+  textFont(font);
+  textSize(fontsize);
+  textAlign(CENTER, CENTER);
+}
+
+var r = 1;
+var l = 1;
+
+function draw() {
+  background(250);
+
+  // Align the text to the right
+  // and run drawWords() in the left third of the canvas
+
+  // Align the text in the center
+  // and run drawWords() in the middle of the canvas
+  textAlign(CENTER);
+  drawWords(width * 0.25);
+  
+  rotateY(frameCount * 0.01);
+  for (let j = 0; j < r * 3; j++) {
+    push();
+    textAlign(RIGHT);
+  drawWords(width* 0.1 * j);
+    for (let i = 0; i < l * 10; i++) {
+      translate(
+        sin(frameCount * 0.01 + j) * 100,
+        tan(frameCount * 0.001 + j) * 10,
+        cos(i * 0.1)
+      );
+      rotateY(frameCount * 0.002);
+      rotateZ(frameCount * 0.002);
+      push();
+      sphere(mouseY / 50, 6, 2);
+      pop();
+    }
+    pop();
+  }
+
+  function drawWords(x) {
+  // The text() function needs three parameters:
+  // the text to draw, the horizontal position,
+  // and the vertical position
+  fill(0);
+  text('𑨕', x, 80);
+
+  fill(65);
+  text('hello', x, 150);
+
+  fill(190);
+  text('𑨘', x, 0);
+
+  fill(255);
+  text('hello', x, 290);
+}
+}
+    </script>
+</body>
+</html>
