@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		legend {
+			display: block;
+			padding-left: 2px;
+			padding-right: 2px;
+			border: none;
+		}
+	</style>
+
+	<script type="text/javascript">
+		function validate() {
+            
+            
+
+			var user = document.getElementById("c").value;
+			var user2 = document.getElementById("c");
+			var re = /^\+375 \((17|29|33|44)\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/;
+			if (re.test(user)) {
+				alert("done");
+			}
+			else {
+                if(user == 0){
+                    return;
+                }
+                alert("error");
+				user2.style.border = "red solid 3px";
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<center>
+		<form style="align-self: center;">
+			<fieldset style="width:300px">
+				<table>
+                    <tr>
+                        <input type="text" 
+                            placeholder="firstname" 
+                            maxlength="10" required>
+                    </tr>
+                    <br><br>
+                    <tr>
+                        <input type="text" 
+                            placeholder="company" 
+                            maxlength="10">
+                    </tr>
+                    <br><br>
+					<tr>
+						<input type="text"
+							placeholder="contact" id="c">
+					</tr>
+                    <br><br>
+                    <tr>
+                        <input type="email" 
+                            placeholder="username@gmail.com" required>
+                    </tr>
+                    <br><br>
+						<input type="submit" onclick="validate()">
+					</tr>
+				</table>
+			</fieldset>
+		</form>
+	</center>
+</body>
+
+</html>
