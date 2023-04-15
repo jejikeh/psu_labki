@@ -119,15 +119,10 @@ namespace Flow
             if(e.KeyCode == Keys.Escape)
             {
                 if (_isPlaying)
-                {
                     StopPlay();
-                }
                 else
-                {
                     StopPlay();
-                }
             }
-
         }
 
         private void UpdateCanvas(object sender, PaintEventArgs e)
