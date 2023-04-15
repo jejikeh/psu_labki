@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/simple.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js" integrity="sha512-3RlxD1bW34eFKPwj9gUXEWtdSMC59QqIqHnD8O/NoTwSJhgxRizdcFVQhUMFyTp5RwLTDL0Lbcqtl8b7bFAzog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+  <h2>Калькулятор депозитов</h2>
+    <form>
+      <label for="principal">Сумма вклада:</label>
+      <input type="number" id="principal" name="principal" onchange="calculate()" /><br />
+
+      <label for="interest_rate">Процентная ставка:</label>
+      <input type="number" id="interest_rate" name="interest_rate" onchange="calculate()" /><br />
+
+      <label for="years">Срок вклада (в годах):</label>
+      <input type="number" id="years" name="years" onchange="calculate()" /><br />
+
+      <label for="result">Результат:</label>
+      <input type="number" id="result" name="result" readonly /><br />
+      <input type="button" onclick="plot()">
+    </form>
+    <canvas id="myChart"></canvas>
+<script>
+let res = 0;
+function calculate() {
+        const principal = document.getElementById('principal').value;
+        const interest_rate = document.getElementById('interest_rate').value;
+        const years = document.getElementById('years').value;
+
+        const total = principal * Math.pow(1 + interest_rate / 100, years);
+
+        document.getElementById('result').value = total.toFixed(2);
+        return total;
+      }
+
+var ch = null;
+function plot(){
+  const ctx = document.getElementById('myChart');
+  if(ch != null){
+    ch.destroy
+  }
+  ch = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["было", "стало"],
+      datasets: [{
+        label: '# депозит',
+        data: [document.getElementById('principal').value, calculate()],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/selected.css">
+    <title>Document</title>     
+</head>
+<body>
+
+  <ul data-tag="channelList">
+    <li onclick="switchChannel(event, this)">Channel 1</li>
+    <li onclick="switchChannel(event, this)">Channel 2</li>
+    <li onclick="switchChannel(event, this)">Channel 3</li>
+    <li onclick="switchChannel(event, this)">Channel 4</li>
+    <li onclick="switchChannel(event, this)">Channel 5</li>
+</ul>
+
+<script>
+  var selectedIndexes = []
+function switchChannel(e, el){
+  if(!e.ctrlKey){
+    selectedIndexes = []
+  }
+
+  Array.prototype.slice.call(document.querySelectorAll('ul[data-tag="channelList"] li')).forEach(function(element){
+    element.classList.remove('selected');
+    if(element == el){
+      selectedIndexes.push(element);
+    }
+  });
+
+  selectedIndexes.forEach(function(element) {
+    element.classList.add('selected');
+  });
+}
+
+</script>
+</body>
+</html>

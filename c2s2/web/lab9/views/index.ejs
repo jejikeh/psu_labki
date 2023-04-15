@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/slide.css">
+    <title>Document</title>     
+</head>
+<body>
+  <!-- Container for the image gallery -->
+<div class="container">
+
+  <!-- Full-width images with number text -->
+  <div class="mySlides">
+      <img src="images/img_woods.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+      <img src="images/img_5terre.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+      <img src="images/img_mountains.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+      <img src="images/img_lights.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+      <img src="images/img_nature.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+      <img src="images/img_snow.jpg" style="width:100%">
+  </div>
+
+  <!-- Thumbnail images -->
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="images/img_woods.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="images/img_5terre.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="images/img_mountains.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="images/img_lights.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="images/img_nature.jpg" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="images/img_snow.jpg" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
+    </div>
+  </div>
+</div>
+<script>
+  let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+</body>
+</html>

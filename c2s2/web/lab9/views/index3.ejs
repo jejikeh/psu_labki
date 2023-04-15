@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>     
+</head>
+<body>
+<script>
+
+  var keys = [];
+  document.onkeypress = function (e) {
+    e = e || window.event;
+    console.log(e.keyCode);
+    if(e.keyCode == 100 || e.keyCode == 101){
+      keys.push(e.keyCode);
+      console.log("push");
+    }
+
+    if(keys.length == 2){
+      alert("D + E");
+      keys = []
+    }
+};
+
+document.onkeyup = function (e) {
+    e = e || window.event;
+    keys = [];
+    console.log("pop " + e.keyCode);
+};
+
+</script>
+</body>
+</html>
