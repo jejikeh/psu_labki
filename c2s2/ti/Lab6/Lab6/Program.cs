@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using Lab6.Parts;
+using Lab6;
 
 bool IsPrime(int number)
 {
@@ -29,6 +29,34 @@ var keys = RsaCrypt.SetKeys(primes);
 // OR Input from keyboard
 // Console.WriteLine("Input the public Key from keyboard");
 // var publicKey = Console.ReadLine();
+// while (true)
+// {
+//     publicKey = Console.ReadLine();
+//     if(!int.TryParse(publicKey, out var n))
+//         continue;
+//     
+//     if(!IsPrime(n))
+//         continue;
+// 
+//     break;
+// }
+// 
+// Console.WriteLine("Input the 1 prime number from keyboard");
+// var primeNumber1 = Console.ReadLine();
+// while (true)
+// {
+//     publicKey = Console.ReadLine();
+//     if(!int.TryParse(publicKey, out var n))
+//         continue;
+//     
+//     if(!IsPrime(n))
+//         continue;
+// 
+//     break;
+// }
+// 
+// Console.WriteLine("Input the 2 prime number from keyboard");
+// var primeNumber2 = Console.ReadLine();
 // while (true)
 // {
 //     publicKey = Console.ReadLine();

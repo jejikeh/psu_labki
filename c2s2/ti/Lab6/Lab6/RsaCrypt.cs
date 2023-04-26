@@ -1,4 +1,4 @@
-﻿namespace Lab6.Parts;
+﻿namespace Lab6;
 
 public static class RsaCrypt
 {
