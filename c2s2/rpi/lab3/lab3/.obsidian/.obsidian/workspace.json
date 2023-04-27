@@ -1,25 +1,18 @@
 {
   "main": {
-    "id": "30b4ae8711437cd7",
+    "id": "75f03d3550df973e",
     "type": "split",
     "children": [
       {
-        "id": "cf9b151376793664",
+        "id": "34869debcd7fc9d5",
         "type": "tabs",
         "children": [
           {
-            "id": "9f97008473b8d68d",
+            "id": "72912638ff028f49",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "coursera.com.canvas",
-                "viewState": {
-                  "x": 1065.8374160610326,
-                  "y": 2684.8253137881948,
-                  "zoom": -1.40284809027093
-                }
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -28,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "4654cb50a95cbf36",
+    "id": "12ba1c03b5fccbfc",
     "type": "split",
     "children": [
       {
-        "id": "efdc149f9fb88b92",
+        "id": "fe95a758e355b9a5",
         "type": "tabs",
         "children": [
           {
-            "id": "8c78d3028a5c6f83",
+            "id": "630c847dcc953a02",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -46,7 +39,7 @@
             }
           },
           {
-            "id": "6194ed442f30f400",
+            "id": "873d819714e56083",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -61,7 +54,7 @@
             }
           },
           {
-            "id": "578595de04122ae9",
+            "id": "1f75d5a139ab8ee1",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -75,20 +68,19 @@
     "width": 300
   },
   "right": {
-    "id": "f119f0dd1b1fd12c",
+    "id": "6b95da0ad88bf464",
     "type": "split",
     "children": [
       {
-        "id": "c54ccdb5a4517eb8",
+        "id": "c44e1ac4adf71271",
         "type": "tabs",
         "children": [
           {
-            "id": "eb7ef8f9bc222ef1",
+            "id": "bf83162ab4f1e509",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "coursera.com.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,19 +92,18 @@
             }
           },
           {
-            "id": "9e6a2aad3c882155",
+            "id": "05597f5b74c26eee",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "coursera.com.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "52e787a785b5850e",
+            "id": "acd07f52dce465a9",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -123,13 +114,11 @@
             }
           },
           {
-            "id": "f1f99f283b51d073",
+            "id": "fc1e5babc05e77b2",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "coursera.com.canvas"
-              }
+              "state": {}
             }
           }
         ]
@@ -149,9 +138,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9f97008473b8d68d",
-  "lastOpenFiles": [
-    "RPI LAB 3.md",
-    "coursera.com.canvas"
-  ]
+  "active": "72912638ff028f49",
+  "lastOpenFiles": []
 }
