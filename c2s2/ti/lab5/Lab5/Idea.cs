@@ -1,53 +1,82 @@
-﻿namespace Lab6
+﻿using System.Security.Cryptography;
+using System.Text;
+
+namespace Lab6
 {
     public class Idea
     {
         public static int Rounds = 8;
         public int[] SubKey;
-
-        public Idea(string charKey, bool encrypt)
+        
+        public static byte[] GetHash(string inputString)
         {
-            var key = GenerateUserKeyFromCharKey(charKey);
+            using var algorithm = SHA256.Create();
+            return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
+        }
+        
+        public static string GetHashString(string inputString)
+        {
+            var sb = new StringBuilder();
+            foreach (var b in GetHash(inputString))
+                sb.Append(b.ToString("X2"));
+
+            return sb.ToString();
+        }
+
+        public static string CreateRandomKey(int maxLength = 100)
+        {
+            var r = new Random();
+            return GetHashString(Enumerable.Range(0, maxLength).Aggregate(string.Empty, (current, _) => current + (char)r.Next(68, 90)))[..maxLength];
+        }
+        public Idea(string charKeyLength, bool encrypt)
+        {
+            var key = GenerateUserKeyFromCharKey(charKeyLength);
             var tempSubKey = ExpandUserKey(key);
             SubKey = encrypt ? tempSubKey : InvertSubKey(tempSubKey);
         }
 
         public byte[] Crypt(byte[] data, int dataPos = 0)
         {
-            var x0 = ((data[dataPos + 0] & 0xFF) << 8) | (data[dataPos + 1] & 0xFF);
-            var x1 = ((data[dataPos + 2] & 0xFF) << 8) | (data[dataPos + 3] & 0xFF);
-            var x2 = ((data[dataPos + 4] & 0xFF) << 8) | (data[dataPos + 5] & 0xFF);
-            var x3 = ((data[dataPos + 6] & 0xFF) << 8) | (data[dataPos + 7] & 0xFF);
-            var p = 0;
-            for (var round = 0; round < Rounds; round++)
+            for (var i = 0; i < data.Length - 8; i += 8)
             {
-                var y0 = Mul(x0, SubKey[p++]);
-                var y1 = Add(x1, SubKey[p++]);
-                var y2 = Add(x2, SubKey[p++]);
-                var y3 = Mul(x3, SubKey[p++]);
-                var t0 = Mul(y0 ^ y2, SubKey[p++]);
-                var t1 = Add(y1 ^ y3, t0);
-                var t2 = Mul(t1, SubKey[p++]);
-                var t3 = Add(t0, t2);
-                x0 = y0 ^ t2;
-                x1 = y2 ^ t2;
-                x2 = y1 ^ t3;
-                x3 = y3 ^ t3;
+                var x0 = ((data[dataPos + 0] & 0xFF) << 8) | (data[dataPos + 1] & 0xFF);
+                var x1 = ((data[dataPos + 2] & 0xFF) << 8) | (data[dataPos + 3] & 0xFF);
+                var x2 = ((data[dataPos + 4] & 0xFF) << 8) | (data[dataPos + 5] & 0xFF);
+                var x3 = ((data[dataPos + 6] & 0xFF) << 8) | (data[dataPos + 7] & 0xFF);
+                var p = 0;
+                for (var round = 0; round < Rounds; round++)
+                {
+                    var y0 = Mul(x0, SubKey[p++]);
+                    var y1 = Add(x1, SubKey[p++]);
+                    var y2 = Add(x2, SubKey[p++]);
+                    var y3 = Mul(x3, SubKey[p++]);
+                    var t0 = Mul(y0 ^ y2, SubKey[p++]);
+                    var t1 = Add(y1 ^ y3, t0);
+                    var t2 = Mul(t1, SubKey[p++]);
+                    var t3 = Add(t0, t2);
+                    x0 = y0 ^ t2;
+                    x1 = y2 ^ t2;
+                    x2 = y1 ^ t3;
+                    x3 = y3 ^ t3;
+                }
+
+                var r0 = Mul(x0, SubKey[p++]);
+                var r1 = Add(x2, SubKey[p++]);
+                var r2 = Add(x1, SubKey[p++]);
+                var r3 = Mul(x3, SubKey[p++]);
+
+                data[dataPos + 0] = (byte)(r0 >> 8);
+                data[dataPos + 1] = (byte)r0;
+                data[dataPos + 2] = (byte)(r1 >> 8);
+                data[dataPos + 3] = (byte)r1;
+                data[dataPos + 4] = (byte)(r2 >> 8);
+                data[dataPos + 5] = (byte)r2;
+                data[dataPos + 6] = (byte)(r3 >> 8);
+                data[dataPos + 7] = (byte)r3;
+
+                dataPos += 8;
+                dataPos = Math.Clamp(dataPos, 0, data.Length - 8);
             }
-            
-            var r0 = Mul(x0, SubKey[p++]);
-            var r1 = Add(x2, SubKey[p++]);
-            var r2 = Add(x1, SubKey[p++]);
-            var r3 = Mul(x3, SubKey[p++]);
-            
-            data[dataPos + 0] = (byte)(r0 >> 8);
-            data[dataPos + 1] = (byte)r0;
-            data[dataPos + 2] = (byte)(r1 >> 8);
-            data[dataPos + 3] = (byte)r1;
-            data[dataPos + 4] = (byte)(r2 >> 8);
-            data[dataPos + 5] = (byte)r2;
-            data[dataPos + 6] = (byte)(r3 >> 8);
-            data[dataPos + 7] = (byte)r3;
 
             return data;
         }
@@ -135,7 +164,7 @@
             }
         }
         
-        private static byte[] GenerateUserKeyFromCharKey(String charKey)
+        private static byte[] GenerateUserKeyFromCharKey(string charKey)
         {
             var nofChar = 0x7E - 0x21 + 1;
             var a = new int[8];
