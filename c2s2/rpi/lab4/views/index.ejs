@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/simple.css">
+    <title>Main</title>
+</head>
+<body> 
+	<h1>Career</h1>
+	<p>Пожалуйста <mark>заполните анкету</mark> ниже мы ищем кандидата который будет хороший и хорошо работать если вы думаете что это про вас то пожалуйста заполните анкету ниже</p> 
+	<p><strong>Отправляя CV вы соглашаетесь с обработкой ваших данных</strong></p>
+	<form action="/" method="post">
+		<p>Technology: </br><select>
+			<option selected="selected" value="1">Title</option>
+			<option value="2">.Net</option>
+			<option value="3">Java</option>
+			<option value="4">Go</option>
+			<option value="5">C++</option>
+		  </select></p>
+		<p>
+		<label>First name</label>
+		<input type="text" name="first_name" required="true">
+		</p>
+		<p>
+			<label>Surname</label>
+			<input type="text" name="surname" required="true">
+		</p>
+		<p>
+			<label>Email</label>
+			<input type="email" name="email" required="true">
+		</p>
+		<p>
+			<label>Location: </label>
+			<label><input checked="checked" name="type" type="radio" value="sales" />Minsk</label> 
+			<label><input name="type" type="radio" value="support" />Vorkuta</label> 
+			<label><input name="type" type="radio" value="billing" />Springfield</label>
+		</p>
+		<p>
+			<label>About you: </label>
+			<textarea rows="6"></textarea>
+		</p>
+		<p>
+			<input type="file" id="cv" name="cv" accept="application/pdf">
+		</p>
+		<p>
+			<label>
+			<input type="checkbox" id="checkbox" value="terms">
+			I agree to the <a href="#">terms and conditions</a>
+			</label>
+		</p>
+		<button>Send</button>
+	</form>
+</body>
+</html>
