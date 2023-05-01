@@ -1,0 +1,12 @@
+.selected{
+    color:blue;
+    border-left:4px solid blue;
+}
+
+li {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}

@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>     
+</head>
+<style>
+  #container {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+#animate {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+}
+</style>
+<body>
+  <div id ="container">
+    <div id ="animate"></div>
+  </div>
+  <script>
+
+let count = 0;
+function myMove() {
+  let id = null;
+  const elem = document.getElementById("animate");   
+  let pos = 720;
+
+  let inverseDirection = false;
+
+  clearInterval(id);
+  id = setInterval(frame, 5);
+  function frame() {
+    if(count === 3){
+      elem.style.left = "0px";
+      return;
+    }
+    if (pos === 720 && !inverseDirection) {
+      inverseDirection = true;
+    }else if(pos === 0 && inverseDirection){
+      pos = 720;
+      count++;
+      console.log(count);
+    }
+    pos = (inverseDirection) ? pos-1 : pos+1; 
+    elem.style.left = pos + "px";
+  }
+
+}
+
+  myMove();
+  </script>
+
+</body>
+</html>

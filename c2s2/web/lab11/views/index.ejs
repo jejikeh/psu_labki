@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/slide.css">
+    <title>Document</title>  
+     <style>
+      *{
+        box-sizing: border-box;
+      }
+       html, body{
+      margin:0;
+      padding:0;
+      }
+      .grid-container {
+      width: 100%;
+      overflow: auto;
+      }
+      .grid-item {
+        float:left; 
+        width: 50%;
+        height: 100%;
+      }
+
+      .grid-item-long {
+        width: auto;
+        padding: 5%;
+        margin: 5%;
+      }
+
+      .grid-item-in {
+        width: 70%;
+        height: 30%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        padding: 5%;
+      }
+
+      .grid-item-in-down {
+        height: 30%;
+        margin: 20 20 20 20;
+        justify-content: space-between;
+        position: fixed;
+        padding: 3%;
+        bottom: 0;
+        width: 47%;
+        height: 50%;
+      }
+
+      .grid-item-in-in-left {
+        float: left;
+        width: 20%;
+        height: 30%;
+      }
+      .grid-item-in-in-right {
+        float: right;
+        width: 20%;
+        height: 30%;
+      }
+
+      .grid-item-in-in-long {
+        width: 10%;
+        height: 100%;
+      }
+      .color1 {background-color: #675BA7;}
+      .color2 {background-color: #9BC850;}
+      .color3 {background-color: #A62E5C;}
+      .color4 {background-color: #2A9FBC;}
+      .color5 {background-color: #4e342e;}
+      </style>   
+</head>
+<body>
+<div class="grid-container">
+<div class="grid-item color1">
+  <p>Grid Item 1</p>
+  <div class="grid-item-in color5">
+      <div class="grid-item-in-in-left color3">
+        <p>Grid Item 4</p>
+      </div>
+      <div class="grid-item-in-in-right color3">
+        <p>Grid Item 4</p>
+      </div>
+    </div>
+</div>
+<div class="grid-item color2">
+  <p>Grid Item 2</p>
+  <div class="grid-item-long color3">
+    <p>Grid Item 4</p>
+  </div>
+  <div class="grid-item-in-down color5">
+    <div class="grid-item-in-in-long color3">
+      <p>Grid Item 4</p>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
+
+<script>
+  function iterateArray(arr) {
+  arr.forEach((item, index) => {
+    if (item === 11) {
+      console.error(`Item: ${item}`);
+    } else {
+      console.log(`Item: ${item}`);
+    }
+  });
+}
+
+
+iterateArray([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14])
+</script>
+
+</body>
+</html>
