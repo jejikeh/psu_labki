@@ -5,7 +5,7 @@ using Todo.Backend.Application.Common.Exceptions;
 
 namespace Todo.Backend.Middlewares;
 
-public class CustomExceptionMiddleware
+public class CustomExceptionHandlerMiddleware
 {
     private readonly RequestDelegate _next;
 

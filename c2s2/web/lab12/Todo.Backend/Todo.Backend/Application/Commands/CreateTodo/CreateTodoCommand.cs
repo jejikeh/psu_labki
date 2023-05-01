@@ -1,6 +1,8 @@
-﻿namespace Todo.Backend.Application.Commands.CreateTodo;
+﻿using MediatR;
 
-public class CreateTodoCommand
+namespace Todo.Backend.Application.Commands.CreateTodo;
+
+public class CreateTodoCommand : IRequest<Models.Todo>
 {
-    
+    public string Title { get; set; } = string.Empty;
 }

@@ -10,7 +10,7 @@ namespace Todo.Backend.Controllers;
 
 [Route("api/[controller]/")]
 [ApiController]
-public class TodoController : ControllerBase
+public class TodosController : ControllerBase
 {
     private IMediator? _mediator;
     private IMediator? Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
@@ -50,7 +50,7 @@ public class TodoController : ControllerBase
     }
     
     [HttpPut]
-    public async Task<ActionResult<Models.Todo>> UpdateTodo(Guid id, [FromBody] UpdateTodoCommand updateTodoCommand)
+    public async Task<ActionResult<Models.Todo>> UpdateTodo([FromBody] UpdateTodoCommand updateTodoCommand)
     {
         if (Mediator is null)
             return BadRequest("Internal server error");

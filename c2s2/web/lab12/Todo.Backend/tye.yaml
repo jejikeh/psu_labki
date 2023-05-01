@@ -1,0 +1,17 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: todo.backend
+services:
+  - name: todo-backend
+    project: Todo.Backend/Todo.Backend.csproj
+    bindings:
+      - port: 3000
+  - name: todo-app-dev
+    external: true
+    bindings:
+      - port: 5432
+        connectionString: Host=localhost;Port=${port};Username=todo_app_dev;Password=todo_app_dev;

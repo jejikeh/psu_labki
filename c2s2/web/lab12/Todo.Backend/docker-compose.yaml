@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  todo.api:
+    image: debezium/postgres:13-alpine
+    environment:
+      - POSTGRES_DATABASE=todo_app_dev
+      - POSTGRES_USER=todo_app_dev
+      - POSTGRES_PASSWORD=todo_app_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/data/db
+
+volumes:
+  postgres-data:
