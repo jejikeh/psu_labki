@@ -1,13 +1,13 @@
 ﻿namespace Lab5;
 
-public class CustomException : Exception
+public class EmptyListException : Exception
 {
-    public CustomException(string message)
+    public EmptyListException(string message)
         : base(message)
     {
     }
 
-    public CustomException(string message, Exception inner)
+    public EmptyListException(string message, Exception inner)
         : base(message, inner)
     {
     }

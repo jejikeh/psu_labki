@@ -7,4 +7,8 @@ public interface IEvent
     public IEvent EditFromKeyboard();
     public string Print();
 
+    public static IEvent CreateEmptyObject()
+    {
+        return new SingleEvent();
+    }
 }

@@ -9,6 +9,16 @@ public class RepeatedEvent : SomeEvent<List<DateTime>>
         Date = new List<DateTime>();
     }
     
+    public static bool operator >(RepeatedEvent a, RepeatedEvent b)
+    {
+        return a._countEvents > b._countEvents;
+    }
+    
+    public static bool operator <(RepeatedEvent a, RepeatedEvent b)
+    {
+        return a._countEvents < b._countEvents;
+    }
+    
     ~RepeatedEvent()
     {
         Console.WriteLine($"{Title} destructor was called of {GetType().Name}");
@@ -17,7 +27,7 @@ public class RepeatedEvent : SomeEvent<List<DateTime>>
     public override string Print()
     {
         var table = Date.Aggregate(string.Empty, (current, dateTime) => current + ("\t* " + dateTime + "\n"));
-        return $"\nTitle:\n  \t{Title}\n Date:\n DateTable:\n {table}\n";
+        return $"\nTitle: \t{Title}\n Date:\n DateTable:\n {table}\n";
     }
 
     public override IEvent Copy(IEvent source)

@@ -9,7 +9,7 @@ public abstract class SomeEvent<T> : IEvent, IEquatable<SomeEvent<T>>
     public int MaxTickets { get; protected set; }
 
     public T Date { get; protected set; }
-
+    
     protected SomeEvent()
     {
         Title = "unset";

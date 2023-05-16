@@ -14,6 +14,17 @@ public class SingleEvent : SomeEvent<DateTime>
         }
 
         return this;
+
+    }
+
+    public static bool operator >(SingleEvent a, SingleEvent b)
+    {
+        return a.MaxTickets > b.MaxTickets;
+    }
+    
+    public static bool operator <(SingleEvent a, SingleEvent b)
+    {
+        return a.MaxTickets < b.MaxTickets;
     }
 
     ~SingleEvent()
