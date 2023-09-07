@@ -1,0 +1,3 @@
+[submodule "c3s1/bd/bdpq"]
+	path = c3s1/bd/bdpq
+	url = https://github.com/jejikeh/bdpq.git
