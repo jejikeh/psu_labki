@@ -1,0 +1,163 @@
+<mxfile host="app.diagrams.net" modified="2023-10-09T14:19:02.584Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15" etag="BPMISJVJ4YPv0NaF5_eV" version="22.0.4" type="device">
+  <diagram name="Page-1" id="sD1DLp4eG9RYWi7L-q5p">
+    <mxGraphModel dx="1197" dy="1913" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ADrCmud-U3za4l3RgM_1-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-1" target="ADrCmud-U3za4l3RgM_1-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.192;entryY=0.95;entryDx=0;entryDy=0;endArrow=none;endFill=0;entryPerimeter=0;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-1" target="ADrCmud-U3za4l3RgM_1-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="360" />
+              <mxPoint x="450" y="10" />
+              <mxPoint x="448" y="10" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-1" value="Диспетчер" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-5" target="ADrCmud-U3za4l3RgM_1-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-5" target="ADrCmud-U3za4l3RgM_1-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-5" target="ADrCmud-U3za4l3RgM_1-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-5" target="ADrCmud-U3za4l3RgM_1-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-5" value="Водитель" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="-60" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-7" target="ADrCmud-U3za4l3RgM_1-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-33" value="&quot;includes&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ADrCmud-U3za4l3RgM_1-32">
+          <mxGeometry x="-0.0571" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-7" value="Распределение рейса" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="110" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;endFill=0;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-16" target="ADrCmud-U3za4l3RgM_1-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-16" target="ADrCmud-U3za4l3RgM_1-95">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-97" value="&quot;includes&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ADrCmud-U3za4l3RgM_1-96">
+          <mxGeometry x="-0.3729" y="-5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-16" value="Закрепить автомобиль за водителем" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="40" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.413;entryY=1.019;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-1" target="ADrCmud-U3za4l3RgM_1-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=classic;startFill=1;dashed=1;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-24" target="ADrCmud-U3za4l3RgM_1-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-26" value="&quot;includes&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ADrCmud-U3za4l3RgM_1-25">
+          <mxGeometry x="0.0087" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-24" value="Просмотреть характеристики автомобиля" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="-260" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.633;entryY=1.013;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;dashed=1;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-7" target="ADrCmud-U3za4l3RgM_1-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-28" value="&quot;extends&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ADrCmud-U3za4l3RgM_1-27">
+          <mxGeometry x="0.1312" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-35" value="Просмотреть назначенные рейсы" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="-240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;dashed=1;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-37" target="ADrCmud-U3za4l3RgM_1-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-48" value="&quot;extends&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ADrCmud-U3za4l3RgM_1-47">
+          <mxGeometry x="0.3825" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-37" value="Обновить данные о состоянии автомобиля" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="-360" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-39" target="ADrCmud-U3za4l3RgM_1-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-43" value="&quot;extends&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ADrCmud-U3za4l3RgM_1-41">
+          <mxGeometry x="-0.1162" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-39" value="Ввести данные о состоянии Двигателя" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="425" y="-540" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-40" target="ADrCmud-U3za4l3RgM_1-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-44" value="&quot;extends&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ADrCmud-U3za4l3RgM_1-42">
+          <mxGeometry x="0.1167" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-40" value="Ввести данные о состоянии Бензина" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="-440" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-45" value="Оповестить о выполнеиии Рейса" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="-480" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-49" value="Система Автобаза" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="-600" width="870" height="1010" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-85" value="Найти свободно Водителя с автомобилем" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="ADrCmud-U3za4l3RgM_1-49">
+          <mxGeometry x="550" y="320" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-17" value="Просмотреть состояние автомобиля водителя" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="ADrCmud-U3za4l3RgM_1-49">
+          <mxGeometry x="370" y="480" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-31" value="Выбрать Водителя" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="ADrCmud-U3za4l3RgM_1-49">
+          <mxGeometry x="520" y="490" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-87" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;exitX=0.587;exitY=-0.002;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="ADrCmud-U3za4l3RgM_1-49" source="ADrCmud-U3za4l3RgM_1-31" target="ADrCmud-U3za4l3RgM_1-85">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="389.9999999999998" as="sourcePoint" />
+            <mxPoint x="740" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-88" value="&quot;includes&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ADrCmud-U3za4l3RgM_1-87">
+          <mxGeometry x="-0.0571" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-95" value="Выбрать Автомобиль" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="ADrCmud-U3za4l3RgM_1-49">
+          <mxGeometry x="690" y="480" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.788;entryY=0.99;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;dashed=1;" edge="1" parent="1" source="ADrCmud-U3za4l3RgM_1-16" target="ADrCmud-U3za4l3RgM_1-17">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="160" as="sourcePoint" />
+            <mxPoint x="556" y="-29" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ADrCmud-U3za4l3RgM_1-90" value="&quot;extends&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ADrCmud-U3za4l3RgM_1-89">
+          <mxGeometry x="0.1312" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
