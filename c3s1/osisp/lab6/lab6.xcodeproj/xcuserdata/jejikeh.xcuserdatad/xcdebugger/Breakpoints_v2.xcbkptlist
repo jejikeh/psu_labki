@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "F87D6E14-6724-48F0-86C4-866D2AD0158A"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "57F2D91C-F29C-4E25-BCB6-E568E87BDAF6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lab6/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "main()"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "57F2D91C-F29C-4E25-BCB6-E568E87BDAF6 - 5a543ddc2448a820"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "lab6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jejikeh/Documents/psu_labki/c3s1/osisp/lab6/lab6/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  uuid = "57F2D91C-F29C-4E25-BCB6-E568E87BDAF6 - 5a543ddc2448a820"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "lab6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jejikeh/Documents/psu_labki/c3s1/osisp/lab6/lab6/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "156">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE26EC4F-90B5-450D-B9BE-2ADE292A0BB2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lab6/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5"
+            endingLineNumber = "5"
+            landmarkName = "child_1(c)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "CE26EC4F-90B5-450D-B9BE-2ADE292A0BB2 - 8308668cb8ffd12f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "child_1(int)"
+                  moduleName = "lab6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jejikeh/Documents/psu_labki/c3s1/osisp/lab6/lab6/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "CE26EC4F-90B5-450D-B9BE-2ADE292A0BB2 - 8308668cb8ffd16d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "child_1(int)"
+                  moduleName = "lab6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jejikeh/Documents/psu_labki/c3s1/osisp/lab6/lab6/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC3F8B0C-9A5B-42E3-838D-52847EE08E09"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lab6/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5"
+            endingLineNumber = "5"
+            landmarkName = "child_1(c)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "BC3F8B0C-9A5B-42E3-838D-52847EE08E09 - 8308668cb8ffd12f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "child_1(int)"
+                  moduleName = "lab6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jejikeh/Documents/psu_labki/c3s1/osisp/lab6/lab6/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "BC3F8B0C-9A5B-42E3-838D-52847EE08E09 - 8308668cb8ffd16d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "child_1(int)"
+                  moduleName = "lab6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jejikeh/Documents/psu_labki/c3s1/osisp/lab6/lab6/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "05AE8686-E05A-4AD6-8BEC-85444C132B79"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "lab6/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "6"
+            endingLineNumber = "6"
+            landmarkName = "child_1(c)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
