@@ -64,6 +64,12 @@ type Storage interface {
 	DeleteUserFromTeam(uuid.UUID, uuid.UUID) error
 	GetUserTeam(uuid.UUID, uuid.UUID) (*UserTeam, error)
 	GetUserTeams(uuid.UUID) ([]UserTeam, error)
+
+	CreateTaskComment(*TaskComment) error
+	DeleteTaskComment(uuid.UUID) error
+	UpdateTaskComment(*TaskComment) error
+	GetTaskComment(uuid.UUID) (*TaskComment, error)
+	GetTaskComments() ([]TaskComment, error)
 }
 
 type PostgresStorage struct {
@@ -127,6 +133,11 @@ func (s *PostgresStorage) InitTables() error {
 	}
 
 	err = createUserTeamTable(s.db)
+	if err != nil {
+		return err
+	}
+
+	err = createTaskCommentTable(s.db)
 	if err != nil {
 		return err
 	}
@@ -298,6 +309,26 @@ func createTaskTable(conn *pgx.Conn) error {
 	return nil
 }
 
+func createTaskCommentTable(conn *pgx.Conn) error {
+	query := `CREATE TABLE IF NOT EXISTS task_comments (
+		id TEXT PRIMARY KEY,
+
+		content TEXT NOT NULL,
+		fk_task_id TEXT NOT NULL,
+		FOREIGN KEY (fk_task_id) REFERENCES tasks(id),
+
+		fk_author_id TEXT NOT NULL,
+		FOREIGN KEY (fk_author_id) REFERENCES users(id)
+	);`
+
+	_, err := conn.Exec(context.Background(), query)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func createUserTable(conn *pgx.Conn) error {
 	query := `CREATE TABLE IF NOT EXISTS users (
 		id TEXT PRIMARY KEY,
@@ -382,7 +413,7 @@ func createTeamTable(conn *pgx.Conn) error {
 		id TEXT PRIMARY KEY,
 		description TEXT,
 
-		fk_project_id TEXT,
+		fk_project_id TEXT NOT NULL,
 		FOREIGN KEY (fk_project_id) REFERENCES projects(id)
 	);`
 
@@ -1017,4 +1048,72 @@ func (s *PostgresStorage) GetUserTeams(userId uuid.UUID) ([]UserTeam, error) {
 	}
 
 	return teams, nil
+}
+
+// ======= TASK COMMENT ============
+
+func (s *PostgresStorage) CreateTaskComment(taskComment *TaskComment) error {
+	query := `INSERT INTO task_comments (id, fk_task_id, fk_author_id, content) VALUES ($1, $2, $3, $4) RETURNING id`
+
+	pk := uuid.UUID{}
+	err := s.db.QueryRow(context.Background(), query, taskComment.ID, taskComment.Task, taskComment.Author, taskComment.Content).Scan(&pk)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (s *PostgresStorage) DeleteTaskComment(id uuid.UUID) error {
+	_, err := s.db.Exec(context.Background(), "DELETE FROM task_comments WHERE id = $1", id)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (s *PostgresStorage) UpdateTaskComment(taskComment *TaskComment) error {
+	return nil
+}
+
+func (s *PostgresStorage) GetTaskComment(id uuid.UUID) (*TaskComment, error) {
+	taskComment := TaskComment{}
+
+	query := "SELECT id, fK_task_id, fk_author_id, content FROM task_comments WHERE id = $1"
+	err := s.db.QueryRow(context.Background(), query, id).Scan(&taskComment.ID, &taskComment.Task, &taskComment.Author, &taskComment.Content)
+	if err != nil {
+		if err == pgx.ErrNoRows {
+			return nil, fmt.Errorf("no task comment found with id: %v", id)
+		}
+
+		return nil, err
+	}
+
+	return &taskComment, nil
+}
+
+func (s *PostgresStorage) GetTaskComments() ([]TaskComment, error) {
+	taskComments := []TaskComment{}
+
+	query := "SELECT id, fk_task_id, fk_author_id, content FROM task_comments"
+
+	rows, err := s.db.Query(context.Background(), query)
+	if err != nil {
+		log.Fatalf("Unable to select task comments: %v\n", err)
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		taskComment := TaskComment{}
+		err := rows.Scan(&taskComment.ID, &taskComment.Task, &taskComment.Author, &taskComment.Content)
+		if err != nil {
+			log.Fatalf("Unable to scan task comments: %v\n", err)
+		}
+
+		taskComments = append(taskComments, taskComment)
+	}
+
+	return taskComments, nil
 }

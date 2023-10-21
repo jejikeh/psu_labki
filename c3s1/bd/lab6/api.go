@@ -37,6 +37,9 @@ func (s *ApiServer) Run() {
 	router.HandleFunc("/team/", makeHttpHandleFunc(s.handleTeam))
 	router.HandleFunc("/team/{id}/", makeHttpHandleFunc(s.handleTeamWithId))
 
+	router.HandleFunc("/comment/", makeHttpHandleFunc(s.handleTaskComment))
+	router.HandleFunc("/comment/{id}/", makeHttpHandleFunc(s.handleTaskCommentWithId))
+
 	router.HandleFunc("/user/{user_id}/team/{id}/", makeHttpHandleFunc(s.handleAddUserToTeam))
 	router.HandleFunc("/user/{id}/team/", makeHttpHandleFunc(s.handleUserTeams))
 
@@ -475,7 +478,7 @@ func (s *ApiServer) handleCreateTask(w http.ResponseWriter, r *http.Request) err
 }
 
 func (s *ApiServer) handleDeleteTask(w http.ResponseWriter, r *http.Request) error {
-	err := s.store.DeleteProject(uuid.MustParse(mux.Vars(r)["id"]))
+	err := s.store.DeleteTask(uuid.MustParse(mux.Vars(r)["id"]))
 	if err != nil {
 		return err
 	}
@@ -671,4 +674,70 @@ func (s *ApiServer) handleUserTeams(w http.ResponseWriter, r *http.Request) erro
 	}
 
 	return WriteJson(w, http.StatusOK, project)
+}
+
+// ======= TASK COMMENT =========
+
+func (s *ApiServer) handleTaskComment(w http.ResponseWriter, r *http.Request) error {
+	if r.Method == http.MethodGet {
+		return s.handleGetTaskComments(w, r)
+	}
+
+	if r.Method == http.MethodPost {
+		return s.handleCreateTaskComment(w, r)
+	}
+
+	return fmt.Errorf("unsupported method: %s", r.Method)
+}
+
+func (s *ApiServer) handleGetTaskComments(w http.ResponseWriter, r *http.Request) error {
+	tasks, err := s.store.GetTaskComments()
+	if err != nil {
+		return err
+	}
+
+	return WriteJson(w, http.StatusOK, tasks)
+}
+
+func (s *ApiServer) handleTaskCommentWithId(w http.ResponseWriter, r *http.Request) error {
+	if r.Method == http.MethodGet {
+		id := mux.Vars(r)["id"]
+		project, err := s.store.GetTaskComment(uuid.MustParse(id))
+		if err != nil {
+			return err
+		}
+
+		return WriteJson(w, http.StatusOK, project)
+	}
+
+	if r.Method == http.MethodDelete {
+		return s.handleDeleteTaskComment(w, r)
+	}
+
+	return fmt.Errorf("unsupported method: %s", r.Method)
+}
+
+func (s *ApiServer) handleCreateTaskComment(w http.ResponseWriter, r *http.Request) error {
+	taskRequest := TaskCommentCreateRequest{}
+	if err := json.NewDecoder(r.Body).Decode(&taskRequest); err != nil {
+		return err
+	}
+
+	task := NewTaskComment(taskRequest.Task, taskRequest.Author, taskRequest.Content)
+	if err := s.store.CreateTaskComment(task); err != nil {
+		return err
+	}
+
+	return WriteJson(w, http.StatusOK, task)
+}
+
+func (s *ApiServer) handleDeleteTaskComment(w http.ResponseWriter, r *http.Request) error {
+	err := s.store.DeleteTaskComment(uuid.MustParse(mux.Vars(r)["id"]))
+	if err != nil {
+		return err
+	}
+
+	return WriteJson(w, http.StatusOK, map[string]uuid.UUID{
+		"deleted": uuid.MustParse(mux.Vars(r)["id"]),
+	})
 }

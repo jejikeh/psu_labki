@@ -191,3 +191,25 @@ func NewUserTeam(user, team string) *UserTeam {
 		Team: uuid.MustParse(team),
 	}
 }
+
+type TaskComment struct {
+	ID      uuid.UUID `json:"id"`
+	Task    uuid.UUID `json:"task"`
+	Author  uuid.UUID `json:"author"`
+	Content string    `json:"content"`
+}
+
+type TaskCommentCreateRequest struct {
+	Task    string `json:"task"`
+	Author  string `json:"author"`
+	Content string `json:"content"`
+}
+
+func NewTaskComment(task, author, content string) *TaskComment {
+	return &TaskComment{
+		ID:      uuid.New(),
+		Task:    uuid.MustParse(task),
+		Author:  uuid.MustParse(author),
+		Content: content,
+	}
+}
