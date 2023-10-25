@@ -1,7 +1,7 @@
 using System;
 using Gtk;
 
-namespace Lab2
+namespace Lab2_1
 {
     class Program
     {
@@ -10,7 +10,7 @@ namespace Lab2
         {
             Application.Init();
 
-            var app = new Application("org.Lab2.Lab2", GLib.ApplicationFlags.None);
+            var app = new Application("org.Lab2_1.Lab2_1", GLib.ApplicationFlags.None);
             app.Register(GLib.Cancellable.Current);
 
             var win = new MainWindow();

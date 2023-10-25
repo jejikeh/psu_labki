@@ -10,8 +10,6 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
-    restored_image = Image.open(io.BytesIO(msg.payload))
-    restored_image.save('restored_image.jpg')
 
 client = mqtt.Client()
 client.on_connect = on_connect
