@@ -1,6 +1,8 @@
 using System;
+using Gdk;
 using Gtk;
 using UI = Gtk.Builder.ObjectAttribute;
+using Window = Gtk.Window;
 
 namespace Lab2_1
 {
