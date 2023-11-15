@@ -11,7 +11,6 @@ static int a = 0;
 static char buffer[100]; 
 
 void *threadFunc1(void *vargp) {
-
     if (lock == 0) {
         lock = 1;
 
@@ -30,7 +29,6 @@ void *threadFunc1(void *vargp) {
 }
 
 void *threadFunc2(void *vargp) {
-
     if (lock == 0) {
         lock = 1;
 
