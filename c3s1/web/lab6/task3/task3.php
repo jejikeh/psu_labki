@@ -1,12 +1,10 @@
 <?php
 $folderPath = './test';
 
-// Получаем размер папки в байтах
 $folderSize = folderSize($folderPath);
 
 echo "Размер папки $folderPath: " . formatSize($folderSize) . "<br>";
 
-// Функция для рекурсивного подсчета размера папки
 function folderSize($dir)
 {
     $size = 0;
@@ -16,7 +14,6 @@ function folderSize($dir)
     return $size;
 }
 
-// Функция для форматирования размера в более читаемый вид
 function formatSize($size)
 {
     $units = ['B', 'KB', 'MB', 'GB', 'TB'];

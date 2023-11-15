@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-// Записываем время захода пользователя в сессию при первом посещении
 if (!isset($_SESSION['login_time'])) {
     $_SESSION['login_time'] = time();
 }
 
-// Вычисляем разницу во времени
 $secondsAgo = time() - $_SESSION['login_time'];
 ?>
 <!DOCTYPE html>

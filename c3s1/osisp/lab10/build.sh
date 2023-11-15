@@ -12,4 +12,10 @@ ninja -C build server
 echo "Building client..."
 ninja -C build client
 
+echo "Building reader"
+ninja -C build reader
+
+echo "Building writer"
+ninja -C build writer
+
 echo "Build process completed."

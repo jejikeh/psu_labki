@@ -1,3 +1,5 @@
-project('lab10', 'c')
-executable('server', 'server.c')
-executable('client', 'client.c')
+project('lab10', 'cpp')
+executable('server', 'server.cpp')
+executable('client', 'client.cpp')
+executable('writer', 'writer.cpp')
+executable('reader', 'reader.cpp')

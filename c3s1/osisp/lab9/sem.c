@@ -22,8 +22,6 @@ void *threadFunc(void *vargp) {
     fprintf(fp, "Hello, World! From thread %d\n", t_id);
     fclose(fp);
 
-    sleep(1);
-
     sem_post(&semaphore);
 
     return NULL;

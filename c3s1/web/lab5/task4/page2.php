@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Получение сообщения из сессии
 $userMessage = isset($_SESSION['user_message']) ? $_SESSION['user_message'] : 'Сообщение отсутствует';
 ?>
 <!DOCTYPE html>

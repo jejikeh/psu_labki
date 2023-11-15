@@ -1,15 +1,12 @@
 <?php
 session_start();
 
-// Инициализация счетчика, если он не был установлен в сессии
 if (!isset($_SESSION['page_refresh_count'])) {
     $_SESSION['page_refresh_count'] = 0;
 }
 
-// Увеличение счетчика при каждом обновлении страницы
 $_SESSION['page_refresh_count']++;
 
-// Получение текущего значения счетчика
 $pageRefreshCount = $_SESSION['page_refresh_count'];
 ?>
 <!DOCTYPE html>

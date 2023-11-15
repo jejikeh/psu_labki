@@ -11,7 +11,17 @@ static int a = 0;
 void *threadFunc(void *vargp) {
     pthread_mutex_lock(&a_lock);
 
-    a++;
+    pid_t t_id = getpid();
+
+    FILE *fp = fopen("file.txt", "a");
+
+    if (fp == NULL) {
+        perror("Error opening file");
+        exit(1);
+    }
+
+    fprintf(fp, "Hello, World! From thread %d\n", t_id);
+    fclose(fp);
 
     pthread_mutex_unlock(&a_lock);
 
@@ -19,8 +29,6 @@ void *threadFunc(void *vargp) {
 }
 
 int main() {
-    printf("BEGIN: a = %d\n", a);
-
     pthread_t thread_id1, thread_id2;
 
     pthread_create(&thread_id1, NULL, threadFunc, NULL);
@@ -28,8 +36,6 @@ int main() {
 
     pthread_join(thread_id1, NULL);
     pthread_join(thread_id2, NULL);
-
-    printf("END: a = %d\n", a);
 
     exit(0);
 }

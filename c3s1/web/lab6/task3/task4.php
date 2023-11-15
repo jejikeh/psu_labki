@@ -10,7 +10,6 @@ function folderSize($dir)
     return $size;
 }
 
-// Функция для форматирования размера в более читаемый вид
 function formatSize($size)
 {
     $units = ['B', 'KB', 'MB', 'GB', 'TB'];
@@ -20,7 +19,6 @@ function formatSize($size)
     return round($size, 2) . ' ' . $units[$i];
 }
 
-// Получаем список подпапок в папке
 $subfolders = glob($folderPath . '/*', GLOB_ONLYDIR);
 
 foreach ($subfolders as $subfolder) {

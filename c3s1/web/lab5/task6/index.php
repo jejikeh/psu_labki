@@ -1,17 +1,14 @@
 <?php
 session_start();
 
-// Обработка формы
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $country = isset($_POST['country']) ? $_POST['country'] : '';
 
-    // Проверка, что страна была введена
     if (!empty($country)) {
         $_SESSION['user_country'] = $country;
     }
 }
 
-// Получение страны из сессии (если она была записана)
 $userCountry = isset($_SESSION['user_country']) ? $_SESSION['user_country'] : '';
 ?>
 <!DOCTYPE html>
@@ -25,7 +22,6 @@ $userCountry = isset($_SESSION['user_country']) ? $_SESSION['user_country'] : ''
     <h2>Index Page</h2>
 
     <?php if (empty($userCountry)): ?>
-        <!-- Форма для ввода страны -->
         <form method="post">
             <label for="country">Введите вашу страну:</label>
             <input type="text" id="country" name="country" required>

@@ -14,11 +14,17 @@ void *threadFunc1(void *vargp) {
     if (lock == 0) {
         lock = 1;
 
-        for (int i = 0; i < 100; i++) {
-            if (rand() % 2 == 0) {
-                buffer[i] = 'a';
-            }
+        pid_t t_id = getpid();
+
+        FILE *fp = fopen("file.txt", "a");
+
+        if (fp == NULL) {
+            perror("Error opening file");
+            exit(1);
         }
+
+        fprintf(fp, "Hello, World! From thread %d\n", t_id);
+        fclose(fp);
     } else {
         sleep(1);
     }
@@ -58,11 +64,6 @@ int main() {
     pthread_join(thread_id1, NULL);
     pthread_join(thread_id2, NULL);
 
-    for (int i = 0; i < 100; i++) {
-        printf("%c", buffer[i]);
-    }
-
-    printf("\n");
 
     exit(0);
 }
