@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "lab4": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "urls": [
+        "http://localhost:5001/"
+      ],
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5001/"
+      }
+    }
+  }
+}
