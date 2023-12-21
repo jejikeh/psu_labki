@@ -5,10 +5,12 @@ import paho.mqtt.client as mqtt
 import pygame
 import sys
 
+# mqtt_hub = "mqtt.eclipseprojects.io"
 mqtt_hub = "localhost"
 
 pygame.init()
 clock = pygame.time.Clock()
+font = pygame.font.SysFont(None, 64)
 
 screen_width = 640
 screen_height = 480
@@ -19,7 +21,14 @@ ball_speed_y = 7
 player_speed = 0
 player1_speed = 0
 
+player1_score = 0
+player2_score = 0
+
 screen = pygame.display.set_mode((screen_width, screen_height))
+
+img = font.render('hello', True, (200, 200, 200))
+img2 = font.render('hello', True, (200, 200, 200))
+
 pygame.display.set_caption('Pong Client')
 
 ball = pygame.Rect(screen_width/2 - 15, screen_height/2 - 15, 30, 30)
@@ -43,7 +52,6 @@ async def send_player_pos(player_pos):
 
 async def send_all():
     while True:
-        print("send all")
         await send_player_speed(player_speed)
         await send_player_pos(player2.y)
 
@@ -60,6 +68,8 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("minor/jejikeh/pong/player1_pos")
     client.subscribe("minor/jejikeh/pong/ball_pos_x")
     client.subscribe("minor/jejikeh/pong/ball_pos_y")
+    client.subscribe("minor/jejikeh/pong/score_p1")
+    client.subscribe("minor/jejikeh/pong/score_p2")
 
 
 def on_message(client, userdata, msg):
@@ -80,6 +90,20 @@ def on_message(client, userdata, msg):
         # player1_speed = int(msg.payload)
     if msg.topic == "minor/jejikeh/pong/player1_pos":
         player1.y = int(msg.payload)
+
+    if msg.topic == "minor/jejikeh/pong/score_p1":
+        global player1_score
+        player1_score = int(msg.payload)
+
+        global img2
+        img2 = font.render(str(player1_score), True, (200, 200, 200))
+
+    if msg.topic == "minor/jejikeh/pong/score_p2":
+        global player2_score
+        player2_score = int(msg.payload)
+
+        global img
+        img = font.render(str(player2_score), True, (200, 200, 200))
 
 
 client = mqtt.Client()
@@ -137,6 +161,9 @@ while True:
 
     pygame.draw.aaline(screen, light_gray, (screen_width / 2,
                        0), (screen_width / 2, screen_height))
+
+    screen.blit(img, (10, 10))
+    screen.blit(img2, (screen_width - 140, 10))
 
     pygame.display.flip()
     clock.tick(16)

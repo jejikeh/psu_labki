@@ -27,18 +27,21 @@ logger.LogInformation("Listening for connections on {prefix}", listener.Prefixes
 
 await movies.InitMovieTable();
 
-// Seed data
-// for (var i = 0; i < 1000; i++)
-// {
-//     await movies.AddMovie(new Movie
-//     {
-//         Title = $"Movie {i}",
-//         Description = $"Description {i}",
-//         Genre = $"Genre {i}",
-//         Release = i,
-//         Rating = i
-//     });
-// }
+if (configuration["Runtime:InitData"] == "true")
+{
+    logger.LogInformation("Start inserting data");
+    for (var i = 0; i < 1000; i++)
+    {
+        await movies.AddMovie(new Movie
+        {
+            Title = $"Movie {i}",
+            Description = $"Description {i}",
+            Genre = $"Genre {i}",
+            Release = i,
+            Rating = i
+        });
+    }
+}
 
 await Task.Run(async () =>
 {
@@ -164,7 +167,7 @@ await Task.Run(async () =>
                     StaticPages.SeeUpdateMovies(userId.Value).Length
                 );
                 
-                var newMovies = user.LookupNewMovies();
+                var newMovies = user.LookupNewMovies(); 
                 var data = new JsonDataProvider().ConvertToDataProvider(newMovies);
                 await response.OutputStream.WriteAsync(
                     data,
@@ -173,6 +176,22 @@ await Task.Run(async () =>
                 );
                 
                 user.ClearMovies();
+            }
+        }
+        
+        if (request is { HttpMethod: "GET", Url.PathAndQuery: "/unsub" })
+        {
+            response.ContentType = "text/html";
+            if (request.Cookies.Any(x => x.Name == "user-id"))
+            {
+                var userId = request.Cookies["user-id"];
+                if (!users.TryGetValue(userId.Value, out var user)) continue;
+                movies.OnMovieAdded -= user.AddMovie;
+                await response.OutputStream.WriteAsync(
+                    StaticPages.UnSubscribeToUpdateMovies(userId.Value),
+                    0,
+                    StaticPages.UnSubscribeToUpdateMovies(userId.Value).Length
+                );
             }
         }
         

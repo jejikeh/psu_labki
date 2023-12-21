@@ -5,20 +5,17 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
+  while (1) {
+    int shmid = shmget(11111, 1024, 0666 | IPC_CREAT);
+    char *str = (char *)shmat(shmid, (void *)0, 0);
+    cout << "Write Data : ";
+    cin.getline(str, 1024);
 
-    while (1) {
+    cout << "Data written in memory: " << str << endl;
 
-        int shmid = shmget(11111, 1024, 0666 | IPC_CREAT);
-        char* str = (char*)shmat(shmid, (void*)0, 0);
-            cout << "Write Data : ";
-            cin.getline(str, 1024);
+    shmdt(str);
+  }
 
-            cout << "Data written in memory: " << str << endl;
-
-        shmdt(str);
-    }
-
-	return 0;
+  return 0;
 }

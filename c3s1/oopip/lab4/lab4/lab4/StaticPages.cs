@@ -9,6 +9,11 @@ public static class StaticPages
         return Encoding.UTF8.GetBytes($"User {userId} subscribed to update movies");
     }
     
+    public static byte[] UnSubscribeToUpdateMovies(string userId)
+    {
+        return Encoding.UTF8.GetBytes($"User {userId} unsubscribed to update movies");
+    }
+    
     public static byte[] SeeUpdateMovies(string userId)
     {
         return Encoding.UTF8.GetBytes($"For user {userId} see update movies");

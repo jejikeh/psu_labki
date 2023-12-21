@@ -8,7 +8,7 @@ public class XmlFastDataProvider : IMovieDataProvider
 {
     public byte[] ConvertToDataProvider(Movie movie)
     {
-        return Encoding.UTF8.GetBytes($"<Movie><Title>{movie.Title}</Title><Description>{movie.Description}</Description><Genre>{movie.Genre}</Genre><Release>{movie.Release}</Release><Rating>{movie.Rating}</Rating></Movie>");
+        return Encoding.UTF8.GetBytes($"<element><Movie><Title>{movie.Title}</Title><Description>{movie.Description}</Description><Genre>{movie.Genre}</Genre><Release>{movie.Release}</Release><Rating>{movie.Rating}</Rating></Movie></element>");
     }
 
     public byte[] ConvertToDataProvider(IEnumerable<Movie> movies)

@@ -1,23 +1,31 @@
 import asyncio
 import threading
 from asyncio_mqtt import Client
-import pygame, sys
+import pygame
+import sys
 import paho.mqtt.publish as publish
 import paho.mqtt.client as mqtt
 
+# mqtt_hub = "mqtt.eclipseprojects.io"
 mqtt_hub = "localhost"
 
 screen_width = 640
 screen_height = 480
 
-global ball_speed_x 
+global ball_speed_x
 ball_speed_x = 7
 
-global ball_speed_y 
+global ball_speed_y
 ball_speed_y = 7
 
+global score_p1
+score_p1 = 0
+
+global score_p2
+score_p2 = 0
+
 player_speed = 0
-sync_time = 100;
+sync_time = 100
 
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Pong Server')
@@ -32,32 +40,53 @@ light_gray = (200, 200, 200)
 pygame.init()
 clock = pygame.time.Clock()
 
+font = pygame.font.SysFont(None, 64)
+img = font.render('hello', True, (200, 200, 200))
+img2 = font.render('hello', True, (200, 200, 200))
+
 iframe = 0
+
 
 async def send_ball_speed_x(ball_speed_x):
     async with Client(mqtt_hub) as client:
         await client.publish("minor/jejikeh/pong/ball_speed_x", ball_speed_x)
 
+
 async def send_ball_pos_x(ball_x):
     async with Client(mqtt_hub) as client:
         await client.publish("minor/jejikeh/pong/ball_pos_x", ball_x)
+
 
 async def send_ball_pos_y(ball_y):
     async with Client(mqtt_hub) as client:
         await client.publish("minor/jejikeh/pong/ball_pos_y", ball_y)
 
+
+async def send_score_p1(p1):
+    async with Client(mqtt_hub) as client:
+        await client.publish("minor/jejikeh/pong/score_p1", p1)
+
+
+async def send_score_p2(p2):
+    async with Client(mqtt_hub) as client:
+        await client.publish("minor/jejikeh/pong/score_p2", p2)
+
+
 async def send_ball_speed_y(ball_speed_y):
     async with Client(mqtt_hub) as client:
         await client.publish("minor/jejikeh/pong/ball_speed_y", ball_speed_y)
+
 
 async def send_player_speed(player_speed):
     async with Client(mqtt_hub) as client:
         await client.publish("minor/jejikeh/pong/player1_speed", player_speed)
 
+
 async def send_player_pos(player_pos):
     print("send player pos: " + str(player_pos))
     async with Client(mqtt_hub) as client:
         await client.publish("minor/jejikeh/pong/player1_pos", player_pos)
+
 
 async def send_all():
     while True:
@@ -68,9 +97,12 @@ async def send_all():
         await send_ball_pos_y(ball.y)
         await send_player_speed(player_speed)
         await send_player_pos(player1.y)
+        await send_score_p1(score_p1)
+        await send_score_p2(score_p2)
 
 thread = threading.Thread(target=asyncio.run, args=(send_all(),))
 thread.start()
+
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
@@ -78,12 +110,14 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("minor/jejikeh/pong/player2_speed")
     client.subscribe("minor/jejikeh/pong/player2_pos")
 
+
 def on_message(client, userdata, msg):
     if msg.topic == "minor/jejikeh/pong/player2_speed":
-        global player2_speed 
+        global player2_speed
         player2_speed = int(msg.payload)
     if msg.topic == "minor/jejikeh/pong/player2_pos":
         player2.y = int(msg.payload)
+
 
 client = mqtt.Client()
 client.on_connect = on_connect
@@ -101,19 +135,15 @@ while True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_DOWN:
                 player_speed += 7
-                # asyncio.run(send_player_speed(player_speed))
             if event.key == pygame.K_UP:
                 player_speed -= 7
-                # asyncio.run(send_player_speed(player_speed))
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_DOWN:
                 player_speed -= 7
-                # asyncio.run(send_player_speed(player_speed))
 
             if event.key == pygame.K_UP:
                 player_speed += 7
-                # asyncio.run(send_player_speed(player_speed))
 
     ball.x += ball_speed_x
     ball.y += ball_speed_y
@@ -122,29 +152,32 @@ while True:
 
     if ball.top <= 0 or ball.bottom >= screen_height:
         ball_speed_y *= -1
-        # await send_ball_speed_y(ball_speed_y)
-        # await send_ball_pos_y(ball.y)
-        # await send_ball_pos_x(ball.x)
 
     if ball.left <= 0 or ball.right >= screen_width:
         ball_speed_x *= -1
-        # await send_ball_speed_x(ball_speed_x)
-        # await send_ball_pos_y(ball.y)
-        # await send_ball_pos_x(ball.x)
+
+    if ball.right >= screen_width:
+        score_p2 += 1
+        img2 = font.render(str(score_p2), True, (200, 200, 200))
+
+    if ball.left <= 0:
+        score_p1 += 1
+        img = font.render(str(score_p1), True, (200, 200, 200))
 
     if ball.colliderect(player1) or ball.colliderect(player2):
         ball_speed_x *= -1
-        # await send_ball_speed_x(ball_speed_x)
-        # await send_ball_pos_y(ball.y)
-        # await send_ball_pos_x(ball.x)
-    
+
     screen.fill(bg_color)
 
     pygame.draw.rect(screen, light_gray, player1)
     pygame.draw.rect(screen, light_gray, player2)
     pygame.draw.ellipse(screen, light_gray, ball)
-    
-    pygame.draw.aaline(screen, light_gray, (screen_width / 2, 0), (screen_width / 2, screen_height))
+
+    pygame.draw.aaline(screen, light_gray, (screen_width / 2,
+                       0), (screen_width / 2, screen_height))
+
+    screen.blit(img, (10, 10))
+    screen.blit(img2, (screen_width - 140, 10))
 
     pygame.display.flip()
     clock.tick(16)
@@ -156,4 +189,3 @@ while True:
 
     iframe += 1
     print(iframe)
-

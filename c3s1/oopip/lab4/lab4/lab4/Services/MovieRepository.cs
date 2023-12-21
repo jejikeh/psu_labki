@@ -5,7 +5,7 @@ using Npgsql;
 
 namespace lab4.Services;
 
-public class MovieRepository
+public class MovieRepository : IObservedSubject
 {
     private readonly NpgsqlConnection _connection;
     private readonly ILogger _logger;
@@ -84,5 +84,14 @@ public class MovieRepository
         
         return output;
     }
-    
+
+    public void AddObserver(IMovieObserver observer)
+    {
+        OnMovieAdded += observer.AddMovie;
+    }
+
+    public void RemoveObserver(IMovieObserver observer)
+    {
+        OnMovieAdded -= observer.AddMovie;
+    }
 }

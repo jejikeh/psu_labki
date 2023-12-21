@@ -3,13 +3,13 @@ using lab4.Models;
 
 namespace lab4.Services.DataProviders;
 
-public class TextDataProvider : IMovieDataProvider
+public class HtmlDataProvider : IMovieDataProvider
 {
     public byte[] ConvertToDataProvider(Movie movie)
     {
-        return Encoding.UTF8.GetBytes($"\n<<{movie.Title} {movie.Description} {movie.Genre} {movie.Release} {movie.Rating}>>");
+        return Encoding.UTF8.GetBytes($"<h1>{movie.Title}</h1><p>{movie.Description}</p></br>");
     }
-
+    
     public byte[] ConvertToDataProvider(IEnumerable<Movie> movies)
     {
         var sb = new StringBuilder();

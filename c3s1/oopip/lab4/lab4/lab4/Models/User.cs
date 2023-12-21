@@ -1,6 +1,6 @@
 namespace lab4.Models;
 
-public class User
+public class User : IMovieObserver
 {
     public string Name { get; set; }
     private readonly List<Movie> _movies = new List<Movie>();
@@ -15,5 +15,5 @@ public class User
         _movies.Add(movie);
     }
     
-    public void ClearMovies() => _movies.Clear(); 
+    public void ClearMovies() => _movies.Clear();
 }
