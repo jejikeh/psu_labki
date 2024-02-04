@@ -1,0 +1,47 @@
+﻿@page "/Photos"
+@inject HttpClient Http
+
+<PageTitle>Photos</PageTitle>
+
+<h1>Weather</h1>
+
+
+@if (photos == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table>
+    <tr>
+        <th>Name</th>
+        <th>Content</th>
+    </tr>
+    <tbody>
+        @foreach (var image in photos)
+            {
+                <tr>
+                    <td>@image.Name</td>
+                </tr>
+                <tr>
+                    <td><img src="data:image; base64, @image.Content" style="width:640px;height:480px;" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    internal class Photo
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Content { get; set; } = string.Empty;
+    }
+
+    private Photo[]? photos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        photos = await Http.GetFromJsonAsync<Photo[]>("images");
+    }
+}
