@@ -1,0 +1,22 @@
+﻿@page "/hello"
+@inject HttpClient Http
+
+<PageTitle>Hello</PageTitle>
+
+@if (response == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h1>@response</h1>
+}
+
+@code {
+    private string? response;
+
+    protected override async Task OnInitializedAsync()
+    {
+        response = await Http.GetStringAsync("");
+    }
+}
