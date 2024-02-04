@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Spp.Lab2.ClientReadFiles.Client.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label x:Name="SimpleMessageLabel" Text="Server doesnt response."/>
+            
+            <Button
+                x:Name="SimpleMessageButton"
+                Text="Simple Message" 
+                Clicked="SimpleMessageButtonClicked"
+                HorizontalOptions="Fill" />
+
+            <Image x:Name="SimpleImage"/>
+
+            <Button
+                x:Name="ImageMessageButton"
+                Text="Image Message" 
+                Clicked="ImageMessageButtonClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="JsonMessageButton"
+                Text="Json Message" 
+                Clicked="JsonMessageButtonClicked"
+                HorizontalOptions="Fill" />
+
+            <TableView Intent="Menu">
+                <TableRoot>
+                    <TableSection Title="Table">
+                        <TextCell x:Name="IdTextCell" Text="Id"
+                                Detail="NONE" />
+                        <TextCell x:Name="NameTextCell" Text="Name"
+                                Detail="NONE" />
+                        <TextCell x:Name="CostTextCell" Text="Cost"
+                                Detail="NONE" />
+                    </TableSection>
+                </TableRoot>
+            </TableView> 
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
