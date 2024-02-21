@@ -1,0 +1,21 @@
+services:
+  database:
+    image: debezium/postgres:13-alpine
+    environment:
+      - POSTGRES_DATABASE=lab1-selects-agregations
+      - POSTGRES_USER=lab1-selects-agregations
+      - POSTGRES_PASSWORD=lab1-selects-agregations
+      - PGUSER=lab1-selects-agregations
+    ports:
+      - "5432:5432"
+    volumes:
+      - database-data:/data/db
+    networks:
+      - dev
+
+networks:
+  dev:
+    driver: bridge
+
+volumes:
+  database-data:

@@ -1,0 +1,169 @@
+<mxfile host="app.diagrams.net" modified="2024-02-21T07:34:31.826Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15" etag="L8uXnDTjF768o1aUwTdk" version="23.1.5" type="device">
+  <diagram name="Page-1" id="7ksFpmn0JFveJ4g0IwRR">
+    <mxGraphModel dx="2173" dy="2017" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-2" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;User&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;br&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;br&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;&lt;br&gt;FK1&lt;/td&gt;&lt;td&gt;name [string] [not null]&lt;br&gt;email [string] [not null]]&lt;br&gt;RoleId [guid] [not nul]&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="690" y="-10" width="220" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-3" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;ProjectStatus&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Title [string] [not null]&lt;br&gt;Description [string] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="130" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-5" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;Team&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;ProjectId [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;Description [string] [null]&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="490" y="260" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-15" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;UserTeams&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK1&lt;/td&gt;&lt;td&gt;UserId [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;PK2&lt;/td&gt;&lt;td&gt;TeamId [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="990" y="210" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-16" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Olhvi0J14PPZ46Zdt4Ib-5" target="Olhvi0J14PPZ46Zdt4Ib-15" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="40" y="-140" as="sourcePoint" />
+            <mxPoint x="140" y="-240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-17" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;exitX=1.004;exitY=0.206;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitPerimeter=0;" parent="1" source="Olhvi0J14PPZ46Zdt4Ib-2" target="Olhvi0J14PPZ46Zdt4Ib-15" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="700" y="-110" as="sourcePoint" />
+            <mxPoint x="800" y="-210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-18" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="Olhvi0J14PPZ46Zdt4Ib-1" target="Olhvi0J14PPZ46Zdt4Ib-5" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="365" y="160" as="sourcePoint" />
+            <mxPoint x="465" y="60" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-20" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;entryX=-0.019;entryY=0.822;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1.004;exitY=0.34;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="FHWclwQo_O2Ki0MXq_nz-27" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="633.4200000000001" y="490" as="sourcePoint" />
+            <mxPoint x="740" y="494.3599999999999" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="793.4200000000001" y="617.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-21" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=-0.017;entryY=0.743;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Olhvi0J14PPZ46Zdt4Ib-3" target="Olhvi0J14PPZ46Zdt4Ib-1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="60" y="436" as="sourcePoint" />
+            <mxPoint x="131" y="260" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="485" y="433" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-22" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;Comment&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;AuthorId [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9; &lt;/span&gt;Content [string] [not null]&lt;br/&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9; Posted [date] [not null]&lt;/span&gt;&lt;br/&gt;&lt;br&gt;&lt;/span&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="1010" y="-110" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-25" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;Role&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Title [string] [not null]&lt;br&gt;Description [string] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="410" y="-80" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-26" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;exitX=1.015;exitY=0.396;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Olhvi0J14PPZ46Zdt4Ib-25" target="Olhvi0J14PPZ46Zdt4Ib-2" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="240" y="616" as="sourcePoint" />
+            <mxPoint x="382" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-27" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;Financial Report&lt;br&gt;&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Value [decimal] [not null]&lt;br&gt;Additional Info[string] [not null]&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-730" y="260" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Olhvi0J14PPZ46Zdt4Ib-1" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;Project&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK1&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;br&gt;FK2&lt;br&gt;FK3&lt;/td&gt;&lt;td&gt;Project Details [guid] [unique]&lt;br&gt;ProjectStatusId [guid] [not null]&lt;br&gt;FinancialReport [guid] [unique] [null]&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="90" y="70" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWclwQo_O2Ki0MXq_nz-1" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;Team Task&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK2&lt;/td&gt;&lt;td&gt;Assignee [guid] [not null]&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9; Title [string] [not null]&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;Description [string] [null]&lt;br&gt;FK3  StatusId [guid] [not null]&lt;br&gt;&lt;/span&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="740" y="390" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWclwQo_O2Ki0MXq_nz-26" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;exitX=1.007;exitY=0.38;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.462;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Olhvi0J14PPZ46Zdt4Ib-5" target="FHWclwQo_O2Ki0MXq_nz-1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="570" y="380" as="sourcePoint" />
+            <mxPoint x="720" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FHWclwQo_O2Ki0MXq_nz-27" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;TaskStatus&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Title [string] [not null]&lt;br&gt;Staging [boolean] [not null]&lt;br&gt;Description [string] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="450" y="460" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="GqTFQEHHfELT6zZoGhft-1" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;exitX=1.007;exitY=0.149;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" parent="1" source="Olhvi0J14PPZ46Zdt4Ib-2" target="Olhvi0J14PPZ46Zdt4Ib-22" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="951" y="-190" as="sourcePoint" />
+            <mxPoint x="1030" y="26" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GqTFQEHHfELT6zZoGhft-2" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;ProjectStage&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK1&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;PK2&lt;/td&gt;&lt;td&gt;Project Manager [guid] [not null] [unique]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Title [string] [not null]&lt;br&gt;Description [string]&lt;br&gt;StartDate [DateTime] [null]&lt;br&gt;EndDate [DateTime] [null]&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="-480" y="-130" width="230" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="GqTFQEHHfELT6zZoGhft-5" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=none;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;startArrow=ERoneToMany;startFill=0;endFill=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="GqTFQEHHfELT6zZoGhft-2" target="Olhvi0J14PPZ46Zdt4Ib-1" edge="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="-290" y="80" as="sourcePoint" />
+            <mxPoint x="80" y="100" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="485" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xsFcB_IBsX6Fyi4GqtmV-1" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;Attachment&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;AuthorId [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;File &lt;/span&gt;[string] [not null]&lt;br/&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;FK2&#x9;FileTypeId [guid] [not null]&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;/span&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="40" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="xsFcB_IBsX6Fyi4GqtmV-2" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;exitX=1.007;exitY=0.149;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" target="xsFcB_IBsX6Fyi4GqtmV-1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="910" y="6" as="sourcePoint" />
+            <mxPoint x="1008" y="-80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xsFcB_IBsX6Fyi4GqtmV-3" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;FileType&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Title [string] [not null]&lt;br&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;/span&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="110" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="xsFcB_IBsX6Fyi4GqtmV-5" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=none;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;startArrow=ERoneToMany;startFill=0;endFill=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="xsFcB_IBsX6Fyi4GqtmV-3" target="xsFcB_IBsX6Fyi4GqtmV-1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="360" y="-310" as="sourcePoint" />
+            <mxPoint x="700" y="-110" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1095" y="197" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xsFcB_IBsX6Fyi4GqtmV-6" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;TaskTag&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;FK1&lt;/td&gt;&lt;td&gt;Tag [string] [not null]&lt;br&gt;TeamTaskId [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="440" y="580" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="xsFcB_IBsX6Fyi4GqtmV-8" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;entryX=-0.022;entryY=0.894;entryDx=0;entryDy=0;exitX=1.004;exitY=0.34;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" target="FHWclwQo_O2Ki0MXq_nz-1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="620" y="640" as="sourcePoint" />
+            <mxPoint x="729" y="643.3599999999999" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="782.4200000000001" y="766.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xsFcB_IBsX6Fyi4GqtmV-9" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;Project Reports&lt;br&gt;&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK1&lt;/td&gt;&lt;td&gt;ProjectId [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;PK2&lt;/td&gt;&lt;td&gt;ReportId [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-280" y="240" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="xsFcB_IBsX6Fyi4GqtmV-10" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=none;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;startArrow=ERoneToMany;startFill=0;endFill=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="xsFcB_IBsX6Fyi4GqtmV-9">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="-250" y="-10" as="sourcePoint" />
+            <mxPoint x="90" y="190" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="485" y="497" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xsFcB_IBsX6Fyi4GqtmV-11" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Olhvi0J14PPZ46Zdt4Ib-27">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="-600" y="308" as="sourcePoint" />
+            <mxPoint x="-280" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xsFcB_IBsX6Fyi4GqtmV-13" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;Project Details&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK1&lt;br&gt;PK2&lt;/td&gt;&lt;td&gt;Id [guid] [not null]&lt;br&gt;Project Id [guid] [not null]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Title [string] [not null]&lt;br&gt;Description [string] [not null]&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;CreatedAt [date] [not null]&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-480" y="30" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="xsFcB_IBsX6Fyi4GqtmV-14" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;rounded=0;startArrow=ERmandOne;startFill=0;endFill=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="xsFcB_IBsX6Fyi4GqtmV-13" target="Olhvi0J14PPZ46Zdt4Ib-1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="90" y="-60" as="sourcePoint" />
+            <mxPoint x="100" y="113" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="495" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
