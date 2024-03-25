@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	dbHost := flag.String("db", "postgres://lab8:lab8@localhost:5432/lab8", "db host")
+	dbHost := flag.String("db", "postgres://lab9:lab9@localhost:5432/lab9", "db host")
 
 	flag.Parse()
 
@@ -19,8 +19,8 @@ func main() {
 	execDbFunc("queries/drop-table.sql", s.ExecQueryFromFile)
 
 	execDbFunc("queries/create-table.sql", s.ExecQueryFromFile)
-	execDbFunc("queries/create-triggers.sql", s.ExecQueryFromFile)
-	execDbFunc("queries/trigger-triggers.sql", s.ExecQueryFromFile)
+	execDbFunc("queries/create-users.sql", s.ExecQueryFromFile)
+	execDbFunc("queries/grant.sql", s.ExecQueryFromFile)
 }
 
 func execDbFunc(s string, f func(string) error) {

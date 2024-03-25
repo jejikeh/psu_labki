@@ -2,10 +2,10 @@ services:
   database:
     image: debezium/postgres:13-alpine
     environment:
-      - POSTGRES_DATABASE=lab8
-      - POSTGRES_USER=lab8
-      - POSTGRES_PASSWORD=lab8
-      - PGUSER=lab8
+      - POSTGRES_DATABASE=lab9
+      - POSTGRES_USER=lab9
+      - POSTGRES_PASSWORD=lab9
+      - PGUSER=lab9
     ports:
       - "5432:5432"
     volumes:

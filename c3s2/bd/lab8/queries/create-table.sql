@@ -49,7 +49,6 @@ VALUES
     (4, 'Task 4', 'Design user interface', 4, 5, '2024-03-30', 'In Progress'),
     (5, 'Task 5', 'Gather requirements from stakeholders', 5, 1, '2024-04-05', 'Pending');
 
-
 CREATE TABLE Reports (
     ReportID INT PRIMARY KEY,
     ReportName VARCHAR(100),
@@ -67,3 +66,26 @@ VALUES
     (3, 'Sprint Review Report', 3, 3, '2024-04-05'),
     (4, 'Client Meeting Minutes', 4, 4, '2024-04-10'),
     (5, 'Quality Assurance Report', 5, 5, '2024-04-15');
+
+
+CREATE TABLE project_log (
+    log_id SERIAL PRIMARY KEY,
+    projectid INT,
+    action VARCHAR(100),
+    timestamp TIMESTAMP
+);
+
+CREATE TABLE employee_info (
+    employeeid INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    position VARCHAR(50),
+    lastupdated TIMESTAMP
+);
+
+CREATE TABLE employee_log (
+    log_id SERIAL PRIMARY KEY,
+    employeeid INT,
+    action VARCHAR(100),
+    timestamp TIMESTAMP
+);
