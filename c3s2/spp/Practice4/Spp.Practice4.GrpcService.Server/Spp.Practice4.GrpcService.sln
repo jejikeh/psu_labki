@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spp.Practice4.GrpcService.Server", "Spp.Practice4.GrpcService.Server\Spp.Practice4.GrpcService.Server.csproj", "{1A77512C-502A-4416-964C-9C5332926FB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spp.Practice4.GrpcService.Client", "Spp.Practice4.GrpcService.Client\Spp.Practice4.GrpcService.Client.csproj", "{262CC19B-071E-46CA-97FE-F8447EBC20A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A77512C-502A-4416-964C-9C5332926FB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A77512C-502A-4416-964C-9C5332926FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A77512C-502A-4416-964C-9C5332926FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A77512C-502A-4416-964C-9C5332926FB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262CC19B-071E-46CA-97FE-F8447EBC20A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262CC19B-071E-46CA-97FE-F8447EBC20A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262CC19B-071E-46CA-97FE-F8447EBC20A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262CC19B-071E-46CA-97FE-F8447EBC20A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
