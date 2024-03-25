@@ -1,9 +1,7 @@
--- Создание схем
 CREATE SCHEMA projects_schema;
 CREATE SCHEMA tasks_schema;
 CREATE SCHEMA employees_schema;
 
--- Создание таблиц в каждой схеме
 CREATE TABLE projects_schema.projects (
     project_id SERIAL PRIMARY KEY,
     project_name VARCHAR(100),
@@ -28,7 +26,6 @@ CREATE TABLE employees_schema.employees (
     position VARCHAR(50)
 );
 
--- Заполнение таблиц тестовыми данными
 INSERT INTO projects_schema.projects (project_name, start_date, end_date)
 VALUES
     ('Project 1', '2024-01-01', '2024-03-31'),
