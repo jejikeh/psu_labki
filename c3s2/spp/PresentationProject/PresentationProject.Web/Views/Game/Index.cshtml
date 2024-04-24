@@ -1,0 +1,20 @@
+@model IEnumerable<PresentationProject.Web.Models.Game>
+
+@{
+    ViewData["Title"] = "Games";
+}
+
+<h1>Games</h1>
+
+<ul>
+    @foreach (var game in Model)
+    {
+        <li><a href="@Url.Action("Details", new { id = game.Id })">@game.Title</a></li>
+    }
+</ul>
+
+
+@for (int i = 0; i < 10; i++)
+{
+    <a href="@Url.Action("Index", new { page = i, pageSize = 10 })">@i </a>
+}

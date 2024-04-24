@@ -1,0 +1,17 @@
+@model PresentationProject.Web.Models.Game
+
+@{
+    ViewData["Title"] = "Details of " + Model.Title;
+}
+
+<a asp-controller="Game" asp-action="Index" asp-route-page="0" asp-route-pageSize="10">Back</a>
+
+<h1>@Model.Title</h1>
+
+<p>Description: @Model.Description</p>
+
+<p>Developer:@Model.Developer.Name</p>
+
+<p>Rating: @Model.Rating</p>
+
+<p>Release Date: @Model.ReleaseDate</p>
