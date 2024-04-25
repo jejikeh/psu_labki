@@ -9,7 +9,9 @@ public class DeleteCommentRequestHandler(ICommentRepository _commentRepository) 
 {
     public async Task Handle(DeleteCommentRequest request, CancellationToken cancellationToken)
     {
-        var comment = await Predicates.Repositories<Comment>.ThrowIfNullFromPredicateAsync(_commentRepository, Predicates.Comments.GetById(request.Id));
+        var comment = await Predicates.Repositories<Comment>.ThrowIfNullFromPredicateAsync(
+            _commentRepository, 
+            Predicates.Comments.GetById(request.Id));
         
         _commentRepository.Delete(comment);
         
