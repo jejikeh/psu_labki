@@ -1,0 +1,21 @@
+services:
+  database:
+    image: debezium/postgres:13-alpine
+    environment:
+      - POSTGRES_DATABASE=lablab6
+      - POSTGRES_USER=lablab6
+      - POSTGRES_PASSWORD=lablab6
+      - PGUSER=lablab6
+    ports:
+      - "5432:5432"
+    volumes:
+      - database-data:/data/db
+    networks:
+      - dev
+
+networks:
+  dev:
+    driver: bridge
+
+volumes:
+  database-data:

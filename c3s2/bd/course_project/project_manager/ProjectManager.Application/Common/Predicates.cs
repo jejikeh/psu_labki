@@ -76,4 +76,9 @@ public static class Predicates
     {
         public static Func<TaskStatus, bool> GetById(Guid id) => x => x.Id == id;
     }
+
+    public static class ProjectStatuses
+    {
+        public static Func<ProjectStatus, bool> GetById(Guid id) => x => x.Id == id;
+    }
 }
