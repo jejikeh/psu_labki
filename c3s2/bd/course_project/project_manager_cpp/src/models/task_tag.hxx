@@ -1,7 +1,6 @@
 #pragma once
 
 #include <pqxx/pqxx>
-#include "model.hxx"
 #include "task.hxx"
 
 class TaskTag final : public Model
@@ -47,7 +46,7 @@ public:
     [[nodiscard]] static constexpr std::string to_create_table_sql()
     {
         return "CREATE TABLE IF NOT EXISTS " + s_table_name() +
-               "("
+               " ("
                "id TEXT PRIMARY KEY, "
                "tag TEXT NOT NULL, "
                "fk_task_id TEXT NOT NULL REFERENCES " +

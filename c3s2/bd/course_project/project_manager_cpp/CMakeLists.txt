@@ -20,8 +20,16 @@ add_executable(${PROJECT_NAME}
         src/models/comment.hxx
         src/models/file_type.hxx
         src/models/attachment.hxx
-        src/models/task_tag.hxx
         src/models/task.hxx
+        src/models/project.hxx
+        src/models/task_status.hxx
+        src/models/task_tag.hxx
+        src/models/team.hxx
+        src/models/project_details.hxx
+        src/models/project_status.hxx
+        src/models/project_stage.hxx
+        src/models/report.hxx
+        src/models/project_reports.hxx
 )
 
 # LIBS
