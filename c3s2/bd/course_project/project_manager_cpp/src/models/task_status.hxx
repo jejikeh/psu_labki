@@ -3,7 +3,7 @@
 #include <pqxx/pqxx>
 #include "model.hxx"
 
-class TaskStatus final : public Model
+class TaskStatus final : public ModelEntity
 {
 public:
     std::string title;

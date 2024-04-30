@@ -3,7 +3,7 @@
 #include "user.hxx"
 #include "model.hxx"
 
-class Comment final : public Model
+class Comment final : public ModelEntity
 {
 public:
     std::string fk_author_id;

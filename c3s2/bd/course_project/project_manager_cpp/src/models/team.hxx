@@ -5,7 +5,7 @@
 #include "model.hxx"
 #include "project.hxx"
 
-class Team final : public Model
+class Team final : public ModelEntity
 {
 public:
     std::string description;

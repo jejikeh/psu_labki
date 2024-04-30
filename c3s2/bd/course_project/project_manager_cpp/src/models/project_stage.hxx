@@ -4,7 +4,7 @@
 #include <pqxx/pqxx>
 #include "model.hxx"
 
-class ProjectStage final : public Model
+class ProjectStage final : public ModelEntity
 {
 public:
     std::string title;

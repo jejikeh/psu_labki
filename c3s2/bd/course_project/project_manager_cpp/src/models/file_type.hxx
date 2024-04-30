@@ -3,7 +3,7 @@
 #include <pqxx/pqxx>
 #include "model.hxx"
 
-class FileType final : public Model
+class FileType final : public ModelEntity
 {
 public:
     std::string description;

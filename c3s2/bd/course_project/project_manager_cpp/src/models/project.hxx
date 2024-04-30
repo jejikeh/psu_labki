@@ -4,7 +4,7 @@
 #include "project_stage.hxx"
 #include "project_status.hxx"
 
-class Project final : public Model
+class Project final : public ModelEntity
 {
 public:
     std::string fk_project_status_id;

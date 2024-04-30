@@ -1,8 +1,9 @@
 #pragma once
 
+#include <pqxx/pqxx>
 #include <string>
 
-class Model
+class ModelEntity
 {
 public:
     std::string id;

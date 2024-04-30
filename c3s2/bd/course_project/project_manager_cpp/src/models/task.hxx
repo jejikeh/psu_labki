@@ -5,7 +5,7 @@
 #include "task_status.hxx"
 #include "team.hxx"
 
-class Task final : public Model
+class Task final : public ModelEntity
 {
 public:
     std::string title;

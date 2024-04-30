@@ -4,7 +4,7 @@
 #include "report.hxx"
 #include "project.hxx"
 
-class ProjectReports final : public Model
+class ProjectReports final : public ModelEntity
 {
 public:
     std::string fk_report_id;

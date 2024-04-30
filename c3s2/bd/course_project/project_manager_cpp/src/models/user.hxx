@@ -5,7 +5,7 @@
 #include "model.hxx"
 #include "role.hxx"
 
-class User final : public Model
+class User final : public ModelEntity
 {
 public:
     std::string name;

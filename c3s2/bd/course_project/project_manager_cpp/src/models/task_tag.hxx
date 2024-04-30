@@ -3,7 +3,7 @@
 #include <pqxx/pqxx>
 #include "task.hxx"
 
-class TaskTag final : public Model
+class TaskTag final : public ModelEntity
 {
 public:
     std::string tag;

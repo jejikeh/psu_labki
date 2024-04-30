@@ -3,7 +3,7 @@
 #include <pqxx/pqxx>
 #include "model.hxx"
 
-class Report final : public Model
+class Report final : public ModelEntity
 {
 public:
     std::int32_t value;
