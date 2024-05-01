@@ -25,6 +25,9 @@ public:
     bool should_update_users = true;
     bool should_update_roles = true;
     bool should_update_projects = true;
+    bool should_update_projects_statuses = true;
+    bool should_update_projects_details = true;
+    bool should_update_project_stages = true;
 
     char* create_user_name;
     char* create_user_email;
@@ -37,6 +40,9 @@ public:
     std::vector<std::shared_ptr<User>> users;
     std::vector<std::shared_ptr<Role>> roles;
     std::vector<std::shared_ptr<Project>> projects;
+    std::vector<std::shared_ptr<ProjectStatus>> project_statuses;
+    std::vector<std::shared_ptr<ProjectStage>> project_stages;
+    std::vector<std::shared_ptr<ProjectDetails>> project_details;
 
     TableWindow(float x, float y, float width, float height) : Window(x, y, width, height, "Example Window")
     {

@@ -45,6 +45,7 @@ public:
     {
         id = row["id"].as<std::string>();
         fk_project_status_id = row["fk_project_status_id"].as<std::string>();
+        fk_project_stage_id = row["fk_project_stage_id"].as<std::string>();
     }
 
     [[nodiscard]] static constexpr std::string to_create_table_sql()

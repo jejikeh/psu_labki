@@ -9,6 +9,9 @@ void TableWindow::draw()
     {
         should_update_users = true;
         should_update_roles = true;
+        should_update_projects = true;
+        should_update_projects_details = true;
+        should_update_projects_statuses = true;
     }
 
     if (!visible && table_type == TableWindowType::None)
@@ -70,6 +73,12 @@ void TableWindow::user_draw()
     for (const auto& user : users)
     {
         users_render += std::format("id: {}\tname: {}\t email: {}\n", user->id, user->name, user->email);
+    }
+
+    std::string roles_render;
+    for (const auto& role : roles)
+    {
+        roles_render += std::format("id: {}\t name: {}\t desc: {}\n", role->id, role->name, role->description);
     }
 
     GuiGroupBox(Rectangle{x + 10, y + 10, width - 20, 50}, "Method");
@@ -160,11 +169,6 @@ void TableWindow::user_draw()
         static int role_selected = -1;
         static int role_scroll = 0;
 
-        std::string roles_render;
-        for (const auto& role : roles)
-        {
-            roles_render += std::format("id: {}\t name: {}\t desc: {}\n", role->id, role->name, role->description);
-        }
         GuiListView(Rectangle{60, button_create_window_y, 800 - 80 - 40, 100}, roles_render.c_str(), &role_scroll, &role_selected);
 
         if (GuiButton(Rectangle{60, 600 - 80, 800 - 80 - 40, 30}, "Create"))
@@ -374,7 +378,15 @@ void TableWindow::role_draw()
                 return;
             }
 
-            project_manager->forget_sql("DELETE FROM" + User::s_table_name() + "WHERE id = '" + roles[role_selected_delete]->id + "';");
+            const auto role_users = project_manager->map_sql<User>(
+                "SELECT * FROM " + User::s_table_name() + " WHERE fk_role_id = '" + roles[role_selected_delete]->id + "';");
+
+            for (const auto& user : role_users)
+            {
+                project_manager->forget_sql("DELETE FROM " + Comment::s_table_name() + " WHERE fk_author_id = '" + user->id + "';");
+                project_manager->forget_sql("DELETE FROM " + Attachment::s_table_name() + " WHERE fk_author_id = '" + user->id + "';");
+                project_manager->delete_entity_by_id<User>(user->id);
+            }
 
             project_manager->delete_entity_by_id<Role>(roles[role_selected_delete]->id);
 
@@ -392,6 +404,29 @@ void TableWindow::project_draw()
     if (should_update_projects)
     {
         projects = project_manager->get_all_entities<Project>();
+
+        should_update_projects = false;
+    }
+
+    if (should_update_projects_details)
+    {
+        project_details = project_manager->get_all_entities<ProjectDetails>();
+
+        should_update_projects_details = false;
+    }
+
+    if (should_update_projects_statuses)
+    {
+        project_statuses = project_manager->get_all_entities<ProjectStatus>();
+
+        should_update_projects_statuses = false;
+    }
+
+    if (should_update_project_stages)
+    {
+        project_stages = project_manager->get_all_entities<ProjectStage>();
+
+        should_update_project_stages = false;
     }
 
     static int project_selected = 0;
@@ -400,7 +435,20 @@ void TableWindow::project_draw()
     std::string projects_render;
     for (const auto& project : projects)
     {
-        projects_render += std::format("id: {}\tstage_id: {}\n", project->id, project->fk_project_stage_id);
+        projects_render += std::format(
+            "id: {}\tstage_id: {} \t status_id: {} \n", project->id, project->fk_project_stage_id, project->fk_project_status_id);
+    }
+
+    std::string project_stages_render;
+    for (const auto& stage : project_stages)
+    {
+        project_stages_render += std::format("id: {}\t title: {}\t description: {}\n", stage->id, stage->title, stage->description);
+    }
+
+    std::string project_status_render;
+    for (const auto& status : project_statuses)
+    {
+        project_status_render += std::format("id: {}\t title: {}\t description: {}\n", status->id, status->title, status->description);
     }
 
     GuiGroupBox(Rectangle{x + 10, y + 10, width - 20, 50}, "Method");
@@ -419,6 +467,61 @@ void TableWindow::project_draw()
             create_window = false;
         }
 
+        float button_create_window_y = 100;
+
+        button_create_window_y += 30;
+
+        GuiLabel(Rectangle{60, button_create_window_y, 800 - 80 - 40, 30}, "Statuses");
+
+        button_create_window_y += 30;
+
+        static int project_status_selected = -1;
+        static int project_status_scroll = 0;
+
+        GuiListView(Rectangle{60, button_create_window_y, 800 - 80 - 40, 100},
+            project_status_render.c_str(),
+            &project_status_scroll,
+            &project_status_selected);
+
+        button_create_window_y += 130;
+
+        GuiLabel(Rectangle{60, button_create_window_y, 800 - 80 - 40, 30}, "Stages");
+
+        button_create_window_y += 30;
+
+        static int project_stage_selected = -1;
+        static int project_stage_scroll = 0;
+
+        GuiListView(Rectangle{60, button_create_window_y, 800 - 80 - 40, 100},
+            project_stages_render.c_str(),
+            &project_stage_scroll,
+            &project_stage_selected);
+
+        if (GuiButton(Rectangle{60, 600 - 80, 800 - 80 - 40, 30}, "Create"))
+        {
+            if (project_status_selected == -1 || project_stage_selected == -1)
+            {
+                return;
+            }
+
+            if (project_status_selected >= (int)project_stages.size() || project_stage_selected >= (int)project_details.size())
+            {
+                return;
+            }
+
+            const auto project_stage = *project_stages[project_stage_selected];
+            const auto project_status = *project_statuses[project_status_selected];
+
+            auto project = Project();
+
+            project.assign_project_stage(project_stage);
+            project.assign_project_status(project_status);
+
+            project_manager->create_model(project);
+
+            should_update_projects = true;
+        }
+
         return;
     }
 
@@ -433,6 +536,27 @@ void TableWindow::project_draw()
         if (GuiWindowBox(Rectangle{40, 40, 800 - 80, 600 - 80}, "Delete"))
         {
             delete_window = false;
+        }
+
+        static int projects_scroll_delete = 0;
+        static int projects_selected_delete = -1;
+
+        GuiListView(
+            Rectangle{60, y + 100, 800 - 80 - 40, 300}, projects_render.c_str(), &projects_scroll_delete, &projects_selected_delete);
+
+        if (GuiButton(Rectangle{60, 600 - 80, 800 - 80 - 40, 30}, "Delete"))
+        {
+            if (projects_selected_delete == -1 || projects_selected_delete >= (int)projects.size())
+            {
+                return;
+            }
+
+            project_manager->forget_sql(
+                "DELETE FROM " + Project::s_table_name() + " WHERE id = '" + projects[projects_selected_delete]->id + "';");
+
+            project_manager->delete_entity_by_id<Role>(projects[projects_selected_delete]->id);
+
+            should_update_projects = true;
         }
 
         return;
