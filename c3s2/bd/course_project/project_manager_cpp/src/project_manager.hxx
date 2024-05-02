@@ -153,6 +153,11 @@ public:
 
         auto returned_model = std::vector<std::shared_ptr<T>>();
 
+        if (result.empty())
+        {
+            return returned_model;
+        }
+
         for (const auto& row : result)
         {
             auto model = std::make_shared<T>();

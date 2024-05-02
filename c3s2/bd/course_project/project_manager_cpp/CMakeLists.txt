@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.27)
 project(project_manager_cpp)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Wall -Wextra -pedantic -Werror -Wno-unused-parameter -Wno-missing-field-initializers -Wno-missing-braces -Wno-deprecated-enum-enum-conversion -Wno-deprecated-enum-compare-conditional -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-but-set-variable")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -Wall -Wextra -pedantic -Werror -Wno-unused-parameter -Wno-missing-field-initializers -Wno-missing-braces -Wno-deprecated-enum-enum-conversion -Wno-deprecated-enum-compare-conditional -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-but-set-variable -Wno-c++11-narrowing")
 
 add_executable(${PROJECT_NAME}
         src/main.cxx

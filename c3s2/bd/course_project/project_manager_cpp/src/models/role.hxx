@@ -1,8 +1,8 @@
 #pragma once
 
+#include "model.hxx"
 #include <string>
 #include <utility>
-#include "model.hxx"
 
 class Role final : public ModelEntity
 {
@@ -16,7 +16,7 @@ public:
     Role(std::string name, std::string description, std::int32_t priority)
         : name(std::move(name)), description(std::move(description)), priority(priority)
     {
-        id = std::to_string(rand());
+        id = std::to_string(std::hash<std::string>{}(name));
     }
 
     static constexpr std::string s_table_name()

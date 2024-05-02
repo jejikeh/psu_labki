@@ -1,7 +1,6 @@
 #pragma once
 
 #include "model.hxx"
-#include "task_tag.hxx"
 #include "task_status.hxx"
 #include "team.hxx"
 

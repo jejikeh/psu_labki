@@ -1,18 +1,21 @@
-#include <iostream>
-#include <exception>
-#include "project_manager.hxx"
-#include "models/user.hxx"
+#include "gui/table_window.hxx"
+#include "models/attachment.hxx"
 #include "models/comment.hxx"
 #include "models/file_type.hxx"
-#include "models/attachment.hxx"
-#include "models/task_tag.hxx"
 #include "models/project_details.hxx"
+#include "models/project_reports.hxx"
 #include "models/project_stage.hxx"
 #include "models/report.hxx"
-#include "models/project_reports.hxx"
-#include "gui/table_window.hxx"
+#include "models/task_tag.hxx"
+#include "models/user.hxx"
+#include "project_manager.hxx"
+#include <exception>
+#include <iostream>
 
 #define RAYGUI_IMPLEMENTATION
+// #include "gui/style_cherry.h"
+//  #include "gui/style_ashes.h"
+//   #include "gui/style_dark.h"
 #include "raygui.h"
 
 int main()
@@ -21,6 +24,10 @@ int main()
 
     InitWindow(800, 600, "Project Manager");
 
+    //    GuiLoadStyleDark();
+    //    GuiLoadStyleAshes();
+    //    GuiLoadStyleCherry();
+    // Main frame
     auto example_window = new TableWindow(280, 25, 780 - 275, 560);
 
     while (!WindowShouldClose())
@@ -28,8 +35,8 @@ int main()
         example_window->update();
 
         BeginDrawing();
-
         {
+            //            ClearBackground(GetColor(0x3a1720ff));
             ClearBackground(WHITE);
 
             // Main frame
@@ -42,7 +49,7 @@ int main()
                 GuiMessageBox(Rectangle{10, 30, 780, 560}, "Error", error_message.c_str(), "OK");
             }
 
-            if (example_window->create_window || example_window->delete_window)
+            if (example_window->create_window || example_window->delete_window || example_window->update_window)
             {
                 goto END_OF_DRAWING;
             }
@@ -59,8 +66,7 @@ int main()
 
             std::int32_t table_index = 1;
 
-            if (GuiLabelButton(
-                    Rectangle{25, table_label_y, table_label_width, table_label_height},
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Projects").c_str()))
             {
                 example_window->set_table_type(TableWindowType::Projects);
@@ -69,8 +75,7 @@ int main()
             table_label_y += table_label_height + 5;
             table_index++;
 
-            if (GuiLabelButton(
-                    Rectangle{25, table_label_y, table_label_width, table_label_height},
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Users").c_str()))
             {
                 example_window->set_table_type(TableWindowType::Users);
@@ -78,8 +83,7 @@ int main()
             table_label_y += table_label_height + 5;
             table_index++;
 
-            if (GuiLabelButton(
-                    Rectangle{25, table_label_y, table_label_width, table_label_height},
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Roles").c_str()))
             {
                 example_window->set_table_type(TableWindowType::Roles);
@@ -88,8 +92,7 @@ int main()
             table_label_y += table_label_height + 5;
             table_index++;
 
-            if (GuiLabelButton(
-                    Rectangle{25, table_label_y, table_label_width, table_label_height},
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Comments").c_str()))
             {
                 example_window->visible = true;
@@ -98,8 +101,7 @@ int main()
             table_label_y += table_label_height + 5;
             table_index++;
 
-            if (GuiLabelButton(
-                    Rectangle{25, table_label_y, table_label_width, table_label_height},
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Files").c_str()))
             {
                 example_window->visible = true;
@@ -108,18 +110,25 @@ int main()
             table_label_y += table_label_height + 5;
             table_index++;
 
-            if (GuiLabelButton(
-                    Rectangle{25, table_label_y, table_label_width, table_label_height},
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Tasks").c_str()))
             {
-                example_window->visible = true;
+                example_window->set_table_type(TableWindowType::Task);
             }
 
             table_label_y += table_label_height + 5;
             table_index++;
 
-            if (GuiLabelButton(
-                    Rectangle{25, table_label_y, table_label_width, table_label_height},
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
+                    std::format("{} - {}", table_index, "Tasks Statuses").c_str()))
+            {
+                example_window->set_table_type(TableWindowType::TaskStatus);
+            }
+
+            table_label_y += table_label_height + 5;
+            table_index++;
+
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Attachments").c_str()))
             {
                 example_window->visible = true;
@@ -128,8 +137,7 @@ int main()
             table_label_y += table_label_height + 5;
             table_index++;
 
-            if (GuiLabelButton(
-                    Rectangle{25, table_label_y, table_label_width, table_label_height},
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Task Tags").c_str()))
             {
                 example_window->visible = true;
@@ -138,41 +146,55 @@ int main()
             table_label_y += table_label_height + 5;
             table_index++;
 
-            if (GuiLabelButton(
-                    Rectangle{25, table_label_y, table_label_width, table_label_height},
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Project Details").c_str()))
             {
-                example_window->visible = true;
+                example_window->set_table_type(TableWindowType::ProjectDetails);
             }
 
             table_label_y += table_label_height + 5;
             table_index++;
 
-            if (GuiLabelButton(
-                    Rectangle{25, table_label_y, table_label_width, table_label_height},
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Project Stages").c_str()))
             {
-                example_window->visible = true;
+                example_window->set_table_type(TableWindowType::ProjectStages);
             }
 
             table_label_y += table_label_height + 5;
             table_index++;
 
-            if (GuiLabelButton(
-                    Rectangle{25, table_label_y, table_label_width, table_label_height},
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
+                    std::format("{} - {}", table_index, "Project Statuses").c_str()))
+            {
+                example_window->set_table_type(TableWindowType::ProjectStatus);
+            }
+
+            table_label_y += table_label_height + 5;
+            table_index++;
+
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Reports").c_str()))
             {
-                example_window->visible = true;
+                example_window->set_table_type(TableWindowType::Report);
             }
 
             table_label_y += table_label_height + 5;
             table_index++;
 
-            if (GuiLabelButton(
-                    Rectangle{25, table_label_y, table_label_width, table_label_height},
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Project Reports").c_str()))
             {
-                example_window->visible = true;
+                example_window->set_table_type(TableWindowType::ProjectReports);
+            }
+
+            table_label_y += table_label_height + 5;
+            table_index++;
+
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
+                    std::format("{} - {}", table_index, "Teams").c_str()))
+            {
+                example_window->set_table_type(TableWindowType::Team);
             }
 
             table_label_y += table_label_height + 5;

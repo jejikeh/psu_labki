@@ -1,7 +1,7 @@
 #pragma once
 
-#include <pqxx/pqxx>
 #include "model.hxx"
+#include <pqxx/pqxx>
 
 class TaskStatus final : public ModelEntity
 {
@@ -15,7 +15,7 @@ public:
     TaskStatus(std::string title, std::string description, bool staging)
         : title(std::move(title)), description(std::move(description)), staging(staging)
     {
-        id = std::to_string(std::hash<std::string>{}(title));
+        id = std::to_string(std::hash<std::string>{}(this->title));
     }
 
     [[nodiscard]] static constexpr std::string s_table_name()

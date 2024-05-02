@@ -1,8 +1,8 @@
 #pragma once
 
-#include <pqxx/pqxx>
 #include "model.hxx"
 #include "project.hxx"
+#include <pqxx/pqxx>
 
 class ProjectDetails final : public ModelEntity
 {
@@ -16,8 +16,17 @@ public:
 
     ProjectDetails(std::string title, std::string description) : title(std::move(title)), description(std::move(description))
     {
-        id = std::to_string(time(nullptr));
+
+        id = std::to_string(std::hash<std::string>()(this->title));
         created_at = std::to_string(std::time(nullptr));
+    }
+
+    ProjectDetails(const std::string& title, const std::string& description, const std::string& created_at)
+    {
+        this->id = std::to_string(std::hash<std::string>()(title));
+        this->title = title;
+        this->description = description;
+        this->created_at = created_at;
     }
 
     void assign_project(const Project& project)

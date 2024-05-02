@@ -1,9 +1,9 @@
 #pragma once
 
-#include <string>
-#include <pqxx/pqxx>
 #include "model.hxx"
 #include "project.hxx"
+#include <pqxx/pqxx>
+#include <string>
 
 class Team final : public ModelEntity
 {
@@ -15,7 +15,7 @@ public:
 
     Team(std::string description) : description(std::move(description))
     {
-        id = std::to_string(std::hash<std::string>{}(description));
+        id = std::to_string(std::hash<std::string>{}(this->description));
     }
 
     void assign_project(const Project& project)
