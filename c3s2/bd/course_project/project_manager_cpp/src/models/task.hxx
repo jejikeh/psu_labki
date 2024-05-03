@@ -16,7 +16,7 @@ public:
 
     Task(std::string title, std::string description) : title(std::move(title)), description(std::move(description))
     {
-        id = std::to_string(std::hash<std::string>{}(title));
+        id = std::to_string(std::hash<std::string>{}(this->title));
     }
 
     void assign_task_status(const TaskStatus& task_status)

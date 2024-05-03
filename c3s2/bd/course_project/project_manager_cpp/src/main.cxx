@@ -61,7 +61,7 @@ int main()
             // Tables
 
             const float table_label_width = 260;
-            const float table_label_height = 20;
+            const float table_label_height = 10;
             float table_label_y = 35;
 
             std::int32_t table_index = 1;
@@ -95,16 +95,16 @@ int main()
             if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Comments").c_str()))
             {
-                example_window->visible = true;
+                example_window->set_table_type(TableWindowType::Comment);
             }
 
             table_label_y += table_label_height + 5;
             table_index++;
 
             if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
-                    std::format("{} - {}", table_index, "Files").c_str()))
+                    std::format("{} - {}", table_index, "File Types").c_str()))
             {
-                example_window->visible = true;
+                example_window->set_table_type(TableWindowType::FileType);
             }
 
             table_label_y += table_label_height + 5;
@@ -131,7 +131,7 @@ int main()
             if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Attachments").c_str()))
             {
-                example_window->visible = true;
+                example_window->set_table_type(TableWindowType::Attachment);
             }
 
             table_label_y += table_label_height + 5;
@@ -140,7 +140,7 @@ int main()
             if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
                     std::format("{} - {}", table_index, "Task Tags").c_str()))
             {
-                example_window->visible = true;
+                example_window->set_table_type(TableWindowType::TaskTag);
             }
 
             table_label_y += table_label_height + 5;
@@ -198,7 +198,80 @@ int main()
             }
 
             table_label_y += table_label_height + 5;
+
+            GuiLine(Rectangle{25, table_label_y, table_label_width - 10, table_label_height}, "Getters");
+
+            table_label_y += table_label_height + 5;
             table_index++;
+
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
+                    std::format("{} - {}", table_index, "get_attachment_from_user_bigger_than").c_str()))
+            {
+                example_window->set_table_type(TableWindowType::get_attachment_from_user_bigger_than);
+            }
+
+            table_label_y += table_label_height + 5;
+            table_index++;
+
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
+                    std::format("{} - {}", table_index, "get_user_roles").c_str()))
+            {
+                example_window->set_table_type(TableWindowType::get_user_roles);
+            }
+
+            table_label_y += table_label_height + 5;
+            table_index++;
+
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
+                    std::format("{} - {}", table_index, "get_user_files").c_str()))
+            {
+                example_window->set_table_type(TableWindowType::get_user_files);
+            }
+
+            table_label_y += table_label_height + 5;
+            table_index++;
+
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
+                    std::format("{} - {}", table_index, "get_project_tasks").c_str()))
+            {
+                example_window->set_table_type(TableWindowType::get_project_tasks);
+            }
+
+            table_label_y += table_label_height + 5;
+            table_index++;
+
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
+                    std::format("{} - {}", table_index, "get_project_task_details").c_str()))
+            {
+                example_window->set_table_type(TableWindowType::get_project_task_details);
+            }
+
+            table_label_y += table_label_height + 5;
+            table_index++;
+
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
+                    std::format("{} - {}", table_index, "get_user_comment_counts").c_str()))
+            {
+                example_window->set_table_type(TableWindowType::get_user_comment_counts);
+            }
+
+            table_label_y += table_label_height + 5;
+            table_index++;
+
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
+                    std::format("{} - {}", table_index, "get_project_teams_counts").c_str()))
+            {
+                example_window->set_table_type(TableWindowType::get_project_teams_counts);
+            }
+
+            table_label_y += table_label_height + 5;
+            table_index++;
+
+            if (GuiLabelButton(Rectangle{25, table_label_y, table_label_width, table_label_height},
+                    std::format("{} - {}", table_index, "search_projects_by_title").c_str()))
+            {
+                example_window->set_table_type(TableWindowType::search_projects_by_title);
+            }
         }
     END_OF_DRAWING:
 

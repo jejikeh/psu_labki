@@ -18,6 +18,19 @@ void TableWindow::draw()
         should_update_reports = true;
         should_update_tasks = true;
         should_update_task_status = true;
+        should_update_task_tags = true;
+        should_update_comments = true;
+        should_update_file_type = true;
+        should_update_attachments = true;
+
+        should_update_get_attachment_from_user_bigger_than = true;
+        should_update_get_user_roles = true;
+        should_update_get_user_files = true;
+        should_update_get_project_tasks = true;
+        should_update_get_project_task_details = true;
+        should_update_get_user_comment_counts = true;
+        should_update_get_project_teams_counts = true;
+        should_update_search_projects_by_title = true;
     }
 
     if (!visible && table_type == TableWindowType::None)
@@ -98,6 +111,86 @@ void TableWindow::draw()
     case TableWindowType::TaskStatus:
     {
         task_status_draw();
+
+        break;
+    }
+    case TableWindowType::TaskTag:
+    {
+        task_tag_draw();
+
+        break;
+    }
+    case TableWindowType::Comment:
+    {
+        comment_draw();
+
+        break;
+    }
+    case TableWindowType::FileType:
+    {
+        file_type_draw();
+
+        break;
+    }
+    case TableWindowType::Attachment:
+    {
+        attachment_draw();
+
+        break;
+    }
+
+    case TableWindowType::get_attachment_from_user_bigger_than:
+    {
+        get_attachment_from_user_bigger_than_draw();
+
+        break;
+    }
+
+    case TableWindowType::get_user_roles:
+    {
+        get_user_roles();
+
+        break;
+    }
+
+    case TableWindowType::get_user_files:
+    {
+        get_user_files();
+
+        break;
+    }
+
+    case TableWindowType::get_project_tasks:
+    {
+        get_project_tasks();
+
+        break;
+    }
+
+    case TableWindowType::get_project_task_details:
+    {
+        get_project_task_details();
+
+        break;
+    }
+
+    case TableWindowType::get_user_comment_counts:
+    {
+        get_user_comment_counts();
+
+        break;
+    }
+
+    case TableWindowType::get_project_teams_counts:
+    {
+        get_project_teams_counts();
+
+        break;
+    }
+
+    case TableWindowType::search_projects_by_title:
+    {
+        search_projects_by_title_draw();
 
         break;
     }
@@ -1802,6 +1895,12 @@ void TableWindow::project_stages_draw()
         return;
     }
 
+    button_x += 130;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Delete"))
+    {
+    }
+
     GuiListView(
         Rectangle{x + 10, y + 100, width - 20, 600 - 170}, project_stages_render.c_str(), &project_stage_selected, &project_stage_scroll);
 }
@@ -2417,6 +2516,301 @@ void TableWindow::report_draw()
 
 void TableWindow::task_draw()
 {
+    if (should_update_tasks)
+    {
+        tasks = project_manager->get_all_entities<Task>();
+
+        should_update_tasks = false;
+    }
+
+    if (should_update_teams)
+    {
+        teams = project_manager->get_all_entities<Team>();
+
+        should_update_teams = false;
+    }
+
+    if (should_update_task_status)
+    {
+        task_statuses = project_manager->get_all_entities<TaskStatus>();
+
+        should_update_task_status = false;
+    }
+
+    std::string task_render;
+    for (const auto& task : tasks)
+    {
+        task_render += std::format("id: {}\t title: {} \t description: {}\n", task->id, task->title, task->description);
+    }
+
+    std::string team_render;
+    for (const auto& team : teams)
+    {
+        team_render += std::format("id: {}\t description: {}\n", team->id, team->description);
+    }
+
+    std::string task_status_render;
+    for (const auto& task_status : task_statuses)
+    {
+        task_status_render += std::format("id: {}\t description: {}\n", task_status->id, task_status->description);
+    }
+
+    float button_x = 20;
+    float button_y = 25;
+
+    static int task_selected = -1;
+    static int task_scroll = 0;
+
+    GuiGroupBox(Rectangle{x + 10, y + 15, width - 20, 50}, "Method");
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Create") || create_window)
+    {
+        create_window = true;
+
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5f));
+
+        if (GuiWindowBox(Rectangle{40, 40, 800 - 80, 600 - 80}, "Create"))
+        {
+            create_window = false;
+        }
+
+        static bool editing_title = false;
+        static bool editing_description = false;
+        static int selected_team = -1;
+        static int scroll_team = 0;
+        static int selected_task_status = -1;
+        static int scroll_task_status = 0;
+
+        float create_button_window_y = 100;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Title");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_task_title, 32, editing_title);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_title = true;
+
+                editing_description = false;
+            }
+        }
+
+        create_button_window_y += 30;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Description");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_task_description, 32, editing_description);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_description = true;
+
+                editing_title = false;
+            }
+        }
+
+        create_button_window_y += 30;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Team");
+
+        GuiListView(Rectangle{60, create_button_window_y + 30, 800 - 80 - 40, 100}, team_render.c_str(), &scroll_team, &selected_team);
+
+        create_button_window_y += 120;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Task Status");
+
+        create_button_window_y += 30;
+
+        GuiListView(Rectangle{60, create_button_window_y + 30, 800 - 80 - 40, 100},
+            task_status_render.c_str(),
+            &scroll_task_status,
+            &selected_task_status);
+
+        create_button_window_y += 130;
+
+        if (GuiButton(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Create"))
+        {
+            editing_title = false;
+            editing_description = false;
+
+            if (selected_team == -1 || selected_task_status == -1)
+            {
+                return;
+            }
+
+            if (selected_team >= (int)teams.size() || selected_task_status >= (int)task_statuses.size())
+            {
+                return;
+            }
+
+            auto task = Task(std::string(create_task_title), std::string(create_task_description));
+            task.assign_team(*teams[selected_team]);
+            task.assign_task_status(*task_statuses[selected_task_status]);
+
+            project_manager->create_model(task);
+
+            should_update_tasks = true;
+        }
+
+        return;
+    }
+
+    button_x += 130;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Update") || update_window)
+    {
+        update_window = true;
+
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5f));
+
+        if (GuiWindowBox(Rectangle{40, 40, 800 - 80, 600 - 80}, "Update"))
+        {
+            update_window = false;
+        }
+
+        static bool editing_title = false;
+        static bool editing_description = false;
+        static int selected_team = -1;
+        static int scroll_team = 0;
+        static int selected_task_status = -1;
+        static int scroll_task_status = 0;
+
+        if (selected_team == -1 && (task_selected != -1 && (int)tasks.size() > 0))
+        {
+            auto task = tasks[task_selected];
+
+            std::strcpy(create_task_title, task->title.c_str());
+            std::strcpy(create_task_description, task->description.c_str());
+
+            const auto& team_d =
+                std::find_if(teams.begin(), teams.end(), [task](const auto& team) { return team->id == task->fk_team_id; });
+
+            const auto& task_status_d = std::find_if(task_statuses.begin(),
+                task_statuses.end(),
+                [task](const auto& task_status) { return task_status->id == task->fk_task_status_id; });
+
+            selected_team = std::distance(teams.begin(), team_d);
+            selected_task_status = std::distance(task_statuses.begin(), task_status_d);
+        }
+
+        float create_button_window_y = 100;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Title");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_task_title, 32, editing_title);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_title = true;
+
+                editing_description = false;
+            }
+        }
+
+        create_button_window_y += 30;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Description");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_task_description, 32, editing_description);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_description = true;
+
+                editing_title = false;
+            }
+        }
+
+        create_button_window_y += 30;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Team");
+
+        GuiListView(Rectangle{60, create_button_window_y + 30, 800 - 80 - 40, 100}, team_render.c_str(), &scroll_team, &selected_team);
+
+        create_button_window_y += 120;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Task Status");
+
+        create_button_window_y += 30;
+
+        GuiListView(Rectangle{60, create_button_window_y + 30, 800 - 80 - 40, 100},
+            task_status_render.c_str(),
+            &scroll_task_status,
+            &selected_task_status);
+
+        create_button_window_y += 130;
+
+        if (GuiButton(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Update"))
+        {
+            editing_title = false;
+            editing_description = false;
+
+            if (selected_team == -1 || selected_task_status == -1)
+            {
+                return;
+            }
+
+            if (selected_team >= (int)teams.size() || selected_task_status >= (int)task_statuses.size())
+            {
+                return;
+            }
+
+            project_manager->forget_sql(std::format(
+                "UPDATE tasks SET title = '{}', description = '{}', fk_team_id = '{}', fk_task_status_id = '{}' WHERE id = '{}'",
+                create_task_title,
+                create_task_description,
+                teams[selected_team]->id,
+                task_statuses[selected_task_status]->id,
+                tasks[task_selected]->id));
+
+            should_update_tasks = true;
+
+            task_selected = -1;
+            selected_team = -1;
+            selected_task_status = -1;
+        }
+
+        return;
+    }
+
+    button_x += 130;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Delete"))
+    {
+        if (task_selected == -1)
+        {
+            return;
+        }
+
+        auto task = tasks[task_selected];
+
+        project_manager->forget_sql(std::format("DELETE FROM task_tags WHERE fk_task_id = '{}'", task->id));
+        project_manager->forget_sql(std::format("DELETE FROM tasks WHERE id = '{}'", task->id));
+
+        should_update_tasks = true;
+    }
+
+    GuiListView(Rectangle{x + 10, y + 80, width - 20, height - 120}, task_render.c_str(), &task_scroll, &task_selected);
 }
 
 void TableWindow::task_status_draw()
@@ -2529,9 +2923,9 @@ void TableWindow::task_status_draw()
 
         auto task_status = task_statuses[task_status_selected];
 
-        auto tasks = project_manager->map_sql<Task>(std::format("SELECT * FROM tasks WHERE fk_task_status_id = '{}'", task_status->id));
+        auto tasks1 = project_manager->map_sql<Task>(std::format("SELECT * FROM tasks WHERE fk_task_status_id = '{}'", task_status->id));
 
-        for (const auto& task : tasks)
+        for (const auto& task : tasks1)
         {
             project_manager->forget_sql(std::format("DELETE FROM task_tags WHERE fk_task_id = '{}'", task->id));
         }
@@ -2631,7 +3025,7 @@ void TableWindow::task_status_draw()
                     task_statuses[task_status_selected]->id));
 
             should_update_task_status = true;
-            
+
             p = false;
         }
 
@@ -2639,4 +3033,1237 @@ void TableWindow::task_status_draw()
     }
 
     GuiListView(Rectangle{x + 10, y + 100, width - 20, 600 - 170}, task_status_render.c_str(), &task_status_scroll, &task_status_selected);
+}
+
+void TableWindow::task_tag_draw()
+{
+    if (should_update_task_tags)
+    {
+        task_tags = project_manager->get_all_entities<TaskTag>();
+
+        should_update_task_tags = false;
+    }
+
+    if (should_update_tasks)
+    {
+        tasks = project_manager->get_all_entities<Task>();
+
+        should_update_tasks = false;
+    }
+
+    std::string tasks_render;
+    for (const auto& task : tasks)
+    {
+        tasks_render += std::format("id: {}\t title: {} \t description: {}\n", task->id, task->title, task->description);
+    }
+
+    std::string task_tag_render;
+    for (const auto& task_tag : task_tags)
+    {
+        task_tag_render += std::format("id: {}\t name: {}\n", task_tag->id, task_tag->tag);
+    }
+
+    static int task_tag_selected = -1;
+    static int task_tag_scroll = 0;
+
+    GuiGroupBox(Rectangle{x + 10, y + 15, width - 20, 50}, "Method");
+
+    float button_x = 20;
+    float button_y = 25;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Create") || create_window)
+    {
+        create_window = true;
+
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5f));
+
+        if (GuiWindowBox(Rectangle{40, 40, 800 - 80, 600 - 80}, "Create"))
+        {
+            create_window = false;
+        }
+
+        static bool editing_tag = false;
+
+        static int selected_task = -1;
+        static int scroll_task = 0;
+
+        float create_button_window_y = 100;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Task");
+
+        create_button_window_y += 30;
+
+        GuiListView(Rectangle{60, create_button_window_y, 800 - 80 - 40, 100}, tasks_render.c_str(), &scroll_task, &selected_task);
+
+        create_button_window_y += 100;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Tag");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_task_tag_tag, 32, editing_tag);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_tag = true;
+            }
+        }
+
+        create_button_window_y += 100;
+
+        if (GuiButton(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Create"))
+        {
+            editing_tag = false;
+
+            auto tag = TaskTag(create_task_tag_tag);
+            tag.assign_to_task(*tasks[selected_task]);
+
+            project_manager->create_model(tag);
+
+            should_update_task_tags = true;
+        }
+
+        return;
+    }
+
+    button_x += 130;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Update") || update_window)
+    {
+        update_window = true;
+
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5f));
+
+        if (GuiWindowBox(Rectangle{40, 40, 800 - 80, 600 - 80}, "Update"))
+        {
+            update_window = false;
+        }
+
+        return;
+    }
+
+    button_x += 130;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Delete"))
+    {
+        if (task_tag_selected == -1)
+        {
+            return;
+        }
+
+        project_manager->forget_sql(std::format("DELETE FROM task_tags WHERE id = '{}'", task_tags[task_tag_selected]->id));
+
+        should_update_task_tags = true;
+    }
+
+    GuiListView(Rectangle{x + 10, y + 100, width - 20, 600 - 170}, task_tag_render.c_str(), &task_tag_scroll, &task_tag_selected);
+}
+
+void TableWindow::comment_draw()
+{
+    if (should_update_comments)
+    {
+        comments = project_manager->get_all_entities<Comment>();
+
+        should_update_comments = false;
+    }
+
+    if (should_update_users)
+    {
+        users = project_manager->get_all_entities<User>();
+
+        should_update_users = false;
+    }
+
+    std::string users_render;
+    for (const auto& user : users)
+    {
+        users_render += std::format("id: {}\tname: {}\t email: {}\n", user->id, user->name, user->email);
+    }
+
+    std::string comments_render;
+    for (const auto& comment : comments)
+    {
+        comments_render += std::format("id: {}\t content: {}\t created_at: {}\n", comment->id, comment->content, comment->created_at);
+    }
+
+    static int comment_selected = -1;
+    static int comment_scroll = 0;
+
+    GuiGroupBox(Rectangle{x + 10, y + 15, width - 20, 50}, "Comment");
+
+    float button_x = 20;
+    float button_y = 25;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Create") || create_window)
+    {
+        create_window = true;
+
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5f));
+
+        if (GuiWindowBox(Rectangle{40, 40, 800 - 80, 600 - 80}, "Create"))
+        {
+            create_window = false;
+        }
+
+        static bool editing_comment = false;
+
+        float create_button_window_y = 100;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Comment");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_comment_content, 32, editing_comment);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_comment = true;
+            }
+        }
+
+        create_button_window_y += 30;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "User");
+
+        create_button_window_y += 30;
+
+        static int user_selected = -1;
+        static int user_scroll = 0;
+
+        GuiListView(Rectangle{60, create_button_window_y, 800 - 80 - 40, 100}, users_render.c_str(), &user_scroll, &user_selected);
+
+        create_button_window_y += 130;
+
+        if (GuiButton(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Create"))
+        {
+            if (user_selected == -1 || user_selected > (int)users.size())
+            {
+                return;
+            }
+
+            editing_comment = true;
+
+            auto comment = Comment(create_comment_content);
+            comment.assign_author(*users[user_selected]);
+
+            project_manager->create_model(comment);
+
+            should_update_comments = true;
+        }
+
+        return;
+    }
+
+    button_x += 130;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Delete"))
+    {
+        if (comment_selected == -1)
+        {
+            return;
+        }
+
+        project_manager->forget_sql(std::format("DELETE FROM comments WHERE id = '{}'", comments[comment_selected]->id));
+
+        should_update_comments = true;
+    }
+
+    button_x += 130;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Update") || update_window)
+    {
+        update_window = true;
+
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5f));
+
+        if (GuiWindowBox(Rectangle{40, 40, 800 - 80, 600 - 80}, "Update"))
+        {
+            update_window = false;
+        }
+
+        static int user_selected = -1;
+        static int user_scroll = 0;
+
+        static bool u = false;
+
+        if (comment_selected != -1 && !u)
+        {
+            auto comment_content = comments[comment_selected];
+
+            std::strcpy(create_comment_content, comment_content->content.c_str());
+
+            const auto userd = std::find_if(
+                users.begin(), users.end(), [&comment_content](const auto& user) { return user->id == comment_content->fk_author_id; });
+
+            user_selected = (int)std::distance(users.begin(), userd);
+
+            u = true;
+        }
+
+        static bool editing_comment = false;
+
+        float create_button_window_y = 100;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Comment");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_comment_content, 32, editing_comment);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_comment = true;
+            }
+        }
+
+        create_button_window_y += 30;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "User");
+
+        create_button_window_y += 30;
+
+        GuiListView(Rectangle{60, create_button_window_y, 800 - 80 - 40, 100}, users_render.c_str(), &user_scroll, &user_selected);
+
+        create_button_window_y += 130;
+
+        if (GuiButton(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Update"))
+        {
+            if (user_selected == -1 || user_selected > (int)users.size())
+            {
+                return;
+            }
+
+            editing_comment = true;
+
+            project_manager->forget_sql(std::format("UPDATE comments SET content = '{}', fk_author_id = '{}' WHERE id = '{}'",
+                create_comment_content,
+                users[user_selected]->id,
+                comments[comment_selected]->id));
+
+            should_update_comments = true;
+            u = false;
+        }
+
+        return;
+    }
+
+    GuiListView(Rectangle{x + 10, y + 100, width - 20, 600 - 170}, comments_render.c_str(), &comment_scroll, &comment_selected);
+}
+
+void TableWindow::file_type_draw()
+{
+    if (should_update_file_type)
+    {
+        file_types = project_manager->get_all_entities<FileType>();
+
+        should_update_file_type = false;
+    }
+
+    std::string file_types_render;
+    for (const auto& file_type : file_types)
+    {
+        file_types_render +=
+            std::format("id: {}\t extension: {} description: {}\n", file_type->id, file_type->extension, file_type->description);
+    }
+
+    static int file_type_selected = -1;
+    static int file_type_scroll = 0;
+
+    float button_x = 20;
+    float button_y = 25;
+
+    GuiGroupBox(Rectangle{x + 10, y + 15, width - 20, 50}, "Method");
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Create") || create_window)
+    {
+        static bool editing_description = false;
+        static bool editing_extension = false;
+
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5f));
+
+        create_window = true;
+
+        if (GuiWindowBox(Rectangle{40, 40, 800 - 80, 600 - 80}, "Create"))
+        {
+            create_window = false;
+        }
+
+        float create_button_window_y = 100;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Extension");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_file_type_extension, 32, editing_extension);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_extension = true;
+
+                editing_description = false;
+            }
+        }
+
+        create_button_window_y += 30;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Description");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_file_type_description, 32, editing_description);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_description = true;
+
+                editing_extension = false;
+            }
+        }
+
+        create_button_window_y += 30;
+
+        if (GuiButton(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Create"))
+        {
+            editing_extension = false;
+            editing_description = false;
+
+            auto file_type = FileType(create_file_type_extension, create_file_type_description);
+
+            project_manager->create_model(file_type);
+
+            should_update_file_type = true;
+        }
+
+        return;
+    }
+
+    button_x += 130;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Delete"))
+    {
+        if (file_type_selected == -1 || file_type_selected > (int)file_types.size())
+        {
+            return;
+        }
+
+        project_manager->forget_sql(std::format("DELETE FROM file_types WHERE id = '{}'", file_types[file_type_selected]->id));
+
+        should_update_file_type = true;
+    }
+
+    button_x += 130;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Update") || update_window)
+    {
+        static bool editing_description = false;
+        static bool editing_extension = false;
+        static bool u = false;
+
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, 0.5f));
+
+        update_window = true;
+
+        if (GuiWindowBox(Rectangle{40, 40, 800 - 80, 600 - 80}, "Create"))
+        {
+            update_window = false;
+
+            u = false;
+        }
+
+        if (file_type_selected != -1 && file_type_selected < (int)file_types.size() && !u)
+        {
+            const auto file_type = file_types[file_type_selected];
+
+            std::strcpy(create_file_type_extension, file_type->extension.c_str());
+            std::strcpy(create_file_type_description, file_type->description.c_str());
+
+            u = true;
+        }
+
+        float create_button_window_y = 100;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Extension");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_file_type_extension, 32, editing_extension);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_extension = true;
+
+                editing_description = false;
+            }
+        }
+
+        create_button_window_y += 30;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Description");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_file_type_description, 32, editing_description);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_description = true;
+
+                editing_extension = false;
+            }
+        }
+
+        create_button_window_y += 30;
+
+        if (GuiButton(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Update"))
+        {
+            editing_extension = false;
+            editing_description = false;
+
+            project_manager->forget_sql(std::format("UPDATE file_types SET extension = '{}', description = '{}' WHERE id = '{}'",
+                create_file_type_extension,
+                create_file_type_description,
+                file_types[file_type_selected]->id));
+
+            should_update_file_type = true;
+            u = false;
+        }
+
+        return;
+    }
+
+    GuiListView(Rectangle{x + 10, y + 100, width - 20, 600 - 170}, file_types_render.c_str(), &file_type_scroll, &file_type_selected);
+}
+
+void TableWindow::attachment_draw()
+{
+    if (should_update_attachments)
+    {
+        attachments = project_manager->get_all_entities<Attachment>();
+
+        should_update_attachments = false;
+    }
+
+    if (should_update_users)
+    {
+        users = project_manager->get_all_entities<User>();
+
+        should_update_users = false;
+    }
+
+    if (should_update_file_type)
+    {
+        file_types = project_manager->get_all_entities<FileType>();
+
+        should_update_file_type = false;
+    }
+
+    std::string attachment_render;
+    for (const auto& attachment : attachments)
+    {
+        attachment_render += std::format("id: {}\t name: {}\n", attachment->id, attachment->file_name);
+    }
+
+    std::string user_render;
+    for (const auto& user : users)
+    {
+        user_render += std::format("id: {}\tname: {}\t email: {}\n", user->id, user->name, user->email);
+    }
+
+    std::string file_type_render;
+    for (const auto& file_type : file_types)
+    {
+        file_type_render +=
+            std::format("id: {}\t extension: {}\t description: {}\n", file_type->id, file_type->extension, file_type->description);
+    }
+
+    static int attachment_selected = -1;
+    static int attachment_scroll = 0;
+
+    float button_x = 20;
+    float button_y = 25;
+
+    GuiGroupBox(Rectangle{x + 10, y + 15, width - 20, 50}, "Method");
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Create") || create_window)
+    {
+        create_window = true;
+
+        if (GuiWindowBox(Rectangle{40, 40, 800 - 80, 600 - 80}, "Create"))
+        {
+            create_window = false;
+        }
+
+        float create_button_window_y = 100;
+
+        static bool editing_content = false;
+        static bool editing_name = false;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Name");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_attachment_name, 32, editing_name);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_name = true;
+
+                editing_content = false;
+            }
+        }
+
+        create_button_window_y += 30;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Content");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 70}, create_attachment_content, 32, editing_content);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_content = true;
+                editing_name = false;
+            }
+        }
+
+        static int user_selected = -1;
+        static int user_scroll = 0;
+
+        create_button_window_y += 60;
+
+        GuiLabel(Rectangle{60, create_button_window_y + 30, 800 - 80 - 40, 30}, "User");
+
+        create_button_window_y += 60;
+
+        GuiListView(Rectangle{60, create_button_window_y, 800 - 80 - 40, 100}, user_render.c_str(), &user_scroll, &user_selected);
+
+        create_button_window_y += 60;
+
+        static int file_type_selected = -1;
+        static int file_type_scroll = 0;
+
+        GuiLabel(Rectangle{60, create_button_window_y + 30, 800 - 80 - 40, 30}, "File Type");
+
+        create_button_window_y += 60;
+
+        GuiListView(
+            Rectangle{60, create_button_window_y, 800 - 80 - 40, 100}, file_type_render.c_str(), &file_type_scroll, &file_type_selected);
+
+        create_button_window_y += 100;
+
+        if (GuiButton(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Create"))
+        {
+            editing_name = false;
+            editing_content = false;
+
+            if (user_selected == -1 || file_type_selected == -1)
+            {
+                return;
+            }
+
+            if (user_selected >= (int)users.size() || file_type_selected >= (int)file_types.size())
+            {
+                return;
+            }
+
+            auto attachment = Attachment(create_attachment_content, create_attachment_name, std::strlen(create_attachment_content));
+            attachment.assign_author_and_file_type(*users[user_selected], *file_types[file_type_selected]);
+
+            project_manager->create_model(attachment);
+
+            should_update_attachments = true;
+        }
+
+        return;
+    }
+
+    button_x += 130;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Delete"))
+    {
+        if (attachment_selected == -1)
+        {
+            return;
+        }
+
+        project_manager->forget_sql(std::format("DELETE FROM attachments WHERE id = '{}'", attachments[attachment_selected]->id));
+
+        should_update_attachments = true;
+    }
+
+    button_x += 130;
+
+    if (GuiButton(Rectangle{x + button_x, y + button_y, 100, 30}, "Update") || update_window)
+    {
+        update_window = true;
+
+        if (GuiWindowBox(Rectangle{40, 40, 800 - 80, 600 - 80}, "Update"))
+        {
+            update_window = false;
+        }
+
+        float create_button_window_y = 100;
+
+        static bool editing_content = false;
+        static bool editing_name = false;
+
+        static int file_type_selected = -1;
+        static int file_type_scroll = 0;
+
+        static int user_selected = -1;
+        static int user_scroll = 0;
+
+        static bool u = false;
+
+        if (attachment_selected == -1 || attachment_selected >= (int)attachments.size())
+        {
+            return;
+        }
+
+        if (!u)
+        {
+            u = true;
+
+            auto attachment = attachments[attachment_selected];
+
+            std::strcpy(create_attachment_content, attachment->file_content.c_str());
+            std::strcpy(create_attachment_name, attachment->file_name.c_str());
+
+            const auto& authorit =
+                std::find_if(users.begin(), users.end(), [attachment](const auto& user) { return user->id == attachment->fk_author_id; });
+
+            if (authorit != users.end())
+            {
+                user_selected = std::distance(users.begin(), authorit);
+            }
+
+            const auto& file_typeit = std::find_if(file_types.begin(),
+                file_types.end(),
+                [attachment](const auto& file_type) { return file_type->id == attachment->fk_file_type_id; });
+
+            if (file_typeit != file_types.end())
+            {
+                file_type_selected = std::distance(file_types.begin(), file_typeit);
+            }
+        }
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Name");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, create_attachment_name, 32, editing_name);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_name = true;
+
+                editing_content = false;
+            }
+        }
+
+        create_button_window_y += 30;
+
+        GuiLabel(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Content");
+
+        create_button_window_y += 30;
+
+        GuiTextBox(Rectangle{60, create_button_window_y, 800 - 80 - 40, 70}, create_attachment_content, 32, editing_content);
+
+        if (GetMousePosition().x > 60 && GetMousePosition().x < 800 - 80 - 40 && GetMousePosition().y > create_button_window_y &&
+            GetMousePosition().y < create_button_window_y + 30)
+        {
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            {
+                editing_content = true;
+                editing_name = false;
+            }
+        }
+
+        create_button_window_y += 60;
+
+        GuiLabel(Rectangle{60, create_button_window_y + 30, 800 - 80 - 40, 30}, "User");
+
+        create_button_window_y += 60;
+
+        GuiListView(Rectangle{60, create_button_window_y, 800 - 80 - 40, 100}, user_render.c_str(), &user_scroll, &user_selected);
+
+        create_button_window_y += 60;
+
+        GuiLabel(Rectangle{60, create_button_window_y + 30, 800 - 80 - 40, 30}, "File Type");
+
+        create_button_window_y += 60;
+
+        GuiListView(
+            Rectangle{60, create_button_window_y, 800 - 80 - 40, 100}, file_type_render.c_str(), &file_type_scroll, &file_type_selected);
+
+        create_button_window_y += 100;
+
+        if (GuiButton(Rectangle{60, create_button_window_y, 800 - 80 - 40, 30}, "Update"))
+        {
+            editing_name = false;
+            editing_content = false;
+
+            if (user_selected == -1 || file_type_selected == -1)
+            {
+                return;
+            }
+
+            if (user_selected >= (int)users.size() || file_type_selected >= (int)file_types.size())
+            {
+                return;
+            }
+
+            auto user = users[user_selected];
+            auto file_type = file_types[file_type_selected];
+
+            project_manager->forget_sql(std::format(
+                "UPDATE attachments SET file_name = '{}', file_content = '{}', fk_author_id = '{}', fk_file_type_id = '{}' WHERE id = '{}'",
+                create_attachment_name,
+                create_attachment_content,
+                user->id,
+                file_type->id,
+                attachments[attachment_selected]->id));
+
+            should_update_attachments = true;
+        }
+
+        return;
+    }
+
+    GuiListView(Rectangle{x + 10, y + 100, width - 20, 600 - 170}, attachment_render.c_str(), &attachment_scroll, &attachment_selected);
+}
+
+void TableWindow::get_attachment_from_user_bigger_than_draw()
+{
+    static char* attachment_size = new char[32];
+    static bool editing_size = false;
+    static bool updating = false;
+
+    GuiLabel(Rectangle{x + 10, y, 100, 30}, "Size");
+
+    GuiTextBox(Rectangle{x + 10, y + 30, width - 20, 30}, attachment_size, 32, editing_size);
+
+    if (GetMousePosition().x > x + 10 && GetMousePosition().x < width - 20 && GetMousePosition().y > y + 30 &&
+        GetMousePosition().y < y + 60)
+    {
+        if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+        {
+            editing_size = true;
+        }
+    }
+
+    if (editing_size)
+    {
+        if (IsKeyPressed(KEY_ENTER))
+        {
+            editing_size = false;
+            updating = true;
+        }
+    }
+
+    if (updating)
+    {
+        get_attachment_from_user_bigger_than_table = project_manager->get_attachment_from_user_bigger_than(std::atoi(attachment_size));
+
+        updating = false;
+    }
+
+    static int attachment_scroll = 0;
+    static int attachment_selected = -1;
+
+    std::string attachment_render;
+    for (const auto& attachment : get_attachment_from_user_bigger_than_table)
+    {
+        attachment_render += std::format("id: {}\t name: {}\t size: {}\n", attachment->id, attachment->file_name, attachment->file_size);
+    }
+
+    GuiListView(Rectangle{x + 10, y + 100, width - 20, 600 - 170}, attachment_render.c_str(), &attachment_scroll, &attachment_selected);
+}
+
+void TableWindow::get_user_roles()
+{
+    if (should_update_projects)
+    {
+        projects = project_manager->get_all_entities<Project>();
+
+        should_update_projects = false;
+    }
+
+    static int role_scroll = 0;
+    static int role_selected = -1;
+    static bool updating = true;
+
+    std::string roles_render;
+    for (const auto& attachment : get_user_roles_table)
+    {
+        roles_render += std::format("role_name: {}\t email: {}\t name: {}\n", attachment->role_name, attachment->email, attachment->name);
+    }
+
+    if (updating)
+    {
+        get_user_roles_table = project_manager->get_user_roles();
+
+        updating = false;
+    }
+
+    if (IsKeyPressed(KEY_ENTER))
+    {
+        updating = true;
+    }
+
+    GuiListView(Rectangle{x + 10, y + 100, width - 20, 600 - 170}, roles_render.c_str(), &role_scroll, &role_selected);
+}
+
+void TableWindow::get_user_files()
+{
+    if (should_update_users)
+    {
+        users = project_manager->get_all_entities<User>();
+
+        should_update_users = false;
+    }
+
+    static int user_selected = -1;
+    static int user_scroll = 0;
+
+    std::string users_render;
+    for (const auto& user : users)
+    {
+        users_render += std::format("id: {}\t name: {}\t email: {}\n", user->id, user->name, user->email);
+    }
+
+    GuiLabel(Rectangle{x + 10, y, 100, 30}, "User");
+
+    GuiListView(Rectangle{x + 10, y + 30, width - 20, 200}, users_render.c_str(), &user_scroll, &user_selected);
+
+    static bool update;
+
+    if (IsKeyPressed(KEY_ENTER))
+    {
+        update = true;
+    }
+
+    if (update)
+    {
+        get_user_files_table = project_manager->get_user_files(*users[user_selected]);
+
+        update = false;
+    }
+
+    static int attachment_scroll = 0;
+    static int attachment_selected = -1;
+
+    std::string user_files_render;
+    for (const auto& attachment : get_user_files_table)
+    {
+        user_files_render += std::format("file_type: {}\t file_name: {}\n", attachment->file_type, attachment->file_name);
+    }
+
+    GuiListView(Rectangle{x + 10, y + 220, width - 20, 300}, user_files_render.c_str(), &attachment_scroll, &attachment_selected);
+}
+
+void TableWindow::get_project_tasks()
+{
+    if (should_update_projects)
+    {
+        projects = project_manager->get_all_entities<Project>();
+
+        should_update_projects = false;
+    }
+
+    static int project_selected = -1;
+    static int project_scroll = 0;
+
+    std::string projects_render;
+    for (const auto& project : projects)
+    {
+        projects_render += std::format("id: {}\t stage: {}\n", project->id, project->fk_project_stage_id);
+    }
+
+    GuiLabel(Rectangle{x + 10, y, 100, 30}, "Project");
+
+    GuiListView(Rectangle{x + 10, y + 30, width - 20, 200}, projects_render.c_str(), &project_scroll, &project_selected);
+
+    static bool update = true;
+
+    if (IsKeyPressed(KEY_ENTER))
+    {
+        update = true;
+    }
+
+    if (project_selected == -1 || projects[project_selected] == nullptr)
+    {
+        return;
+    }
+
+    if (update)
+    {
+        get_project_tasks_table = project_manager->get_project_tasks(*projects[project_selected]);
+
+        update = false;
+    }
+
+    std::string project_tasks_render;
+    for (const auto& task : get_project_tasks_table)
+    {
+        project_tasks_render += std::format("stage: {}\t title: {}\n", task->stage_title, task->task_title);
+    }
+
+    static int attachment_scroll = 0;
+    static int attachment_selected = -1;
+
+    GuiListView(Rectangle{x + 10, y + 220, width - 20, 300}, project_tasks_render.c_str(), &attachment_scroll, &attachment_selected);
+}
+
+void TableWindow::get_project_task_details()
+{
+    if (should_update_projects)
+    {
+        projects = project_manager->get_all_entities<Project>();
+
+        should_update_projects = false;
+    }
+
+    static int project_selected = -1;
+    static int project_scroll = 0;
+
+    static bool update = true;
+
+    std::string projects_render;
+    for (const auto& project : projects)
+    {
+        projects_render += std::format("id: {}\t stage: {}\n", project->id, project->fk_project_stage_id);
+    }
+
+    GuiLabel(Rectangle{x + 10, y, 100, 30}, "Project");
+
+    GuiListView(Rectangle{x + 10, y + 30, width - 20, 200}, projects_render.c_str(), &project_scroll, &project_selected);
+
+    if (project_selected == -1 || projects[project_selected] == nullptr)
+    {
+        return;
+    }
+
+    if (update)
+    {
+        get_project_task_details_table = project_manager->get_project_task_details(*projects[project_selected]);
+
+        update = false;
+    }
+
+    if (IsKeyPressed(KEY_ENTER))
+    {
+        update = true;
+    }
+
+    std::string project_tasks_render;
+    for (const auto& task : get_project_task_details_table)
+    {
+        project_tasks_render += std::format("tag: {}\t title: {} \t status: {}\n", task->tag, task->task_title, task->status_title);
+    }
+
+    static int attachment_scroll = 0;
+    static int attachment_selected = -1;
+
+    GuiListView(Rectangle{x + 10, y + 220, width - 20, 300}, project_tasks_render.c_str(), &attachment_scroll, &attachment_selected);
+}
+
+void TableWindow::get_user_comment_counts()
+{
+    if (should_update_users)
+    {
+        users = project_manager->get_all_entities<User>();
+
+        should_update_users = false;
+    }
+
+    static int user_selected = -1;
+    static int user_scroll = 0;
+
+    std::string users_render;
+    for (const auto& user : users)
+    {
+        users_render += std::format("id: {}\t name: {}\t email: {}\n", user->id, user->name, user->email);
+    }
+
+    GuiLabel(Rectangle{x + 10, y, 100, 30}, "User");
+
+    GuiListView(Rectangle{x + 10, y + 30, width - 20, 200}, users_render.c_str(), &user_scroll, &user_selected);
+
+    static bool update;
+
+    if (IsKeyPressed(KEY_ENTER))
+    {
+        update = true;
+    }
+
+    if (user_selected == -1 || users[user_selected] == nullptr)
+    {
+        return;
+    }
+
+    if (update)
+    {
+        get_user_comment_counts_table = project_manager->get_user_comment_counts(*users[user_selected]);
+
+        update = false;
+    }
+
+    std::string user_comments_render;
+    for (const auto& comment : get_user_comment_counts_table)
+    {
+        user_comments_render += std::format("user_id: {}\t count: {}\n", comment->user_id, comment->comment_count);
+    }
+
+    static int comment_scroll = 0;
+    static int comment_selected = -1;
+
+    GuiListView(Rectangle{x + 10, y + 220, width - 20, 300}, user_comments_render.c_str(), &comment_scroll, &comment_selected);
+}
+
+void TableWindow::get_project_teams_counts()
+{
+    if (should_update_projects)
+    {
+        projects = project_manager->get_all_entities<Project>();
+
+        should_update_projects = false;
+    }
+
+    static int project_selected = -1;
+    static int project_scroll = 0;
+
+    static bool update = true;
+
+    std::string projects_render;
+    for (const auto& project : projects)
+    {
+        projects_render += std::format("id: {}\t stage: {}\n", project->id, project->fk_project_stage_id);
+    }
+
+    GuiLabel(Rectangle{x + 10, y, 100, 30}, "Project");
+
+    GuiListView(Rectangle{x + 10, y + 30, width - 20, 200}, projects_render.c_str(), &project_scroll, &project_selected);
+
+    if (project_selected == -1 || projects[project_selected] == nullptr)
+    {
+        return;
+    }
+
+    if (update)
+    {
+        get_project_teams_counts_table = project_manager->get_project_teams_counts(*projects[project_selected]);
+
+        update = false;
+    }
+
+    if (IsKeyPressed(KEY_ENTER))
+    {
+        update = true;
+    }
+
+    std::string project_teams_render;
+    for (const auto& team : get_project_teams_counts_table)
+    {
+        project_teams_render += std::format("project_id: {}\t count: {}\n", team->project_id, team->teams_count);
+    }
+
+    static int team_scroll = 0;
+    static int team_selected = -1;
+
+    GuiListView(Rectangle{x + 10, y + 220, width - 20, 300}, project_teams_render.c_str(), &team_scroll, &team_selected);
+}
+
+void TableWindow::search_projects_by_title_draw()
+{
+    if (should_update_projects)
+    {
+        projects = project_manager->get_all_entities<Project>();
+
+        should_update_projects = false;
+    }
+
+    static char* attachment_size = new char[32];
+    static bool editing_size = false;
+    static bool updating = false;
+
+    GuiLabel(Rectangle{x + 10, y, 100, 30}, "Project Name");
+
+    GuiTextBox(Rectangle{x + 10, y + 30, width - 20, 30}, attachment_size, 32, editing_size);
+
+    if (GetMousePosition().x > x + 10 && GetMousePosition().x < width - 20 && GetMousePosition().y > y + 30 &&
+        GetMousePosition().y < y + 60)
+    {
+        if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+        {
+            editing_size = true;
+        }
+    }
+
+    if (editing_size)
+    {
+        if (IsKeyPressed(KEY_ENTER))
+        {
+            editing_size = false;
+            updating = true;
+        }
+    }
+
+    if (IsKeyPressed(KEY_ENTER))
+    {
+        updating = true;
+    }
+
+    if (updating)
+    {
+        search_projects_by_title_table = project_manager->search_projects_by_title(attachment_size);
+
+        updating = false;
+    }
+
+    std::string projects_render;
+    for (const auto& project : search_projects_by_title_table)
+    {
+        projects_render += std::format("id: {}\t title: {}\t desc: {}\n",
+            project->project->id,
+            project->project_details->title,
+            project->project_details->description);
+    }
+
+    static int project_scroll = 0;
+    static int project_selected = -1;
+
+    GuiListView(Rectangle{x + 10, y + 60, width - 20, 200}, projects_render.c_str(), &project_scroll, &project_selected);
 }

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "user.hxx"
-#include "model.hxx"
 #include "file_type.hxx"
+#include "model.hxx"
+#include "user.hxx"
 
 class Attachment final : public ModelEntity
 {
@@ -18,7 +18,7 @@ public:
     Attachment(std::string file_content, std::string file_name, std::int32_t file_size)
         : file_content(std::move(file_content)), file_name(std::move(file_name)), file_size(file_size)
     {
-        id = std::to_string(std::hash<std::string>{}(file_content));
+        id = std::to_string(std::hash<std::string>{}(this->file_content));
     }
 
     static constexpr std::string s_table_name()

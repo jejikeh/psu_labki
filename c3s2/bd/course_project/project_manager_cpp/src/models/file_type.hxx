@@ -1,7 +1,7 @@
 #pragma once
 
-#include <pqxx/pqxx>
 #include "model.hxx"
+#include <pqxx/pqxx>
 
 class FileType final : public ModelEntity
 {
@@ -13,7 +13,7 @@ public:
 
     FileType(std::string extension, std::string description = "") : description(std::move(description)), extension(std::move(extension))
     {
-        id = std::to_string(std::hash<std::string>{}(extension));
+        id = std::to_string(std::hash<std::string>{}(this->extension));
     }
 
     static constexpr std::string s_table_name()

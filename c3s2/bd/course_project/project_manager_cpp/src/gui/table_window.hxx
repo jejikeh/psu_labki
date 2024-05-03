@@ -1,7 +1,10 @@
 #pragma once
 
+#include "../models/comment.hxx"
+#include "../models/file_type.hxx"
 #include "../models/project_reports.hxx"
 #include "../models/task.hxx"
+#include "../models/task_tag.hxx"
 #include "../models/team.hxx"
 #include "../project_manager.hxx"
 #include "../raygui.h"
@@ -21,6 +24,19 @@ enum class TableWindowType
     Report,
     Task,
     TaskStatus,
+    TaskTag,
+    Comment,
+    FileType,
+    Attachment,
+
+    get_attachment_from_user_bigger_than,
+    get_user_roles,
+    get_user_files,
+    get_project_tasks,
+    get_project_task_details,
+    get_user_comment_counts,
+    get_project_teams_counts,
+    search_projects_by_title
 };
 
 class TableWindow final : public Window
@@ -45,6 +61,19 @@ public:
     bool should_update_reports = true;
     bool should_update_tasks = true;
     bool should_update_task_status = true;
+    bool should_update_task_tags = true;
+    bool should_update_comments = true;
+    bool should_update_file_type = true;
+    bool should_update_attachments = true;
+
+    bool should_update_get_attachment_from_user_bigger_than = true;
+    bool should_update_get_user_roles = true;
+    bool should_update_get_user_files = true;
+    bool should_update_get_project_tasks = true;
+    bool should_update_get_project_task_details = true;
+    bool should_update_get_user_comment_counts = true;
+    bool should_update_get_project_teams_counts = true;
+    bool should_update_search_projects_by_title = true;
 
     char* create_user_name;
     char* create_user_email;
@@ -71,10 +100,22 @@ public:
     char* create_report_description;
     char* create_report_value;
 
+    char* create_task_title;
     char* create_task_description;
 
     char* create_task_status_title;
     char* create_task_status_description;
+
+    char* create_task_tag_tag;
+
+    char* create_comment_content;
+    char* create_created_at;
+
+    char* create_file_type_description;
+    char* create_file_type_extension;
+
+    char* create_attachment_content;
+    char* create_attachment_name;
 
     std::vector<std::shared_ptr<User>> users;
     std::vector<std::shared_ptr<Role>> roles;
@@ -86,6 +127,20 @@ public:
     std::vector<std::shared_ptr<Report>> reports;
     std::vector<std::shared_ptr<Team>> teams;
     std::vector<std::shared_ptr<TaskStatus>> task_statuses;
+    std::vector<std::shared_ptr<Task>> tasks;
+    std::vector<std::shared_ptr<TaskTag>> task_tags;
+    std::vector<std::shared_ptr<Comment>> comments;
+    std::vector<std::shared_ptr<FileType>> file_types;
+    std::vector<std::shared_ptr<Attachment>> attachments;
+
+    std::vector<std::shared_ptr<Attachment>> get_attachment_from_user_bigger_than_table;
+    std::vector<std::shared_ptr<UserRoleInfo>> get_user_roles_table;
+    std::vector<std::shared_ptr<UserFile>> get_user_files_table;
+    std::vector<std::shared_ptr<ProjectTask>> get_project_tasks_table;
+    std::vector<std::shared_ptr<ProjectTaskDetails>> get_project_task_details_table;
+    std::vector<std::shared_ptr<UserCommentCount>> get_user_comment_counts_table;
+    std::vector<std::shared_ptr<ProjectTeamsCount>> get_project_teams_counts_table;
+    std::vector<std::shared_ptr<ProjectSearch>> search_projects_by_title_table;
 
     TableWindow(float x, float y, float width, float height) : Window(x, y, width, height, "Example Window")
     {
@@ -117,10 +172,22 @@ public:
         create_report_description = new char[32];
         create_report_value = new char[32];
 
+        create_task_title = new char[32];
         create_task_description = new char[32];
 
         create_task_status_title = new char[32];
         create_task_status_description = new char[32];
+
+        create_task_tag_tag = new char[32];
+
+        create_comment_content = new char[32];
+        create_created_at = new char[32];
+
+        create_file_type_description = new char[32];
+        create_file_type_extension = new char[32];
+
+        create_attachment_content = new char[32];
+        create_attachment_name = new char[32];
 
         project_manager = std::make_unique<ProjectManager>();
         //
@@ -157,10 +224,22 @@ public:
         delete[] create_report_description;
         delete[] create_report_value;
 
+        delete[] create_task_title;
         delete[] create_task_description;
 
         delete[] create_task_status_title;
         delete[] create_task_status_description;
+
+        delete[] create_task_tag_tag;
+
+        delete[] create_comment_content;
+        delete[] create_created_at;
+
+        delete[] create_file_type_description;
+        delete[] create_file_type_extension;
+
+        delete[] create_attachment_content;
+        delete[] create_attachment_name;
     }
 
     void set_table_type(TableWindowType type)
@@ -242,6 +321,86 @@ public:
 
             break;
         }
+        case TableWindowType::TaskTag:
+        {
+            title = "Task Tag";
+
+            break;
+        }
+        case TableWindowType::Comment:
+        {
+            title = "Comments";
+
+            break;
+        }
+        case TableWindowType::FileType:
+        {
+            title = "File Type";
+
+            break;
+        }
+        case TableWindowType::Attachment:
+        {
+            title = "Attachment";
+
+            break;
+        }
+
+        case TableWindowType::get_attachment_from_user_bigger_than:
+        {
+            title = "get_attachment_from_user_bigger_than";
+
+            break;
+        }
+
+        case TableWindowType::get_user_roles:
+        {
+            title = "get_user_roles";
+
+            break;
+        }
+
+        case TableWindowType::get_user_files:
+        {
+            title = "get_user_files";
+
+            break;
+        }
+
+        case TableWindowType::get_project_tasks:
+        {
+            title = "get_project_tasks";
+
+            break;
+        }
+
+        case TableWindowType::get_project_task_details:
+        {
+            title = "get_project_task_details";
+
+            break;
+        }
+
+        case TableWindowType::get_user_comment_counts:
+        {
+            title = "get_user_comment_counts";
+
+            break;
+        }
+
+        case TableWindowType::get_project_teams_counts:
+        {
+            title = "get_project_teams_counts";
+
+            break;
+        }
+
+        case TableWindowType::search_projects_by_title:
+        {
+            title = "search_projects_by_title";
+
+            break;
+        }
         }
     }
 
@@ -262,4 +421,17 @@ public:
     void report_draw();
     void task_draw();
     void task_status_draw();
+    void task_tag_draw();
+    void comment_draw();
+    void file_type_draw();
+    void attachment_draw();
+
+    void get_attachment_from_user_bigger_than_draw();
+    void get_user_roles();
+    void get_user_files();
+    void get_project_tasks();
+    void get_project_task_details();
+    void get_user_comment_counts();
+    void get_project_teams_counts();
+    void search_projects_by_title_draw();
 };

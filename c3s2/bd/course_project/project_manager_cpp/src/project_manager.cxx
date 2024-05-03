@@ -1,17 +1,16 @@
-#include <string>
-#include <iostream>
 #include "project_manager.hxx"
-#include "models/user.hxx"
+#include "models/attachment.hxx"
 #include "models/comment.hxx"
 #include "models/file_type.hxx"
-#include "models/attachment.hxx"
-#include "models/task_tag.hxx"
-#include "models/task_status.hxx"
 #include "models/project_details.hxx"
+#include "models/project_reports.hxx"
 #include "models/project_status.hxx"
 #include "models/report.hxx"
-#include "models/project_reports.hxx"
-#include "models/attachment.hxx"
+#include "models/task_status.hxx"
+#include "models/task_tag.hxx"
+#include "models/user.hxx"
+#include <iostream>
+#include <string>
 
 ProjectManager::ProjectManager()
 {
@@ -96,7 +95,7 @@ std::vector<std::shared_ptr<Attachment>> ProjectManager::get_attachment_from_use
     const auto select_sql =
         "SELECT * FROM " + Attachment::s_table_name() + " WHERE file_size > " + std::to_string(size) + " ORDER BY file_size DESC LIMIT 10;";
 
-    const auto result = execute_sql(select_sql);
+    const auto result = execute_sql(select_sql, false);
 
     auto attachments = std::vector<std::shared_ptr<Attachment>>();
 
@@ -121,7 +120,7 @@ std::vector<std::shared_ptr<UserRoleInfo>> ProjectManager::get_user_roles()
                                    "INNER JOIN " +
                                    Role::s_table_name() + " ON " + User::s_table_name() + ".fk_role_id = " + Role::s_table_name() + ".id;";
 
-    const auto result = execute_sql(select_sql);
+    const auto result = execute_sql(select_sql, false);
 
     std::vector<std::shared_ptr<UserRoleInfo>> user_roles;
 
@@ -146,7 +145,7 @@ std::vector<std::shared_ptr<UserFile>> ProjectManager::get_user_files(const User
                                    "' "
                                    "WHERE users.id = attachments.fk_author_id;";
 
-    const auto result = execute_sql(select_sql);
+    const auto result = execute_sql(select_sql, false);
 
     std::vector<std::shared_ptr<UserFile>> project_files;
 
@@ -168,7 +167,7 @@ std::vector<std::shared_ptr<ProjectTask>> ProjectManager::get_project_tasks(cons
                                    "INNER JOIN teams ON teams.fk_project_id = '" +
                                    project.id + "';\n";
 
-    const auto result = execute_sql(select_sql);
+    const auto result = execute_sql(select_sql, false);
 
     std::vector<std::shared_ptr<ProjectTask>> project_tasks;
 
@@ -192,7 +191,7 @@ std::vector<std::shared_ptr<ProjectTaskDetails>> ProjectManager::get_project_tas
                                    "WHERE tasks.fk_team_id IN (SELECT id FROM teams WHERE fk_project_id = '" +
                                    project.id + "');";
 
-    const auto result = execute_sql(select_sql);
+    const auto result = execute_sql(select_sql, false);
 
     std::vector<std::shared_ptr<ProjectTaskDetails>> project_task_details;
 
@@ -216,7 +215,7 @@ std::vector<std::shared_ptr<UserCommentCount>> ProjectManager::get_user_comment_
                                    "' \n"
                                    "GROUP BY comments.fk_author_id;";
 
-    const auto result = execute_sql(select_sql);
+    const auto result = execute_sql(select_sql, false);
 
     std::vector<std::shared_ptr<UserCommentCount>> task_comment_counts;
 
@@ -240,7 +239,7 @@ std::vector<std::shared_ptr<ProjectTeamsCount>> ProjectManager::get_project_team
                                    "' \n"
                                    "GROUP BY teams.fk_project_id;";
 
-    const auto result = execute_sql(select_sql);
+    const auto result = execute_sql(select_sql, false);
 
     std::vector<std::shared_ptr<ProjectTeamsCount>> project_teams_counts;
 
@@ -259,7 +258,7 @@ std::vector<std::shared_ptr<ProjectSearch>> ProjectManager::search_projects_by_t
 {
     const std::string select_sql = "SELECT * FROM project_details WHERE title LIKE '%" + title + "%';";
 
-    const auto result = execute_sql(select_sql);
+    const auto result = execute_sql(select_sql, false);
 
     std::vector<std::shared_ptr<ProjectSearch>> projects;
 
@@ -269,7 +268,7 @@ std::vector<std::shared_ptr<ProjectSearch>> ProjectManager::search_projects_by_t
         project_details->from_pqxx_row(row);
 
         auto query_project = Project();
-        query_project.id = project_details->id;
+        query_project.id = project_details->fk_project_id;
 
         auto project = get_entity_by_id(&query_project);
 
