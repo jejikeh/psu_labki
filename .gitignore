@@ -389,3 +389,7 @@ MigrationBackup/
 FodyWeavers.xsd
 
 /node_modules
+
+/yolov4.weights
+/yolov4.cfg
+/coco.names
